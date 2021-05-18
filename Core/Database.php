@@ -1,0 +1,49 @@
+<?php
+
+namespace Core;
+
+/**
+ * @author @smhdhsn
+ * 
+ * @version 1.0.0
+ */
+abstract class Database
+{
+    /**
+     * Database Connection.
+     * 
+     * @since 1.0.0
+     * 
+     * @var object
+     */
+    private $connection;
+
+    /**
+     * Connecting To The Database.
+     * 
+     * @since 1.0.0
+     * 
+     * @return object
+     */
+    public function connect(): object
+    {
+        $this->connection = null;
+        try {
+            $this->connection = new PDO(
+                "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", 
+                $_ENV['DB_USERNAME'], 
+                $_ENV['DB_PASSWORD']
+            );
+
+            $this->connection->setAttribute(
+                PDO::ATTR_ERRMODE, 
+                PDO::ERRMODE_EXCEPTION
+            );
+        } catch (PDOException $e) {
+            echo 'Connection Error: '. $e->getMessage();
+            die();
+        }
+
+        return $this->connection;
+    }
+}
