@@ -8,7 +8,8 @@
             "Core\\": "Core/"
         },
         "files": [
-            "Routes/api.php"
+            "Routes/api.php",
+            "Routes/default.php"
         ]
     }
 }
