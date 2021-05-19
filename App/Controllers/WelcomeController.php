@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use Exception;
-use Core\{BaseController, Response};
+use Core\Response;
 
 /**
  * @author @smhdhsn

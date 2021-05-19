@@ -1,6 +1,8 @@
 <?php
 
-namespace Core;
+namespace App\Controllers;
+
+use Core\Database;
 
 /**
  * @author @smhdhsn

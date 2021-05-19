@@ -1,6 +1,7 @@
 <?php
 
-use Core\{BaseController, Response, Route};
+use Core\{Response, Route};
+use App\Controllers\BaseController;
 
 /**
  * When Route Is Not Defined.
