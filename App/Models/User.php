@@ -163,6 +163,7 @@ class User extends BaseModel
         if (password_verify($request['password'], $result['password'])) {
             return $result;
         }
+        
         die(
             (new BaseController)->error(
                 Response::ERROR,
