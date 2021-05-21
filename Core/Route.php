@@ -7,114 +7,106 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Content-Type, Authorization, X-Requested-With');
 
+use Core\Traits\{Authentication, Helper};
+
 /**
  * @author @smhdhsn
  * 
- * @version 1.0.0
+ * @version 1.1.0
  */
-abstract class Route
+class Route
 {
+    use Authentication, Helper;
+
     /**
      * Handling GET Requests.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
+     * @param array|null $middlewares
      * @param closure|string $action
      * @param string $route
      * 
      * @return void
      */
-    public static function get(string $route, $action): void
+    public static function get(string $route, $action, array $middlewares = null): void
     {
-        if ($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (is_string($action)) {
-                $parts = explode('@', $action);
+        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
-                $class = "\App\Controllers\\$parts[0]";
-                $controller = new $class();
-                echo $controller->{$parts[1]}();
-            } else {
-                echo $action->__invoke();
+                self::response($action);
             }
-            die();
+            self::methodNotAllowed();
         }
     }
 
     /**
      * Handling POST Requests.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
+     * @param array|null $middlewares
      * @param closure|string $action
      * @param string $route
      * 
      * @return void
      */
-    public static function post(string $route, $action): void
+    public static function post(string $route, $action, array $middlewares = null): void
     {
-        if ($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (is_string($action)) {
-                $parts = explode('@', $action);
+        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
-                $class = "\App\Controllers\\$parts[0]";
-                $controller = new $class();
-                echo $controller->{$parts[1]}();
-            } else {
-                echo $action->__invoke();
+                self::response($action);
             }
-            die();
+            self::methodNotAllowed();
         }
     }
 
     /**
      * Handling PUT Requests.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
+     * @param array|null $middlewares
      * @param closure|string $action
      * @param string $route
      * 
      * @return void
      */
-    public static function put(string $route, $action): void
+    public static function put(string $route, $action, array $middlewares = null): void
     {
-        if ($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] == 'PUT') {
-            if (is_string($action)) {
-                $parts = explode('@', $action);
+        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+            if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
-                $class = "\App\Controllers\\$parts[0]";
-                $controller = new $class();
-                echo $controller->{$parts[1]}();
-            } else {
-                echo $action->__invoke();
+                self::response($action);
             }
-            die();
+            self::methodNotAllowed();
         }
     }
 
     /**
      * Handling DELETE Requests.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
+     * @param array|null $middlewares
      * @param closure|string $action
      * @param string $route
      * 
      * @return void
      */
-    public static function delete(string $route, $action): void
+    public static function delete(string $route, $action, array $middlewares = null): void
     {
-        if ($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] == 'DELETE') {
-            if (is_string($action)) {
-                $parts = explode('@', $action);
+        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+            if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
-                $class = "\App\Controllers\\$parts[0]";
-                $controller = new $class();
-                echo $controller->{$parts[1]}();
-            } else {
-                echo $action->__invoke();
+                self::response($action);
             }
-            die();
+            self::methodNotAllowed();
         }
     }
 }

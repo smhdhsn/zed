@@ -2,17 +2,21 @@
 
 namespace Core;
 
+use PDO;
+use PDOException;
+use App\Controllers\BaseController;
+
 /**
  * @author @smhdhsn
  * 
- * @version 1.0.0
+ * @version 1.1.0
  */
 abstract class Database
 {
     /**
      * Database Connection.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
      * @var object
      */
@@ -21,17 +25,16 @@ abstract class Database
     /**
      * Connecting To The Database.
      * 
-     * @since 1.0.0
+     * @since 1.1.0
      * 
      * @return object
      */
     public function connect(): object
     {
-        $this->connection = null;
         try {
             $this->connection = new PDO(
-                "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", 
-                $_ENV['DB_USERNAME'], 
+                "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}",
+                $_ENV['DB_USERNAME'],
                 $_ENV['DB_PASSWORD']
             );
 
@@ -40,8 +43,13 @@ abstract class Database
                 PDO::ERRMODE_EXCEPTION
             );
         } catch (PDOException $e) {
-            echo 'Connection Error: '. $e->getMessage();
-            die();
+            die(
+                (new BaseController)->error(
+                    Response::ERROR,
+                    'Connection Error: ' . $e->getMessage(),
+                    Response::HTTP_INTERNAL_SERVER_ERROR
+                )
+            );
         }
 
         return $this->connection;

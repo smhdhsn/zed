@@ -7,14 +7,14 @@ use Core\Response;
 /**
  * @author @smhdhsn
  * 
- * @version 1.0.0
+ * @version 1.1.0
  */
 class BaseController extends Response
 {
     /**
      * Styling Response For Successful Responses.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @param string $status
      * @param mixed $data
@@ -24,6 +24,8 @@ class BaseController extends Response
      */
     public function response(string $status, $data, int $code): string
     {
+        http_response_code($code);
+
     	return json_encode([
     		'status' => $status,
     		'data' => $data,
@@ -34,7 +36,7 @@ class BaseController extends Response
     /**
      * Styling Response For Unsuccessful Responses.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @param string $status
      * @param mixed $data
@@ -44,6 +46,8 @@ class BaseController extends Response
      */
     public function error(string $status, $data, int $code): string
     {
+        http_response_code($code);
+
     	return json_encode([
     		'status' => $status,
     		'data' => $data,

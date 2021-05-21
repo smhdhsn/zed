@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use Exception;
 use Core\Response;
 
 /**
@@ -21,18 +20,10 @@ class WelcomeController extends BaseController
      */
     public function index(): string
     {
-        try {
-            return $this->response(
-                Response::SUCCESS,
-                'Welcome To php-mon Framework.',
-                Response::HTTP_OK
-            );
-        } catch (Exception $e) {
-            return $this->error(
-                Response::ERROR,
-                $e,
-                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : $e->getCode()
-            );
-        }
+        return $this->response(
+            Response::SUCCESS,
+            'Welcome To php-mon Framework.',
+            Response::HTTP_OK
+        );
     }
 }

@@ -4,10 +4,11 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "App/",
-            "Core\\": "Core/"
+            "Core\\": "Core/",
+            "App\\": "App/"
         },
         "files": [
+            "Core/_Setup.php",
             "Routes/api.php",
             "Routes/default.php"
         ]
