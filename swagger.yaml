@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+    title: php-mon
+    version: 1.1.0
+servers:
+    - url: "http://localhost:8000/"
+components:
+    securitySchemes:
+      token:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+paths:
+  # Test
+  /welcome:
+    get:
+      security:
+        - token: []
+      tags:
+        - Test
+      summary: Welcome
+      description: Getting Started.
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "Success"
+                  data:
+                    type: string
+                    example: "Welcome To php-mon Framework."
+                  code:
+                    type: integer
+                    example: 200
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "Error"
+                  data:
+                    type: string
+                    example: "Unauthorized"
+                  code:
+                    type: integer
+                    example: 401
+    
+  # Authentication
+  /user/login:
+    get:
+      tags:
+        - Authentication
+      summary: Login
+      description: Logging User In.
+      responses:
+          "200":
+              description: Success.
+              content:
+                  application/json:
+                      schema:
+                          type: object
+                          properties:
+                              status:
+                                  type: string
+                                  example: "Success"
+                              data:
+                                  type: object
+                                  properties:
+                                      User:
+                                          type: object
+                                          properties:
+                                              id:
+                                                  type: integer
+                                                  example: 1
+                                              name:
+                                                  type: string
+                                                  example: "first-name"
+                                              family:
+                                                  type: string
+                                                  example: "last-name"
+                                              email:
+                                                  type: string
+                                                  example: "hitrav@info.com"
+                                              birth_date:
+                                                  type: string
+                                                  example: "1970-01-01"
+                                              country_code:
+                                                  type: integer
+                                                  example: 98
+                                              mobile_number:
+                                                  type: integer
+                                                  example: 9000000000
+                                              gender_name:
+                                                  type: string
+                                                  example: "gender"
+                                              language_name:
+                                                  type: string
+                                                  example: "language"
+                                      _link:
+                                          type: array
+                                          items:
+                                              type: object
+                                              properties:
+                                                  rel:
+                                                      type: string
+                                                      example: "link-rel"
+                                                  type:
+                                                      type: string
+                                                      example: "link-type"
+                                                  href:
+                                                      type: string
+                                                      example: "url-route-to-profile"
+                              code:
+                                  type: integer
+                                  example: 200
+          "401":
+              description: Unauthorized.
+              content:
+                  application/json:
+                      schema:
+                          type: object
+                          properties:
+                              status:
+                                  type: string
+                                  example: "Error"
+                              data:
+                                  type: string
+                                  example: "Unauthorized"
+                              code:
+                                  type: integer
+                                  example: 401
+  /user/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register
+      description: Registering User.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                surname:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone_number:
+                  type: string
+              required:
+                - name
+                - surname
+                - username
+                - email
+                - password
+                - phone_number
+      responses:
+        "200":
+          description: User Registered Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "Success"
+                  data:
+                    type: string
+                    example: "access-token"
+                  code:
+                    type: integer
+                    example: 200
