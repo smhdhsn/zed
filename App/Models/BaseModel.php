@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Core\Classes\Database;
-use Core\Traits\Eloquent\{Insert, Where};
+use Core\Traits\Eloquent\{Insert, Update, Where, Delete};
 
 /**
  * @author @smhdhsn
@@ -12,7 +12,7 @@ use Core\Traits\Eloquent\{Insert, Where};
  */
 class BaseModel extends Database
 {
-    use Insert, Where;
+    use Insert, Update, Where, Delete;
 
     /**
      * Database Connection.

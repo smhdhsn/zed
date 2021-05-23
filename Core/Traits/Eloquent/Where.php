@@ -55,7 +55,14 @@ trait Where
         return $this;
     }
 
-    private function bindWhereClauseParams()
+    /**
+     * Binding Parameters.
+     * 
+     * @since 1.2.0
+     * 
+     * @return object
+     */
+    private function bindWhereClauseParams(): object
     {
         foreach ($this->input as $inputs) {
             foreach ($inputs as $key => $chunk) {

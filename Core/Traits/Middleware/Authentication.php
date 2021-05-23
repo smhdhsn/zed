@@ -2,7 +2,7 @@
 
 namespace Core\Traits\Middleware;
 
-use Core\{Response, Token};
+use Core\Classes\{Response, Token};
 use App\Controllers\BaseController;
 
 /**
