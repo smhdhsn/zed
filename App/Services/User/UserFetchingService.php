@@ -2,9 +2,9 @@
 
 namespace App\Services\User;
 
-use Core\Response;
 use App\Models\User;
 use Core\Traits\Service;
+use Core\Classes\Response;
 use App\Controllers\BaseController;
 
 /**

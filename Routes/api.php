@@ -1,6 +1,6 @@
 <?php
 
-use Core\Route;
+use Core\Classes\Route;
 
 Route::post('/user/register', 'UserController@register');
 Route::get('/user/login', 'UserController@login');

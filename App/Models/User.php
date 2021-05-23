@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use PDO;
-use Core\{Response, Token};
+use Core\Classes\{Response, Token};
 use App\Controllers\BaseController;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-use Core\{Response, Route};
+use Core\Classes\{Response, Route};
 use App\Controllers\BaseController;
 
 /**

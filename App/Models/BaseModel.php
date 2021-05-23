@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Core\Database;
+use Core\Classes\Database;
 use Core\Traits\Eloquent\{Insert, Where};
 
 /**

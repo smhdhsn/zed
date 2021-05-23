@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Response;
+use Core\Classes\Response;
 
 /**
  * @author @smhdhsn

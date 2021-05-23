@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Classes;
 
 error_reporting(E_ERROR | E_PARSE);
 header('Access-Control-Allow-Origin: *');

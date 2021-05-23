@@ -3,7 +3,7 @@
 namespace Core\Traits;
 
 use Exception;
-use Core\Response;
+use Core\Classes\Response;
 use App\Controllers\BaseController;
 
 /**
