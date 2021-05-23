@@ -65,7 +65,7 @@ trait Helper
         try {
             $parts = explode('@', $action);
 
-            $class = "\App\Controllers\\$parts[0]";
+            $class = "\\App\\Controllers\\$parts[0]";
             $controller = new $class();
             return $controller->{$parts[1]}(self::request());
         } catch (Exception $e) {

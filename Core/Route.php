@@ -7,7 +7,8 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Content-Type, Authorization, X-Requested-With');
 
-use Core\Traits\{Authentication, Helper};
+use Core\Traits\Helper;
+use Core\Traits\Middleware\Authentication;
 
 /**
  * @author @smhdhsn

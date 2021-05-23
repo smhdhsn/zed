@@ -3,40 +3,19 @@
 namespace App\Controllers;
 
 use Core\Response;
-use App\Models\User;
+use App\Services\User\{UserFetchingService, UserCreatingService};
 
 /**
  * @author @smhdhsn
  * 
- * @version 1.0.0
+ * @version 1.2.0
  */
 class UserController extends BaseController
 {
     /**
-     * User's Instance.
-     * 
-     * @since 1.1.0
-     * 
-     * @var object
-     */
-    public $model;
-
-    /**
-     * Creates an Instance Of This Class.
-     * 
-     * @since 1.1.0
-     * 
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->model = new User;
-    }
-
-    /**
      * Logging In The User.
      * 
-     * @since 1.1.0
+     * @since 1.2.0
      * 
      * @param array $request
      * 
@@ -44,7 +23,7 @@ class UserController extends BaseController
      */
     public function login(array $request): string
     {
-        $data = $this->model->login($request);
+        $data = (new UserFetchingService)->login($request);
 
         return $this->response(
             Response::SUCCESS,
@@ -64,7 +43,7 @@ class UserController extends BaseController
      */
     public function register(array $request): string
     {
-        $data = $this->model->register($request);
+        $data = (new UserCreatingService)->register($request);
 
         return $this->response(
             Response::SUCCESS,
