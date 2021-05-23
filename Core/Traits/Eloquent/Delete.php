@@ -16,7 +16,7 @@ trait Delete
      * 
      * @param int $id
      * 
-     * @return array
+     * @return bool
      */
     public function delete(array $input): bool
     {
