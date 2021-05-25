@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Traits\Eloquent;
+namespace Core\Traits\Sequel;
 
 /**
  * @author @smhdhsn

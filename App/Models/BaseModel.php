@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Core\Classes\Database;
-use Core\Traits\Eloquent\{Insert, Update, Where, Delete};
+use Core\Traits\Sequel\{Insert, Update, Where, Delete};
 
 /**
  * @author @smhdhsn
