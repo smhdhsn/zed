@@ -38,7 +38,6 @@ class Route
 
                 self::response($action);
             }
-            self::methodNotAllowed();
         }
     }
 
@@ -61,7 +60,6 @@ class Route
 
                 self::response($action);
             }
-            self::methodNotAllowed();
         }
     }
 
@@ -84,7 +82,6 @@ class Route
 
                 self::response($action);
             }
-            self::methodNotAllowed();
         }
     }
 
@@ -107,7 +104,6 @@ class Route
 
                 self::response($action);
             }
-            self::methodNotAllowed();
         }
     }
 }

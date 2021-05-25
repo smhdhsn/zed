@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use PDO;
-use Core\Classes\{Response, Token};
-use App\Controllers\BaseController;
+use Core\Classes\Token;
 
 /**
  * @author @smhdhsn
