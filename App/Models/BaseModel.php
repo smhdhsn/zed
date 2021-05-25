@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Controllers\BaseController;
 use Core\Classes\{Response, Database};
-use Core\Traits\Sequel\{Insert, Update, Delete, Find};
+use Core\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
 
 /**
  * @author @smhdhsn
@@ -13,7 +13,7 @@ use Core\Traits\Sequel\{Insert, Update, Delete, Find};
  */
 class BaseModel extends Database
 {
-    use Insert, Update, Find, Delete;
+    use Insert, Update, Find, Delete, Where, Get;
 
     /**
      * Database Connection.
