@@ -2,61 +2,57 @@
 
 namespace Core\Traits\Sequel;
 
+use PDO;
+use Exception;
+
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.2.1
  */
 trait Delete
 {
     /**
-     * Deleting Model From Database.
+     * Deleting a Model's Record From Database.
      * 
-     * @since 1.2.0
-     * 
-     * @param int $id
+     * @since 1.2.1
      * 
      * @return bool
      */
-    public function delete(array $input): bool
+    public function delete()
     {
-        $this->makeDeletingQuery($input)
+        return $this->checkForModelExistance()
+            ->makeDeleteQuery()
             ->prepareDatabase()
-            ->bindDeletingParams()
-            ->execute();
-        
-        return true;
+            ->bindParams()
+            ->destroyRecord();
     }
 
     /**
-     * Making Query For Storing Information.
+     * Making Query For Finding Model's Record In Database.
      * 
-     * @since 1.2.0
-     * 
-     * @param array $input
+     * @since 1.2.1
      * 
      * @return object
      */
-    private function makeDeletingQuery(array $input): object
+    private function makeDeleteQuery(): object
     {
-        $this->input = $input;
-
         $this->query = "DELETE FROM \n\t{$this->table} \nWHERE \n\tid=:id";
 
         return $this;
     }
 
     /**
-     * Binding Parameters.
+     * Executing Statement And Returning The Result.
      * 
-     * @since 1.2.0
+     * @since 1.2.1
      * 
-     * @return object
+     * @return bool
      */
-    private function bindDeletingParams(): object
+    private function destroyRecord(): bool
     {
-        $this->statement->bindParam(":id", htmlspecialchars(strip_tags($this->input['id'])));
-
-        return $this->statement;
+        return $this->statement->execute()
+        ? true
+        : false;
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Core\Classes\Database;
-use Core\Traits\Sequel\{Insert, Update, Where, Delete};
+use App\Controllers\BaseController;
+use Core\Classes\{Response, Database};
+use Core\Traits\Sequel\{Insert, Update, Delete, Find};
 
 /**
  * @author @smhdhsn
@@ -12,7 +13,7 @@ use Core\Traits\Sequel\{Insert, Update, Where, Delete};
  */
 class BaseModel extends Database
 {
-    use Insert, Update, Where, Delete;
+    use Insert, Update, Find, Delete;
 
     /**
      * Database Connection.
@@ -21,16 +22,7 @@ class BaseModel extends Database
      * 
      * @var object
      */
-    public $connection;
-
-    /**
-     * Model's Inputs.
-     * 
-     * @since 1.2.0
-     * 
-     * @var array
-     */
-    private $input;
+    private $connection;
 
     /**
      * SQL Query.
@@ -51,6 +43,24 @@ class BaseModel extends Database
     private $statement;
 
     /**
+     * Model's Instance.
+     * 
+     * @since 1.2.1
+     * 
+     * @var object
+     */
+    private $model;
+
+    /**
+     * Provided Inputs.
+     * 
+     * @since 1.2.1
+     * 
+     * @var array
+     */
+    protected $inputs;
+
+    /**
      * Creates an Instance Of This Class.
      * 
      * @since 1.1.0
@@ -60,6 +70,22 @@ class BaseModel extends Database
     public function __construct()
     {
         $this->connection = $this->connect();
+    }
+
+    /**
+     * Instantiating Class.
+     * 
+     * @since 1.2.1
+     * 
+     * @return object
+     */
+    private static function instantiateClass(): object
+    {
+        $class = get_called_class();
+        $object = new $class();
+        $object->model = $object;
+
+        return $object->model;
     }
 
     /**
@@ -85,10 +111,64 @@ class BaseModel extends Database
      */
     private function bindParams(): object
     {
-        foreach ($this->input as $key => $chunk) {
+        foreach ($this->inputs as $key => $chunk) {
             $this->statement->bindParam(":{$key}", htmlspecialchars(strip_tags($chunk)));
         }
 
-        return $this->statement;
+        return $this;
+    }
+
+    /**
+     * Checking If Model's Instance Or Model's Id Exist.
+     * 
+     * @since 1.2.1
+     * 
+     * @return object
+     */
+    private function checkForModelExistance()
+    {
+        if (! isset($this->model) || ! isset($this->id))
+            die(
+                (new BaseController)->error(
+                    Response::ERROR,
+                    'Model Not Found !',
+                    Response::HTTP_NOT_FOUND
+                )
+            );
+        else
+            $this->inputs = ['id' => $this->id];
+        
+        return $this;
+    }
+
+    /**
+     * Setting Inputs Property As Model Attributes.
+     * 
+     * @since 1.2.1
+     * 
+     * @param array $inputs
+     * 
+     * @return void
+     */
+    private function setAttributes(array $inputs): void
+    {
+        foreach ($inputs as $key => $chunk) {
+            $this->model->$key = $chunk;
+        }
+    }
+
+    /**
+     * Getting Last Inserted ID From Database 
+     * And Storing It In Model's Inputs Property.
+     * 
+     * @since 1.2.1
+     * 
+     * @return void
+     */
+    private function setLastId(): void
+    {
+        $statement = $this->connection->query("SELECT LAST_INSERT_ID()");
+
+        $this->inputs = array_merge($this->inputs, ['id' => $statement->fetchColumn()]);
     }
 }

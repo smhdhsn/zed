@@ -20,7 +20,7 @@ class User extends BaseModel
      * 
      * @var string
      */
-    public $table = 'users';
+    protected $table = 'users';
 
     /**
      * Logging User In.

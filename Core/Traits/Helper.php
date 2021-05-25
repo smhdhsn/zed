@@ -72,7 +72,7 @@ trait Helper
             die(
                 (new BaseController)->error(
                     Response::ERROR,
-                    'Connection Error: ' . $e->getMessage(),
+                    $e->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR
                 )
             );
@@ -114,7 +114,7 @@ trait Helper
             die(
                 (new BaseController)->error(
                     Response::ERROR,
-                    'Connection Error: ' . $e->getMessage(),
+                    $e->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR
                 )
             );

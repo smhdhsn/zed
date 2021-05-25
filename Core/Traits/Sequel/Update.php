@@ -2,85 +2,67 @@
 
 namespace Core\Traits\Sequel;
 
+use PDO;
+
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.2.1
  */
 trait Update
 {
     /**
-     * Conditions For Updating a Record.
-     * 
-     * @since 1.2.0
-     * 
-     * @var array
-     */
-    private $condition;
-
-    /**
      * Updating Model's Information.
      * 
-     * @since 1.2.0
+     * @since 1.2.1
      * 
-     * @param array $input
+     * @param array $inputs
      * 
-     * @return array
+     * @return bool
      */
-    public function update(array $input, array $condition): array
+    public function update(array $inputs): bool
     {
-        $this->makeUpdatingQuery($input, $condition)
+        return $this->checkForModelExistance()
+            ->makeUpdateQuery($inputs)
             ->prepareDatabase()
-            ->bindConditionParams()
             ->bindParams()
-            ->execute();
-        
-        return $this->input;
+            ->updateRecord();
     }
 
     /**
      * Making Query For Storing Information.
      * 
-     * @since 1.2.0
+     * @since 1.2.1
      * 
-     * @param array $condition
      * @param array $input
      * 
      * @return object
      */
-    private function makeUpdatingQuery(array $input, array $condition): object
+    private function makeUpdateQuery(array $inputs): object
     {
-        $this->condition = $condition;
-        $this->input = $input;
+        $this->inputs = array_merge($this->inputs, $inputs);
 
         $this->query = "UPDATE \n\t{$this->table} \nSET";
-        foreach ($this->input as $key => $chunk) {
+        foreach ($inputs as $key => $chunk) {
             $this->query .= "\n\t{$key}=:{$key}";
-            if(next($this->input)) $this->query .=  ',';
+            if(next($inputs)) $this->query .=  ',';
         }
+        $this->query .= "\nWHERE \n\tid=:id";
 
-        $this->query .= "\nWHERE";
-        foreach ($this->condition as $key => $chunk) {
-            $this->query .= "\n\t{$key}=:{$key}";
-            if(next($this->condition)) $this->query .=  ',';
-        }
-        
         return $this;
     }
 
     /**
-     * Binding Input Parameters.
+     * Update Database Record With Given Information.
      * 
-     * @since 1.2.0
+     * @since 1.2.1
      * 
-     * @return object
+     * @return bool
      */
-    private function bindConditionParams(): object
+    private function updateRecord(): bool
     {
-        foreach ($this->condition as $key => $chunk) {
-            $this->statement->bindParam(":{$key}", htmlspecialchars(strip_tags($chunk)));
-        }
-
-        return $this;
+        return $this->statement->execute()
+        ? true
+        : false;
     }
 }
