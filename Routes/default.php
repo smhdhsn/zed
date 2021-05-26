@@ -7,7 +7,7 @@ use Core\Classes\{BaseController, Response, Route};
  * 
  * @since 1.2.1
  */
-Route::match(['GET', 'POST', 'PUT', 'DELETE'], $_SERVER['REQUEST_URI'], function () {
+Route::match([$_SERVER['REQUEST_METHOD']], $_SERVER['REQUEST_URI'], function () {
     return (new BaseController)->error(
             Response::ERROR,
             'Invalid Route.',
