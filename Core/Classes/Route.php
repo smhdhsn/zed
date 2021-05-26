@@ -32,7 +32,7 @@ class Route
      */
     public static function get(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
@@ -54,7 +54,7 @@ class Route
      */
     public static function post(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
@@ -76,7 +76,7 @@ class Route
      */
     public static function put(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
             if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
                 ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
@@ -98,11 +98,36 @@ class Route
      */
     public static function delete(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER["REQUEST_URI"], '?') == $route) {
+        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
             if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
                 ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
                 self::response($action);
+            }
+        }
+    }
+
+    /**
+     * Handling Requests Mathcing Given Methods.
+     * 
+     * @since 1.2.1
+     * 
+     * @param closure|string $action
+     * @param array $middlewares
+     * @param array $methods
+     * @param string $route
+     * 
+     * @return void
+     */
+    public static function match(array $methods, string $route, $action, array $middlewares = null): void
+    {
+        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
+            foreach ($methods as $method) {
+                if ($_SERVER['REQUEST_METHOD'] == $method) {
+                    ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+
+                    self::response($action);
+                }
             }
         }
     }
