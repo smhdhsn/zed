@@ -27,7 +27,7 @@ class UserCreatingService
     {
         $user = $this->repository->store($this->prepareInput($request));
 
-        return (new User)->login($user);
+        return $user->login();
     }
 
     /**

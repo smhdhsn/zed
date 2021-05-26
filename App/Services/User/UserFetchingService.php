@@ -27,12 +27,10 @@ class UserFetchingService
      */
     public function login(array $request): string
     {
-        $userModel = new User;
-
-        $user = $userModel->where($this->prepareInput($request));
+        $user = $this->repository->findUser($this->prepareInput($request));
         $result = $this->verifyPassword($user, $request);
 
-        return $result ? $userModel->login($user) : $this->abort();
+        return $result ? $user->login() : $this->abort();
     }
 
     /**
@@ -59,13 +57,13 @@ class UserFetchingService
      * @since 1.2.0
      * 
      * @param array $request
-     * @param array $user
+     * @param User $user
      * 
      * @return bool
      */
-    private function verifyPassword(array $user, array $request): bool
+    private function verifyPassword(User $user, array $request): bool
     {
-        return password_verify($request['password'], $user['password']);
+        return password_verify($request['password'], $user->password);
     }
 
     /**

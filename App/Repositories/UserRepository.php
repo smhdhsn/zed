@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use Core\Traits\Repository;
 
 /**
  * @author @smhdhsn
@@ -12,8 +11,6 @@ use Core\Traits\Repository;
  */
 class UserRepository
 {
-    use Repository;
-
     /**
      * Storing Model Into Database.
      * 
@@ -21,10 +18,24 @@ class UserRepository
      * 
      * @param array $input
      * 
-     * @return array
+     * @return object
      */
-    public function store(array $input): array
+    public function store(array $input): object
     {
-        return $this->model->create($input);
+        return User::create($input);
+    }
+
+    /**
+     * Finding User By Chosen Attributes.
+     * 
+     * @since 1.2.1
+     * 
+     * @param array $input
+     * 
+     * @return object
+     */
+    public function findUser(array $input): object
+    {
+        return User::where($input)->get();
     }
 }

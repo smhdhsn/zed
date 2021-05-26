@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Core\Classes\Token;
+use Core\Traits\Authenticatable;
 
 /**
  * @author @smhdhsn
@@ -11,6 +11,8 @@ use Core\Classes\Token;
  */
 class User extends BaseModel
 {
+    use Authenticatable;
+
     /**
      * Model's Table Name.
      * 
@@ -19,18 +21,4 @@ class User extends BaseModel
      * @var string
      */
     protected $table = 'users';
-
-    /**
-     * Logging User In.
-     * 
-     * @since 1.2.0
-     * 
-     * @param array $user
-     * 
-     * @return string
-     */
-    public function login(array $user)
-    {
-        return (new Token)->generate($user);
-    }
 }

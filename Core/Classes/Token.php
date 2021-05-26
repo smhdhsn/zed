@@ -4,6 +4,7 @@ namespace Core\Classes;
 
 use PDO;
 use PDOException;
+use App\Models\User;
 use App\Controllers\BaseController;
 
 /**
@@ -11,7 +12,7 @@ use App\Controllers\BaseController;
  * 
  * @version 1.1.0
  */
-class Token extends Database
+class Token
 {
     /**
      * Token Key.
@@ -21,15 +22,6 @@ class Token extends Database
      * @var string
      */
     private $key;
-
-    /**
-     * Database Connection.
-     * 
-     * @since 1.1.0
-     * 
-     * @var object
-     */
-    private $connection;
 
     /**
      * Token Expiration Time.
@@ -50,7 +42,6 @@ class Token extends Database
     public function __construct()
     {
         $this->key = $_ENV['TOKEN_KEY'];
-        $this->connection = $this->connect();
         $this->expirationTime = $_ENV['TOKEN_EXPIRATION_TIME'];
     }
 
@@ -78,12 +69,11 @@ class Token extends Database
      * 
      * @since 1.1.0
      * 
-     * @param string $clientId
-     * @param array $user
+     * @param User $user
      * 
      * @return string
      */
-    public function generate(array $user): string
+    public function generate(User $user): string
     {
         $header = base64_encode(
             json_encode([
@@ -94,10 +84,10 @@ class Token extends Database
 
         $payload = base64_encode(
             json_encode([
-                'id' => $user['id'],
+                'id' => $user->id,
                 'key' => $this->key,
-                'email' => $user['email'],
-                'username' => $user['username'],
+                'email' => $user->email,
+                'username' => $user->username,
                 'created_at' => date("Y-m-d H:i:s"),
             ])
         );
