@@ -18,7 +18,7 @@ trait Authenticatable
      * 
      * @return string
      */
-    public function login()
+    public function login(): string
     {
         return (new Token)->generate($this);
     }

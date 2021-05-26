@@ -4,8 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use Core\Traits\Service;
-use Core\Classes\Response;
-use App\Controllers\BaseController;
+use Core\Classes\{BaseController, Response};
 
 /**
  * @author @smhdhsn

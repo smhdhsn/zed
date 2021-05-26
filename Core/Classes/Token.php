@@ -5,7 +5,6 @@ namespace Core\Classes;
 use PDO;
 use PDOException;
 use App\Models\User;
-use App\Controllers\BaseController;
 
 /**
  * @author @smhdhsn

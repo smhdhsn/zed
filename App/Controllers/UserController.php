@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Classes\Response;
+use Core\Classes\{BaseController, Response};
 use App\Services\User\{UserFetchingService, UserCreatingService};
 
 /**

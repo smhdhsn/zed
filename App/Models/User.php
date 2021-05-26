@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Core\Classes\BaseModel;
 use Core\Traits\Authenticatable;
 
 /**

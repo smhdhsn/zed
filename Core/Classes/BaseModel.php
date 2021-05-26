@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace Core\Classes;
 
-use App\Controllers\BaseController;
-use Core\Classes\{Response, Database};
 use Core\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
 
 /**

@@ -3,8 +3,7 @@
 namespace Core\Traits;
 
 use Exception;
-use Core\Classes\Response;
-use App\Controllers\BaseController;
+use Core\Classes\{BaseController, Response};
 
 /**
  * @author @smhdhsn

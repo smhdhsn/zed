@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace Core\Classes;
 
 use Core\Classes\Response;
 
@@ -53,21 +53,5 @@ class BaseController extends Response
     		'data' => $data,
     		'code' => $code,
     	]);
-    }
-
-    /**
-     * Generating Not Found Response.
-     * 
-     * @since 1.2.1
-     * 
-     * @return string
-     */
-    public function notFound(): string
-    {
-        return (new BaseController)->error(
-            Response::ERROR,
-            'Invalid Route.',
-            Response::HTTP_NOT_FOUND
-        );
     }
 }
