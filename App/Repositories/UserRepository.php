@@ -7,14 +7,14 @@ use App\Models\User;
 /**
  * @author @smhdhsn
  * 
- * @since 1.2.0
+ * @since 1.0.0
  */
 class UserRepository
 {
     /**
      * Storing Model Into Database.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $input
      * 
@@ -28,7 +28,7 @@ class UserRepository
     /**
      * Finding User By Chosen Attributes.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $input
      * 

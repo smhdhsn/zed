@@ -7,14 +7,14 @@ use PDO;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Update
 {
     /**
      * Updating Model's Information.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $inputs
      * 
@@ -32,7 +32,7 @@ trait Update
     /**
      * Making Query For Storing Information.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $input
      * 
@@ -55,7 +55,7 @@ trait Update
     /**
      * Update Database Record With Given Information.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return bool
      */

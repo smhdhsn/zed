@@ -5,14 +5,14 @@ namespace Core\Traits;
 /**
  * @author @smhdhsn
  * 
- * @since 1.2.0
+ * @since 1.0.0
  */
 trait Service
 {
     /**
      * Related Model's Repository.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @var object
      */
@@ -21,7 +21,7 @@ trait Service
     /**
      * Creates an Instance Of This Class.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @return void
      */

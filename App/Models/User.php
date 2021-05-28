@@ -8,7 +8,7 @@ use Core\Traits\Authenticatable;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.0.0
  */
 class User extends BaseModel
 {
@@ -17,7 +17,7 @@ class User extends BaseModel
     /**
      * Model's Table Name.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @var string
      */

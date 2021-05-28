@@ -9,14 +9,14 @@ use App\Models\User;
 /**
  * @author @smhdhsn
  * 
- * @version 1.1.0
+ * @version 1.0.0
  */
 class Token
 {
     /**
      * Token Key.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @var string
      */
@@ -25,7 +25,7 @@ class Token
     /**
      * Token Expiration Time.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @var string
      */
@@ -34,7 +34,7 @@ class Token
     /**
      * Creates Token's Instance.
      *
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return void
      */
@@ -47,7 +47,7 @@ class Token
     /**
      * Verifying Access Token.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return bool
      */
@@ -66,7 +66,7 @@ class Token
     /**
      * Generates JWT Token.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param User $user
      * 
@@ -106,7 +106,7 @@ class Token
     /**
      * Decodes Access Token.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param string|null $token
      * 

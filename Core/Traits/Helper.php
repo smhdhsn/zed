@@ -8,14 +8,14 @@ use Core\Classes\{BaseController, Response};
 /**
  * @author @smhdhsn
  * 
- * @version 1.1.0
+ * @version 1.0.0
  */
 trait Helper
 {
     /**
      * Responding To Request.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param closure|string $action
      * 
@@ -33,7 +33,7 @@ trait Helper
     /**
      * Response For Bad Method Call.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return void
      */
@@ -51,7 +51,7 @@ trait Helper
     /**
      * Mapping Requested Controller and Method.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param string $action
      * 
@@ -81,7 +81,7 @@ trait Helper
     /**
      * Preparing Params Depending On Requested Method.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return array
      */
@@ -95,7 +95,7 @@ trait Helper
     /**
      * Running Middlewares Before Request Gets To Controller Methods.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array $middlewares
      * 

@@ -8,14 +8,14 @@ use Exception;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Delete
 {
     /**
      * Deleting a Model's Record From Database.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return bool
      */
@@ -31,7 +31,7 @@ trait Delete
     /**
      * Making Query For Finding Model's Record In Database.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -45,7 +45,7 @@ trait Delete
     /**
      * Executing Statement And Returning The Result.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return bool
      */

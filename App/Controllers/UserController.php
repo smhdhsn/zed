@@ -8,14 +8,14 @@ use App\Services\User\{UserFetchingService, UserCreatingService};
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.0.0
  */
 class UserController extends BaseController
 {
     /**
      * Logging In The User.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 
@@ -35,7 +35,7 @@ class UserController extends BaseController
     /**
      * Registering User.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 

@@ -13,7 +13,7 @@ use Core\Traits\Middleware\Authentication;
 /**
  * @author @smhdhsn
  * 
- * @version 1.1.0
+ * @version 1.0.0
  */
 class Route
 {
@@ -22,7 +22,7 @@ class Route
     /**
      * Handling GET Requests.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array|null $middlewares
      * @param closure|string $action
@@ -44,7 +44,7 @@ class Route
     /**
      * Handling POST Requests.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array|null $middlewares
      * @param closure|string $action
@@ -66,7 +66,7 @@ class Route
     /**
      * Handling PUT Requests.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array|null $middlewares
      * @param closure|string $action
@@ -88,7 +88,7 @@ class Route
     /**
      * Handling DELETE Requests.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @param array|null $middlewares
      * @param closure|string $action
@@ -110,7 +110,7 @@ class Route
     /**
      * Handling Requests Mathcing Given Methods.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param closure|string $action
      * @param array $middlewares

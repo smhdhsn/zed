@@ -7,14 +7,14 @@ use Core\Classes\Token;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Authenticatable
 {
     /**
      * Logging User In.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @return string
      */

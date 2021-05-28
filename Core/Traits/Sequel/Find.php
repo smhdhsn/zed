@@ -7,14 +7,14 @@ use PDO;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Find
 {
     /**
      * Finding a Record In Database By Their ID.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param int $id
      * 
@@ -32,7 +32,7 @@ trait Find
     /**
      * Making Query For Finding Model's Record In Database.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param int $id
      * 
@@ -50,7 +50,7 @@ trait Find
     /**
      * Executing Statement And Fetching The Results.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */

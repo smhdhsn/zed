@@ -9,14 +9,14 @@ use Core\Classes\BaseController;
 /**
  * @author @smhdhsn
  * 
- * @version 1.1.0
+ * @version 1.0.0
  */
 abstract class Database
 {
     /**
      * Database Connection.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @var object
      */
@@ -25,7 +25,7 @@ abstract class Database
     /**
      * Connecting To The Database.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return object
      */

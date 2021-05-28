@@ -9,14 +9,14 @@ use Core\Classes\{BaseController, Response};
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Get
 {
     /**
      * Executing Query.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -28,7 +28,7 @@ trait Get
     /**
      * Executing Query And Fetching Results.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */

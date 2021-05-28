@@ -9,7 +9,7 @@ use Core\Classes\{BaseController, Response};
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.0.0
  */
 class UserFetchingService
 {
@@ -18,7 +18,7 @@ class UserFetchingService
     /**
      * Logging User In.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 
@@ -35,7 +35,7 @@ class UserFetchingService
     /**
      * Unauthorized Action.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @return void
      */
@@ -53,7 +53,7 @@ class UserFetchingService
     /**
      * Verifying Input Password With Fetched User's Password.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * @param User $user
@@ -68,7 +68,7 @@ class UserFetchingService
     /**
      * Preparing Input For Fetching User From Database.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 

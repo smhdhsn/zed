@@ -8,7 +8,7 @@ use Core\Traits\Service;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.0.0
  */
 class UserCreatingService
 {
@@ -17,7 +17,7 @@ class UserCreatingService
     /**
      * Storing User Into Database.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 
@@ -33,7 +33,7 @@ class UserCreatingService
     /**
      * Preparing Data For Storing User Into Database.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @param array $request
      * 

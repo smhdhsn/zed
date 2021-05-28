@@ -7,7 +7,7 @@ use Core\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.0
+ * @version 1.0.0
  */
 class BaseModel extends Database
 {
@@ -16,7 +16,7 @@ class BaseModel extends Database
     /**
      * Database Connection.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @var object
      */
@@ -25,7 +25,7 @@ class BaseModel extends Database
     /**
      * SQL Query.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @var string
      */
@@ -34,7 +34,7 @@ class BaseModel extends Database
     /**
      * Query Statement.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @var object
      */
@@ -43,7 +43,7 @@ class BaseModel extends Database
     /**
      * Model's Instance.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @var object
      */
@@ -52,7 +52,7 @@ class BaseModel extends Database
     /**
      * Provided Inputs.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @var array
      */
@@ -61,7 +61,7 @@ class BaseModel extends Database
     /**
      * Creates an Instance Of This Class.
      * 
-     * @since 1.1.0
+     * @since 1.0.0
      * 
      * @return void
      */
@@ -73,7 +73,7 @@ class BaseModel extends Database
     /**
      * Instantiating Class.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -89,7 +89,7 @@ class BaseModel extends Database
     /**
      * Preparing Database Connection.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -103,7 +103,7 @@ class BaseModel extends Database
     /**
      * Binding Input Parameters.
      * 
-     * @since 1.2.0
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -119,7 +119,7 @@ class BaseModel extends Database
     /**
      * Checking If Model's Instance Or Model's Id Exist.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -142,7 +142,7 @@ class BaseModel extends Database
     /**
      * Setting Inputs Property As Model Attributes.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $inputs
      * 
@@ -159,7 +159,7 @@ class BaseModel extends Database
      * Getting Last Inserted ID From Database 
      * And Storing It In Model's Inputs Property.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return void
      */

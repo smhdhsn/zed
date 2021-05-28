@@ -5,14 +5,14 @@ namespace Core\Traits\Sequel;
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Where
 {
     /**
      * Finding a Record In Database By Their ID.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $inputs
      * 
@@ -29,7 +29,7 @@ trait Where
     /**
      * Making Query Fo Where Clause.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $inputs
      * 

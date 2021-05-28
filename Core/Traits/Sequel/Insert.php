@@ -9,14 +9,14 @@ use Core\Classes\{BaseController, Response};
 /**
  * @author @smhdhsn
  * 
- * @version 1.2.1
+ * @version 1.0.0
  */
 trait Insert
 {
     /**
      * Storing Model Into Database.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @param array $inputs
      * 
@@ -34,7 +34,7 @@ trait Insert
     /**
      * Making Query For Creating Model.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -54,7 +54,7 @@ trait Insert
     /**
      * Executing Query And Fetching Data.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return object
      */
@@ -79,7 +79,7 @@ trait Insert
     /**
      * Setting Model's Attributes.
      * 
-     * @since 1.2.1
+     * @since 1.0.0
      * 
      * @return void
      */
