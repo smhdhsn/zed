@@ -39,11 +39,7 @@ trait Where
     {
         $this->inputs = $inputs;
 
-        $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE";
-        foreach ($this->inputs as $key => $chunk) {
-            $this->query .= "\n\t{$key}=:{$key}";
-            if(next($this->inputs)) $this->query .=  ',';
-        }
+        $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE" . $this->prepareSqlParams($inputs);
 
         return $this;
     }

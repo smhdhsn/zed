@@ -41,15 +41,6 @@ class BaseModel extends Database
     private $statement;
 
     /**
-     * Model's Instance.
-     * 
-     * @since 1.0.0
-     * 
-     * @var object
-     */
-    private $model;
-
-    /**
      * Provided Inputs.
      * 
      * @since 1.0.0
@@ -80,10 +71,8 @@ class BaseModel extends Database
     private static function instantiateClass(): object
     {
         $class = get_called_class();
-        $object = new $class();
-        $object->model = $object;
 
-        return $object->model;
+        return new $class();
     }
 
     /**
@@ -125,7 +114,7 @@ class BaseModel extends Database
      */
     private function checkForModelExistance()
     {
-        if (! isset($this->model) || ! isset($this->id))
+        if (! isset($this->id))
             die(
                 (new BaseController)->error(
                     Response::ERROR,
@@ -140,6 +129,21 @@ class BaseModel extends Database
     }
 
     /**
+     * Preparing SQL Syntax For Binding Query Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @return string
+     */
+    private function prepareSqlParams(array $inputs): string
+    {
+        return implode(
+            ',',
+            array_map(fn($inp) => "\n\t" . array_search($inp, $inputs) . "=:" . array_search($inp, $inputs), $inputs)
+        );
+    }
+
+    /**
      * Setting Inputs Property As Model Attributes.
      * 
      * @since 1.0.0
@@ -151,7 +155,7 @@ class BaseModel extends Database
     private function setAttributes(array $inputs): void
     {
         foreach ($inputs as $key => $chunk) {
-            $this->model->$key = $chunk;
+            $this->$key = $chunk;
         }
     }
 

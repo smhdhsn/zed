@@ -42,11 +42,8 @@ trait Update
     {
         $this->inputs = array_merge($this->inputs, $inputs);
 
-        $this->query = "UPDATE \n\t{$this->table} \nSET";
-        foreach ($inputs as $key => $chunk) {
-            $this->query .= "\n\t{$key}=:{$key}";
-            if(next($inputs)) $this->query .=  ',';
-        }
+        $this->query = "UPDATE \n\t{$this->table} \nSET" . $this->prepareSqlParams($inputs);
+
         $this->query .= "\nWHERE \n\tid=:id";
 
         return $this;

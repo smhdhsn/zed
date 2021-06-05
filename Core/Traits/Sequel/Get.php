@@ -36,8 +36,8 @@ trait Get
     {
         try {
             if ($this->statement->execute()) {
-                if (! is_bool($data = $this->statement->fetch(PDO::FETCH_ASSOC)))
-                    $this->setAttributes($data);
+                if (is_object($data = $this->statement->fetchObject(static::class)))
+                    return $data;
                 else
                     die(
                         (new BaseController)->error(
@@ -47,8 +47,6 @@ trait Get
                         )
                     );
             }
-
-            return $this->model;
         } catch (PDOException $e) {
             die(
                 (new BaseController)->error(

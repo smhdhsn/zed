@@ -3,6 +3,7 @@
 namespace Core\Traits\Sequel;
 
 use PDO;
+use Core\Classes\{BaseController, Response};
 
 /**
  * @author @smhdhsn
@@ -56,10 +57,27 @@ trait Find
      */
     private function findAndFetch(): object
     {
-        $this->statement->execute();
-
-        $this->setAttributes($this->statement->fetch(PDO::FETCH_ASSOC));
-
-        return $this->model;
+        try {
+            if ($this->statement->execute()) {
+                if (is_object($data = $this->statement->fetchObject(static::class)))
+                    return $data;
+                else
+                    die(
+                        (new BaseController)->error(
+                            Response::ERROR,
+                            'Not Found !',
+                            Response::HTTP_NOT_FOUND
+                        )
+                    );
+            }
+        } catch (PDOException $e) {
+            die(
+                (new BaseController)->error(
+                    Response::ERROR,
+                    $e->getMessage(),
+                    Response::HTTP_BAD_REQUEST
+                )
+            );
+        }
     }
 }

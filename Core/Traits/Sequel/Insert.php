@@ -42,11 +42,7 @@ trait Insert
     {
         $this->inputs = $inputs;
 
-        $this->query = "INSERT INTO \n\t{$this->table} \nSET";
-        foreach ($this->inputs as $key => $chunk) {
-            $this->query .= "\n\t{$key}=:{$key}";
-            if(next($this->inputs)) $this->query .=  ',';
-        }
+        $this->query = "INSERT INTO \n\t{$this->table} \nSET" . $this->prepareSqlParams($inputs);
 
         return $this;
     }
@@ -64,7 +60,7 @@ trait Insert
             if ($this->statement->execute())
                 $this->setModelAttributes();
 
-            return $this->model;
+            return $this;
         } catch (PDOException $e) {
             die(
                 (new BaseController)->error(
