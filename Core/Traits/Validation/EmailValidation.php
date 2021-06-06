@@ -7,7 +7,7 @@ namespace Core\Traits\Validation;
  * 
  * @version 1.0.0
  */
-trait Email
+trait EmailValidation
 {
     /**
      * Checking If Given Column Is a Valid Email.

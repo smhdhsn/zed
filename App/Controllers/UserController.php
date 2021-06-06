@@ -83,10 +83,10 @@ class UserController extends BaseController
         return $request->validate([
             'name' => ['required', 'string'],
             'surname' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'unique'],
-            'username' => ['required', 'string', 'unique'],
+            'email' => ['required', 'string', 'email', ['unique' => 'email']],
+            'username' => ['required', 'string', ['unique' => 'username']],
             'password' => ['required', 'string', ['min' => 8]],
-            'phone_number' => ['required', 'numeric'],
+            'phone_number' => ['required', 'numeric', ['max' => 11]],
         ]);
     }
 }

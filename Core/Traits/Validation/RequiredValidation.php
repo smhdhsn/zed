@@ -7,7 +7,7 @@ namespace Core\Traits\Validation;
  * 
  * @version 1.0.0
  */
-trait Required
+trait RequiredValidation
 {
     /**
      * Checking If Given Column Is Required.

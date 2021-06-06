@@ -7,7 +7,7 @@ namespace Core\Traits\Validation;
  * 
  * @version 1.0.0
  */
-trait Minimum
+trait MinimumValidation
 {
     /**
      * Checking If Given Column Has The Minimum Value.

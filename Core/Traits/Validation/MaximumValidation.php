@@ -7,7 +7,7 @@ namespace Core\Traits\Validation;
  * 
  * @version 1.0.0
  */
-trait Maximum
+trait MaximumValidation
 {
     /**
      * Checking If Given Column Is Less Than Maximum Value.

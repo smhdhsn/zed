@@ -3,7 +3,7 @@
 namespace Core\Classes;
 
 use Core\Classes\{BaseController, Response};
-use Core\Traits\Validation\{Required, Maximum, Minimum, Email};
+use Core\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation};
 
 /**
  * @author @smhdhsn
@@ -12,7 +12,7 @@ use Core\Traits\Validation\{Required, Maximum, Minimum, Email};
  */
 class Validation
 {
-    use Required, Maximum, Minimum, Email;
+    use RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation;
 
     /**
      * Validation Errors.
@@ -31,6 +31,9 @@ class Validation
      * @var string
      */
     CONST RULE_REQUIRED = 'required';
+    CONST RULE_NUMERIC = 'numeric';
+    CONST RULE_UNIQUE = 'unique';
+    CONST RULE_STRING = 'string';
     CONST RULE_EMAIL = 'email';
     CONST RULE_MAX = 'max';
     CONST RULE_MIN = 'min';
@@ -48,7 +51,7 @@ class Validation
     {
         foreach ($validationRules as $attribute => $rules) {
             foreach ($rules as $rule) {
-                $ruleName = is_array($rule) ? $rule[0] : $rule;
+                $ruleName = is_array($rule) ? array_search(reset($rule), $rule) : $rule;
 
                 switch ($ruleName) {
                     case self::RULE_MAX:
@@ -57,8 +60,17 @@ class Validation
                     case self::RULE_MIN:
                         $this->validateMinimum($attribute, $rule);
                     break;
+                    case self::RULE_UNIQUE:
+                        $this->validateUnique($attribute, $rule);
+                    break;
                     case self::RULE_REQUIRED:
                         $this->validateRequired($attribute);
+                    break;
+                    case self::RULE_NUMERIC:
+                        $this->validateNumeric($attribute);
+                    break;
+                    case self::RULE_STRING:
+                        $this->validateString($attribute);
                     break;
                     case self::RULE_EMAIL:
                         $this->validateEmail($attribute);
@@ -105,9 +117,12 @@ class Validation
     {
         return [
             self::RULE_REQUIRED => 'This Field Is Required.',
+            self::RULE_STRING => 'This Field Must Be String.',
+            self::RULE_NUMERIC => 'This Field Must Be Numeric.',
             self::RULE_EMAIL => 'This Field Must Be Valid Email Address.',
-            self::RULE_MIN => 'Minimum Length Of This Field Must Be Less Than {min} Characters.',
-            self::RULE_MAX => 'Maximum Length Of This Field Must Be More Than {max} Characters.',
+            self::RULE_UNIQUE => 'Given {unique} Already Exists In Database.',
+            self::RULE_MIN => 'Minimum Length Of This Field Must Be More Than {min} Characters.',
+            self::RULE_MAX => 'Maximum Length Of This Field Must Be Less Than {max} Characters.',
         ];
     }
 
