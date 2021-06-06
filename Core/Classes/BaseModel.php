@@ -99,7 +99,7 @@ class BaseModel extends Database
     private function bindParams(): object
     {
         foreach ($this->inputs as $key => $chunk) {
-            $this->statement->bindParam(":{$key}", htmlspecialchars(strip_tags($chunk)));
+            $this->statement->bindParam(":{$key}", $chunk);
         }
 
         return $this;

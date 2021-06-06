@@ -7,8 +7,17 @@ namespace Core\Classes;
  * 
  * @version 1.0.0
  */
-class Request
+class Request extends Validation
 {
+    /**
+     * Given Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @var array
+     */
+    protected array $params;
+
     /**
      * Creates an Instance Of This Class.
      * 
@@ -16,9 +25,10 @@ class Request
      * 
      * @return void
      */
-    public function __construct(array $request)
+    public function __construct(array $params)
     {
-        $this->setAttributes($request);
+        $this->params = $params;
+        $this->setRequestedParams($this->params);
     }
 
     /**
@@ -26,14 +36,18 @@ class Request
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param array $params
      * 
      * @return void
      */
-    private function setAttributes(array $request): void
+    protected function setRequestedParams(array $params): void
     {
-        foreach ($request as $key => $chunk) {
-            $this->$key = $chunk;
+        foreach ($params as $key => $chunk) {
+            $this->$key = filter_input(
+                $_SERVER['REQUEST_METHOD'] === 'GET' ? INPUT_GET : INPUT_POST, 
+                $key, 
+                FILTER_SANITIZE_SPECIAL_CHARS
+            );
         }
     }
 }

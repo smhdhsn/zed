@@ -23,13 +23,30 @@ class UserController extends BaseController
      */
     public function login(Request $request): string
     {
-        $data = (new UserFetchingService)->login($request);
+        $data = (new UserFetchingService)->login($this->validateLoginRequest($request));
 
         return $this->response(
             Response::SUCCESS,
             $data,
             Response::HTTP_OK
         );
+    }
+
+    /**
+     * Validating Login Action's Request Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @param Request $request
+     * 
+     * @return object
+     */
+    private function validateLoginRequest(Request $request): object
+    {
+        return $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
     }
 
     /**
@@ -43,12 +60,33 @@ class UserController extends BaseController
      */
     public function register(Request $request): string
     {
-        $data = (new UserCreatingService)->register($request);
+        $data = (new UserCreatingService)->register($this->validateRegisterRequest($request));
 
         return $this->response(
             Response::SUCCESS,
             $data,
             Response::HTTP_OK
         );
+    }
+
+    /**
+     * Validating Register Action's Request Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @param Request $request
+     * 
+     * @return object
+     */
+    private function validateRegisterRequest(Request $request): object
+    {
+        return $request->validate([
+            'name' => ['required', 'string'],
+            'surname' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'unique'],
+            'username' => ['required', 'string', 'unique'],
+            'password' => ['required', 'string', ['min' => 8]],
+            'phone_number' => ['required', 'numeric'],
+        ]);
     }
 }

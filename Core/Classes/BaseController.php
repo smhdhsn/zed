@@ -2,8 +2,6 @@
 
 namespace Core\Classes;
 
-use Core\Classes\Response;
-
 /**
  * @author @smhdhsn
  * 
