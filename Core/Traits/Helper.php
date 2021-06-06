@@ -3,7 +3,7 @@
 namespace Core\Traits;
 
 use Exception;
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{BaseController, Request, Response};
 
 /**
  * @author @smhdhsn
@@ -83,13 +83,13 @@ trait Helper
      * 
      * @since 1.0.0
      * 
-     * @return array
+     * @return object
      */
-    private function request(): array
+    private function request(): object
     {
-        return $_SERVER['REQUEST_METHOD'] == 'GET'
-        ? $_GET
-        : $_POST;
+        return $_SERVER['REQUEST_METHOD'] === 'GET'
+        ? new Request($_GET)
+        : new Request($_POST);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use Core\Traits\Service;
+use Core\Classes\Request;
 
 /**
  * @author @smhdhsn
@@ -19,11 +20,11 @@ class UserCreatingService
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return string
      */
-    public function register(array $request): string
+    public function register(Request $request): string
     {
         $user = $this->repository->store($this->prepareInput($request));
 
@@ -35,19 +36,19 @@ class UserCreatingService
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return array
      */
-    private function prepareInput(array $request): array
+    private function prepareInput(Request $request): array
     {
         return [
-            'name' => $request['name'],
-            'surname' => $request['surname'],
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => password_hash($request['password'], PASSWORD_DEFAULT),
-            'phone_number' => $request['phone_number']
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => password_hash($request->password, PASSWORD_DEFAULT),
+            'phone_number' => $request->phone_number
         ];
     }
 }

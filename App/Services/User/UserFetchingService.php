@@ -4,7 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use Core\Traits\Service;
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{BaseController, Request, Response};
 
 /**
  * @author @smhdhsn
@@ -20,11 +20,11 @@ class UserFetchingService
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return string
      */
-    public function login(array $request): string
+    public function login(Request $request): string
     {
         $user = $this->repository->findUser($this->prepareInput($request));
         $result = $this->verifyPassword($user, $request);
@@ -55,14 +55,14 @@ class UserFetchingService
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * @param User $user
      * 
      * @return bool
      */
-    private function verifyPassword(User $user, array $request): bool
+    private function verifyPassword(User $user, Request $request): bool
     {
-        return password_verify($request['password'], $user->password);
+        return password_verify($request->password, $user->password);
     }
 
     /**
@@ -70,14 +70,14 @@ class UserFetchingService
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return array
      */
-    private function prepareInput(array $request): array
+    private function prepareInput(Request $request): array
     {
         return [
-            'email' => $request['email']
+            'email' => $request->email
         ];
     }
 }

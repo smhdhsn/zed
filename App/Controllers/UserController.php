@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{BaseController, Request, Response};
 use App\Services\User\{UserFetchingService, UserCreatingService};
 
 /**
@@ -17,11 +17,11 @@ class UserController extends BaseController
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return string
      */
-    public function login(array $request): string
+    public function login(Request $request): string
     {
         $data = (new UserFetchingService)->login($request);
 
@@ -37,11 +37,11 @@ class UserController extends BaseController
      * 
      * @since 1.0.0
      * 
-     * @param array $request
+     * @param Request $request
      * 
      * @return string
      */
-    public function register(array $request): string
+    public function register(Request $request): string
     {
         $data = (new UserCreatingService)->register($request);
 
