@@ -2,7 +2,7 @@
 
 namespace Core\Classes;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{BaseController, Database, Response};
 use Core\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation};
 
 /**
@@ -10,7 +10,7 @@ use Core\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValida
  * 
  * @version 1.0.0
  */
-class Validation
+class Validation extends Database
 {
     use RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation;
 
