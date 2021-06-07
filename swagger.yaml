@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-    title: php-mon
+    title: php-m
     version: 1.1.0
 servers:
     - url: "http://localhost:8000/"
@@ -33,7 +33,7 @@ paths:
                     example: "Success"
                   data:
                     type: string
-                    example: "Welcome To php-mon Framework."
+                    example: "Welcome To php-m Framework."
                   code:
                     type: integer
                     example: 200

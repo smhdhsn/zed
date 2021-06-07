@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package php-mon
+ * @package php-m
  * 
  * @author @smhdhsn
  * 

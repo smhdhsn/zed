@@ -22,7 +22,7 @@ class WelcomeController extends BaseController
     {
         return $this->response(
             Response::SUCCESS,
-            'Welcome To php-mon Framework.',
+            'Welcome To php-m Framework.',
             Response::HTTP_OK
         );
     }
