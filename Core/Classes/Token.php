@@ -2,8 +2,6 @@
 
 namespace Core\Classes;
 
-use PDO;
-use PDOException;
 use App\Models\User;
 
 /**
