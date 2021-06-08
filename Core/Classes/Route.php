@@ -20,6 +20,15 @@ class Route
     use Authentication, Helper;
 
     /**
+     * Route Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @var array|null
+     */
+    private static array $params = [];
+
+    /**
      * Handling GET Requests.
      * 
      * @since 1.0.0
@@ -32,12 +41,12 @@ class Route
      */
     public static function get(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+        if (self::routeCheck($route) && self::methodCheck('GET')) {
+            self::setRequestBody();
 
-                self::response($action);
-            }
+            ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+
+            self::response($action);
         }
     }
 
@@ -54,12 +63,12 @@ class Route
      */
     public static function post(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+        if (self::routeCheck($route) && self::methodCheck('POST')) {
+            self::setRequestBody();
 
-                self::response($action);
-            }
+            ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+
+            self::response($action);
         }
     }
 
@@ -76,12 +85,12 @@ class Route
      */
     public static function put(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
-            if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+        if (self::routeCheck($route) && self::methodCheck('PUT')) {
+            self::setRequestBody();
 
-                self::response($action);
-            }
+            ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+
+            self::response($action);
         }
     }
 
@@ -98,12 +107,12 @@ class Route
      */
     public static function delete(string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
-            if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-                ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+        if (self::routeCheck($route) && self::methodCheck('DELETE')) {
+            self::setRequestBody();
 
-                self::response($action);
-            }
+            ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
+
+            self::response($action);
         }
     }
 
@@ -121,9 +130,11 @@ class Route
      */
     public static function match(array $methods, string $route, $action, array $middlewares = null): void
     {
-        if (strtok($_SERVER['REQUEST_URI'], '?') == $route) {
+        if (self::routeCheck($route)) {
+            self::setRequestBody();
+
             foreach ($methods as $method) {
-                if ($_SERVER['REQUEST_METHOD'] == $method) {
+                if (self::methodCheck($method)) {
                     ! isset($middlewares) ?: self::handleMiddlewares($middlewares);
 
                     self::response($action);
