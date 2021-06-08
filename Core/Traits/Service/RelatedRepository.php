@@ -1,13 +1,13 @@
 <?php
 
-namespace Core\Traits;
+namespace Core\Traits\Service;
 
 /**
  * @author @smhdhsn
  * 
  * @since 1.0.0
  */
-trait Service
+trait RelatedRepository
 {
     /**
      * Related Model's Repository.

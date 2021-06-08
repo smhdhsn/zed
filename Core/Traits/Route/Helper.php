@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Traits;
+namespace Core\Traits\Route;
 
 use Exception;
 use Core\Classes\{BaseController, Request, Response};
@@ -12,32 +12,6 @@ use Core\Classes\{BaseController, Request, Response};
  */
 trait Helper
 {
-    /**
-     * Getting URL Without Query Parameters.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    public function requestUri(): string
-    {
-        return strtok($_SERVER['REQUEST_URI'], '?');
-    }
-
-    /**
-     * Checking If Request Method Matches Given Method.
-     * 
-     * @since 1.0.0
-     * 
-     * @param string $method
-     * 
-     * @return bool
-     */
-    private function methodCheck(string $method): bool
-    {
-        return $_SERVER['REQUEST_METHOD'] === $method;
-    }
-    
     /**
      * Responding To Request.
      * 
@@ -70,6 +44,32 @@ trait Helper
         : new Request($_POST);
 
         array_unshift(self::$params, $request);
+    }
+
+    /**
+     * Getting URL Without Query Parameters.
+     * 
+     * @since 1.0.0
+     * 
+     * @return string
+     */
+    public function requestUri(): string
+    {
+        return strtok($_SERVER['REQUEST_URI'], '?');
+    }
+
+    /**
+     * Checking If Request Method Matches Given Method.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string $method
+     * 
+     * @return bool
+     */
+    private function methodCheck(string $method): bool
+    {
+        return $_SERVER['REQUEST_METHOD'] === $method;
     }
 
     /**

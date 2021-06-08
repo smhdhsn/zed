@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Traits;
+namespace Core\Traits\Model;
 
 use Core\Classes\Token;
 

@@ -79,6 +79,7 @@ class Validation extends Database
             }
         }
         
+        
         return empty($this->errors)
         ? $this
         : $this->abort();

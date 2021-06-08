@@ -3,8 +3,8 @@
 namespace App\Services\User;
 
 use App\Models\User;
-use Core\Traits\Service;
 use Core\Classes\Request;
+use Core\Traits\Service\RelatedRepository;
 
 /**
  * @author @smhdhsn
@@ -13,7 +13,7 @@ use Core\Classes\Request;
  */
 class UserCreatingService
 {
-    use Service;
+    use RelatedRepository;
 
     /**
      * Storing User Into Database.

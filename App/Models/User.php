@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Core\Classes\BaseModel;
-use Core\Traits\Authenticatable;
+use Core\Traits\Model\Authenticatable;
 
 /**
  * @author @smhdhsn

@@ -3,7 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
-use Core\Traits\Service;
+use Core\Traits\Service\RelatedRepository;
 use Core\Classes\{BaseController, Request, Response};
 
 /**
@@ -13,7 +13,7 @@ use Core\Classes\{BaseController, Request, Response};
  */
 class UserFetchingService
 {
-    use Service;
+    use RelatedRepository;
 
     /**
      * Logging User In.
