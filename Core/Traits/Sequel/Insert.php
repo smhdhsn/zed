@@ -42,7 +42,8 @@ trait Insert
     {
         $this->inputs = $inputs;
 
-        $this->query = "INSERT INTO \n\t{$this->table} \nSET" . $this->prepareSqlParams($inputs);
+        $this->query = "INSERT INTO \n\t{$this->table} \nSET" 
+        . $this->prepareSqlParams($inputs);
 
         return $this;
     }

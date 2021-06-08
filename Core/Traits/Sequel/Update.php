@@ -42,9 +42,9 @@ trait Update
     {
         $this->inputs = array_merge($this->inputs, $inputs);
 
-        $this->query = "UPDATE \n\t{$this->table} \nSET" . $this->prepareSqlParams($inputs);
-
-        $this->query .= "\nWHERE \n\tid=:id";
+        $this->query = "UPDATE \n\t{$this->table} \nSET" 
+        . $this->prepareSqlParams($inputs)
+        . "\nWHERE \n\tid=:id;";
 
         return $this;
     }

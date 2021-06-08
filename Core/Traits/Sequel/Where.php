@@ -39,7 +39,8 @@ trait Where
     {
         $this->inputs = $inputs;
 
-        $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE" . $this->prepareSqlParams($inputs);
+        $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE" 
+        . $this->prepareSqlParams($inputs);
 
         return $this;
     }

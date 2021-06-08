@@ -26,7 +26,7 @@ class Route
      * 
      * @var array|null
      */
-    private static array $params = [];
+    private static ?array $params = [];
 
     /**
      * Handling GET Requests.
