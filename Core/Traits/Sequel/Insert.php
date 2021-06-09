@@ -2,7 +2,6 @@
 
 namespace Core\Traits\Sequel;
 
-use PDO;
 use PDOException;
 use Core\Classes\{BaseController, Response};
 
@@ -27,7 +26,6 @@ trait Insert
         return self::instantiateClass()
             ->makeCreateQuery($inputs)
             ->prepareDatabase()
-            ->bindParams()
             ->createAndFetch();
     }
 
@@ -42,8 +40,10 @@ trait Insert
     {
         $this->inputs = $inputs;
 
-        $this->query = "INSERT INTO \n\t{$this->table} \nSET" 
-        . $this->prepareSqlParams($inputs);
+        $placeHolders = $this->prepareColumns(':');
+        $columns = $this->prepareColumns(null);
+
+        $this->query = "INSERT INTO \n{$this->table}({$columns}\n) \nVALUES({$placeHolders}\n);";
 
         return $this;
     }
@@ -58,7 +58,7 @@ trait Insert
     private function createAndFetch(): object
     {
         try {
-            if ($this->statement->execute())
+            if ($this->statement->execute($this->inputs))
                 $this->setModelAttributes();
 
             return $this;

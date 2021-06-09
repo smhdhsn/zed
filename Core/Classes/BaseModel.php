@@ -144,6 +144,23 @@ class BaseModel extends Database
     }
 
     /**
+     * Preparing Columns For Query.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string|null $prefix
+     * 
+     * @return string
+     */
+    private function prepareColumns(?string $prefix): string
+    {
+        return implode(
+            ',',
+            array_map(fn($inp) => "\n\t{$prefix}" . array_search($inp, $this->inputs), $this->inputs)
+        );
+    }
+
+    /**
      * Setting Inputs Property As Model Attributes.
      * 
      * @since 1.0.0
