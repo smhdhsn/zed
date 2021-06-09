@@ -2,8 +2,6 @@
 
 namespace Core\Traits\Sequel;
 
-use PDO;
-
 /**
  * @author @smhdhsn
  * 
@@ -25,7 +23,6 @@ trait Update
         return $this->checkForModelExistance()
             ->makeUpdateQuery($inputs)
             ->prepareDatabase()
-            ->bindParams()
             ->updateRecord();
     }
 
@@ -58,7 +55,7 @@ trait Update
      */
     private function updateRecord(): bool
     {
-        return $this->statement->execute()
+        return $this->statement->execute($this->inputs)
         ? true
         : false;
     }
