@@ -135,7 +135,7 @@ class BaseModel extends Database
      * 
      * @return string
      */
-    private function prepareSqlParams(array $inputs): string
+    private function prepareParams(array $inputs): string
     {
         return implode(
             ',',

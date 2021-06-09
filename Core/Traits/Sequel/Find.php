@@ -2,7 +2,7 @@
 
 namespace Core\Traits\Sequel;
 
-use PDO;
+use PDOException;
 use Core\Classes\{BaseController, Response};
 
 /**
@@ -24,10 +24,9 @@ trait Find
     public function find(int $id): object
     {
         return self::instantiateClass()
-            ->makeFindQuery($id)
+            ->makeFindQuery()
             ->prepareDatabase()
-            ->bindParams()
-            ->findAndFetch();
+            ->findAndFetch($id);
     }
 
     /**
@@ -39,10 +38,8 @@ trait Find
      * 
      * @return object
      */
-    private function makeFindQuery(int $id): object
+    private function makeFindQuery(): object
     {
-        $this->inputs = ['id' => $id];
-
         $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE \n\tid=:id";
 
         return $this;
@@ -53,15 +50,15 @@ trait Find
      * 
      * @since 1.0.0
      * 
+     * @param int $id
+     * 
      * @return object
      */
-    private function findAndFetch(): object
+    private function findAndFetch(int $id): object
     {
         try {
-            if ($this->statement->execute()) {
-                if (is_object($data = $this->statement->fetchObject(static::class)))
-                    return $data;
-                else
+            if ($this->statement->execute(['id' => $id])) {
+                if (is_bool($data = $this->statement->fetchObject(static::class)))
                     die(
                         (new BaseController)->error(
                             Response::ERROR,
@@ -69,6 +66,8 @@ trait Find
                             Response::HTTP_NOT_FOUND
                         )
                     );
+
+                return $data;
             }
         } catch (PDOException $e) {
             die(

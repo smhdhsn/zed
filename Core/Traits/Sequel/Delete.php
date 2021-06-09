@@ -2,9 +2,6 @@
 
 namespace Core\Traits\Sequel;
 
-use PDO;
-use Exception;
-
 /**
  * @author @smhdhsn
  * 
@@ -24,7 +21,6 @@ trait Delete
         return $this->checkForModelExistance()
             ->makeDeleteQuery()
             ->prepareDatabase()
-            ->bindParams()
             ->destroyRecord();
     }
 
@@ -51,7 +47,7 @@ trait Delete
      */
     private function destroyRecord(): bool
     {
-        return $this->statement->execute()
+        return $this->statement->execute($this->inputs)
         ? true
         : false;
     }
