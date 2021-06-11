@@ -34,7 +34,7 @@ trait Get
     private function getAndFetch(): object
     {
         try {
-            if ($this->statement->execute()) {
+            if ($this->statement->execute($this->inputs)) {
                 if (is_bool($data = $this->statement->fetchObject(static::class)))
                     die(
                         (new BaseController)->error(

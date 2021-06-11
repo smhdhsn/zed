@@ -90,22 +90,6 @@ class BaseModel extends Database
     }
 
     /**
-     * Binding Input Parameters.
-     * 
-     * @since 1.0.0
-     * 
-     * @return object
-     */
-    private function bindParams(): object
-    {
-        foreach ($this->inputs as $key => $chunk) {
-            $this->statement->bindParam(":{$key}", $chunk);
-        }
-
-        return $this;
-    }
-
-    /**
      * Checking If Model's Instance Or Model's Id Exist.
      * 
      * @since 1.0.0

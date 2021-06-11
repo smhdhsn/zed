@@ -22,8 +22,7 @@ trait Where
     {
         return self::instantiateClass()
             ->makeWhereQuery($inputs)
-            ->prepareDatabase()
-            ->bindParams();
+            ->prepareDatabase();
     }
 
     /**
