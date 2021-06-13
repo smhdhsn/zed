@@ -6,11 +6,6 @@
         "psr-4": {
             "Core\\": "Core/",
             "App\\": "App/"
-        },
-        "files": [
-            "Core/_Setup.php",
-            "Routes/api.php",
-            "Routes/default.php"
-        ]
+        }
     }
 }

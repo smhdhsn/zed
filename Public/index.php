@@ -1,10 +1,44 @@
 <?php
 
+use Dotenv\Dotenv;
+use Core\Classes\Application;
+
 /**
- * @package php-m
+ * Autoloading Installed Applications And Classes.
+ */
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+
+/**
+ * Loading Environment Variables.
+ * 
+ * @since 1.0.0
+ * 
+ * @package vlucas/phpdotenv
+ */
+(Dotenv::createImmutable(dirname(__DIR__)))->load();
+
+/**
+ * Creating an Instance Of The Application.
  * 
  * @author @smhdhsn
  * 
+ * @package php-m
+ * 
  * @version 1.0.0
  */
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+$app = new Application;
+
+/**
+ * Shorten The Router Accessability.
+ */
+$router = $app->router;
+
+/**
+ * Getting Routings From Routes Folder.
+ */
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'api.php';
+
+/**
+ * Resolving Request.
+ */
+$app->run();

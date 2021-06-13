@@ -22,10 +22,12 @@ class BaseController extends Response
      */
     public function response(string $status, $data, int $code): string
     {
+        http_response_code($code);
+
     	return json_encode([
     		'status' => $status,
     		'data' => $data,
-    		'code' => http_response_code($code),
+    		'code' => $code,
     	]);
     }
 
@@ -42,10 +44,12 @@ class BaseController extends Response
      */
     public function error(string $status, $data, int $code): string
     {
+        http_response_code($code);
+
     	return json_encode([
     		'status' => $status,
     		'data' => $data,
-    		'code' => http_response_code($code),
+    		'code' => $code,
     	]);
     }
 }

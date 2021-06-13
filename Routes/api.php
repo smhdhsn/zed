@@ -1,10 +1,17 @@
 <?php
 
-use Core\Classes\Route;
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. 
+|
+*/
 
-Route::post('/user/register', 'UserController@register');
-Route::get('/user/login', 'UserController@login');
+$router->post('/user/register', 'UserController@register');
+$router->get('/user/login', 'UserController@login');
 
-Route::get('/welcome', 'WelcomeController@index', [
+$router->get('/welcome', 'WelcomeController@index', [
     'auth'
 ]);
