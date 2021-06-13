@@ -29,7 +29,7 @@ require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR 
 $app = new Application;
 
 /**
- * Shorten The Router Accessability.
+ * Shorten The Router Instance's Accessability.
  */
 $router = $app->router;
 
