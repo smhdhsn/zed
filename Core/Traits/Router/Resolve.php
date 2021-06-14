@@ -22,7 +22,7 @@ trait Resolve
     public function resolve(): ?string
     {
         $route = $this->routes[$this->getMethod()][$this->requestUri()];
-        $this->handleMiddlewares($route['middlewares']);
+        $this->callMiddleware($route['middlewares']);
         $callback = $route['callback'];
         $this->saveRequest();
 
