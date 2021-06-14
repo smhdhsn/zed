@@ -21,10 +21,13 @@ trait Resolve
      */
     public function resolve(): ?string
     {
-        $route = $this->routes[$this->getMethod()][$this->requestUri()];
-        $this->callMiddleware($route['middlewares']);
-        $callback = $route['callback'];
-        $this->saveRequest();
+        $route = $this->mapRoute();
+        
+        if (! is_null($route)) {
+            $this->callMiddleware($route['middlewares']);
+            $callback = $route['callback'];
+            $this->saveRequest();
+        }
 
         switch (gettype($callback)) {
             case 'NULL':
