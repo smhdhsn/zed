@@ -3,7 +3,7 @@
 namespace Core\Classes;
 
 use Core\Traits\Middleware\Middleware;
-use Core\Traits\Router\{Resolve, Helper};
+use Core\Traits\Router\{RouteHelper as Helper, RouteResolve as Resolve};
 
 /**
  * @author @smhdhsn

@@ -10,7 +10,7 @@ use Core\Classes\{BaseController, Response};
  * 
  * @version 1.0.0
  */
-trait Resolve
+trait RouteResolve
 {
     /**
      * Handling Request And Returning Response.
@@ -31,16 +31,16 @@ trait Resolve
 
         switch (gettype($callback)) {
             case 'NULL':
-                return $this->resolveNotFound();
+                return $this->routeNotFound();
             break;
             case 'array':
-                return $this->resolveArray($callback);
+                return $this->fromArray($callback);
             break;
             case 'string':
-                return $this->resolveString($callback);
+                return $this->fromString($callback);
             break;
             case 'object':
-                return $this->resolveClosure($callback);
+                return $this->fromClosure($callback);
             break;
         }
     }
@@ -54,7 +54,7 @@ trait Resolve
      * 
      * @return string|null
      */
-    private function resolveString(string $map): ?string
+    private function fromString(string $map): ?string
     {
         try {
             $parts = explode('@', $map);
@@ -85,7 +85,7 @@ trait Resolve
      * 
      * @return string|null
      */
-    private function resolveArray(array $map): ?string
+    private function fromArray(array $map): ?string
     {
         try {
             $callback = [
@@ -112,7 +112,7 @@ trait Resolve
      * 
      * @return string|null
      */
-    private function resolveClosure(object $callback): ?string
+    private function fromClosure(object $callback): ?string
     {
         try {
             return call_user_func_array($callback, $this->params);
@@ -132,7 +132,7 @@ trait Resolve
      * 
      * @return string
      */
-    private function resolveNotFound(): string
+    private function routeNotFound(): string
     {
         return (new BaseController)->error(
             Response::ERROR,

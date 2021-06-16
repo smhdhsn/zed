@@ -26,6 +26,15 @@ class Application
     public Router $router;
 
     /**
+     * Command's Instance.
+     * 
+     * @since 1.0.0
+     * 
+     * @var object
+     */
+    public Command $command;
+
+    /**
      * Holds an Instance Of This Class.
      * 
      * @since 1.0.0
@@ -45,10 +54,11 @@ class Application
     {
         self::$instance = $this;
         $this->router = new Router;
+        $this->command = new Command;
     }
 
     /**
-     * Resolving Request.
+     * Resolve Requested Route.
      * 
      * @since 1.0.0
      * 
@@ -56,7 +66,7 @@ class Application
      * 
      * @return void
      */
-    public function run(): void
+    public function resolve(): void
     {
         try {
             die(
@@ -69,6 +79,26 @@ class Application
                     $exception->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR
                 )
+            );
+        }
+    }
+
+    /**
+     * Executing Called Command.
+     * 
+     * @since 1.0.0
+     * 
+     * @return void
+     */
+    public function execute(): void
+    {
+        try {
+            die(
+                $this->command->execute()
+            );
+        } catch (Exception $exception) {
+            die(
+                $exception->getMessage()
             );
         }
     }

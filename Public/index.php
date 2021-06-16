@@ -39,6 +39,6 @@ $router = $app->router;
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'api.php';
 
 /**
- * Resolving Request.
+ * Resolve Requested Route.
  */
-$app->run();
+$app->resolve();

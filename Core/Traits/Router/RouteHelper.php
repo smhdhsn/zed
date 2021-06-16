@@ -9,7 +9,7 @@ use Core\Classes\{BaseController, Request, Response};
  * 
  * @version 1.0.0
  */
-trait Helper
+trait RouteHelper
 {
     /**
      * Getting Requested Method.
