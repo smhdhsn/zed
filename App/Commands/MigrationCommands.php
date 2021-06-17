@@ -9,7 +9,7 @@ use Core\Classes\CommandLineInterface as CLI;
  * 
  * @version 1.0.0
  */
-class MigrationCommand
+class MigrationCommands
 {
     /**
      * Running Migrations.

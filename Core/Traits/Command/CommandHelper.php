@@ -18,7 +18,7 @@ trait CommandHelper
      */
     public function __construct()
     {
-        $this->argument = $_SERVER['argv'][1];
+        $this->argument = $_SERVER['argv'][1] ?? null;
     }
 
     /**

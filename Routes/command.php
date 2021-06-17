@@ -11,8 +11,8 @@ use Core\Classes\CommandLineInterface as CLI;
 |
 */
 
-$command->modify('migrate:rollback', 'MigrationCommand@rollback');
-$command->modify('migrate', 'MigrationCommand@migrate');
+$command->modify('migrate:rollback', 'MigrationCommands@rollback');
+$command->modify('migrate', 'MigrationCommands@migrate');
 
 $command->modify('say', function (string $message = 'Hello') {
     return CLI::out($message);

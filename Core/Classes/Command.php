@@ -27,9 +27,9 @@ class Command extends Database
      * 
      * @since 1.0.0
      * 
-     * @var array
+     * @var array|null
      */
-    private string $argument;
+    private ?string $argument;
 
     /**
      * Extra Arguments Passed To Script Via Command Line.
