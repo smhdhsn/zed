@@ -10,13 +10,12 @@ namespace Core\Classes;
 class CommandLineInterface
 {
     /**
-     * Command Line Colors.
+     * Command Line Foreground Colors.
      * 
      * @since 1.0.0
      * 
      * @var string
      */
-    CONST RESET = "\033[0m";
     CONST RED = "\033[31m";
     CONST BLACK = "\033[30m";
     CONST GREEN = "\033[32m";
@@ -27,6 +26,22 @@ class CommandLineInterface
     CONST WHITE = "\033[37m";
 
     /**
+     * Command Line Background Colors.
+     * 
+     * @since 1.0.0
+     * 
+     * @var string
+     */
+    CONST BG_BLACK = "\033[40m";
+    CONST BG_RED = "\033[41m";
+    CONST BG_GREEN = "\033[42m";
+    CONST BG_YELLOW = "\033[43m";
+    CONST BG_BLUE = "\033[44m";
+    CONST BG_PURPLE = "\033[45m";
+    CONST BG_CYAN = "\033[46m";
+    CONST BG_WHITE = "\033[47m";
+
+    /**
      * Command Line Options.
      * 
      * @since 1.0.0
@@ -35,6 +50,14 @@ class CommandLineInterface
      */
     CONST EOL = "\n";
     CONST TAB = "\t";
+    CONST RESET = "\033[0m";
+    CONST ITALIC = "\033[3m";
+    CONST UNDERLINE = "\033[4m";
+    CONST BLINK_SLOW = "\033[5m";
+    CONST BLINK_FAST = "\033[6m";
+    CONST REVERSE = "\003[7m";
+    CONST HIDE = "\033[8m";
+    CONST CROSS = "\033[9m";
 
     /**
      * Styling Output For Successful Messages.
