@@ -15,5 +15,5 @@ $command->modify('migrate:rollback', 'MigrationCommand@rollback');
 $command->modify('migrate', 'MigrationCommand@migrate');
 
 $command->modify('say', function (string $message = 'Hello') {
-    return CLI::success($message);
+    return CLI::out($message);
 });

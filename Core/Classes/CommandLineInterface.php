@@ -60,6 +60,20 @@ class CommandLineInterface
     CONST CROSS = "\033[9m";
 
     /**
+     * Styling Output For Normal Messages.
+     *
+     * @since 1.0.0
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    public static function out(string $message): string
+    {
+        return self::RESET . $message . self::EOL;
+    }
+
+    /**
      * Styling Output For Successful Messages.
      *
      * @since 1.0.0
