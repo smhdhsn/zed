@@ -1,6 +1,6 @@
 <?php
 
-use Core\Classes\BaseCommand;
+use Core\Classes\CommandLineInterface as CLI;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ $command->modify('migrate', 'MigrationCommand@migrate');
 $command->modify('migrate:rollback', 'MigrationCommand@rollback');
 
 $command->modify('say', function ($message = 'Hello') {
-    return (new BaseCommand)->success($message);
+    return CLI::success($message);
 });

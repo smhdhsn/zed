@@ -3,7 +3,7 @@
 namespace Core\Traits\Command;
 
 use Exception;
-use Core\Classes\BaseCommand;
+use Core\Classes\CommandLineInterface as CLI;
 
 /**
  * @author @smhdhsn
@@ -65,7 +65,7 @@ trait CommandResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseCommand)->error($exception->getMessage());
+            return CLI::error($exception->getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ trait CommandResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseCommand)->error($exception->getMessage());
+            return CLI::error($exception->getMessage());
         }
     }
 
@@ -106,7 +106,7 @@ trait CommandResolve
         try {
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseCommand)->error($exception->getMessage());
+            return CLI::error($exception->getMessage());
         }
     }
 
@@ -119,6 +119,6 @@ trait CommandResolve
      */
     private function commandNotFound(): string
     {
-        return (new BaseCommand)->error("Command Not Found !");
+        return CLI::error("Command Not Found !");
     }
 }

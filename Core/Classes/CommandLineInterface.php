@@ -35,4 +35,32 @@ class CommandLineInterface
      */
     CONST EOL = "\n";
     CONST TAB = "\t";
+
+    /**
+     * Styling Output For Successful Messages.
+     *
+     * @since 1.0.0
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    public static function success(string $message): string
+    {
+        return self::GREEN . $message . self::EOL;
+    }
+
+    /**
+     * Styling Output For Unsuccessful Messages.
+     *
+     * @since 1.0.0
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    public static function error(string $message): string
+    {
+        return self::RED . $message . self::EOL;
+    }
 }

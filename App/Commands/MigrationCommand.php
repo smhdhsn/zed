@@ -2,14 +2,14 @@
 
 namespace App\Commands;
 
-use Core\Classes\BaseCommand;
+use Core\Classes\CommandLineInterface as CLI;
 
 /**
  * @author @smhdhsn
  * 
  * @version 1.0.0
  */
-class MigrationCommand extends BaseCommand
+class MigrationCommand
 {
     /**
      * Running Migrations.
@@ -20,7 +20,7 @@ class MigrationCommand extends BaseCommand
      */
     public function migrate(): string
     {
-        return $this->success('Running Migrations...');
+        return CLI::success('Running Migrations...');
     }
 
     /**
@@ -32,6 +32,6 @@ class MigrationCommand extends BaseCommand
      */
     public function rollback(): string
     {
-        return $this->error('Rolling Back Migrations...');
+        return CLI::error('Rolling Back Migrations...');
     }
 }
