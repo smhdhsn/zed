@@ -55,7 +55,7 @@ class CommandLineInterface
     CONST UNDERLINE = "\033[4m";
     CONST BLINK_SLOW = "\033[5m";
     CONST BLINK_FAST = "\033[6m";
-    CONST REVERSE = "\003[7m";
+    CONST REVERSE = "\033[7m";
     CONST HIDE = "\033[8m";
     CONST CROSS = "\033[9m";
 
@@ -70,7 +70,7 @@ class CommandLineInterface
      */
     public static function out(string $message): string
     {
-        return self::RESET . $message . self::EOL;
+        return self::RESET . $message . self::EOL . self::RESET;
     }
 
     /**
@@ -84,7 +84,7 @@ class CommandLineInterface
      */
     public static function success(string $message): string
     {
-        return self::GREEN . $message . self::EOL;
+        return self::GREEN . $message . self::EOL . self::RESET;
     }
 
     /**
@@ -98,6 +98,6 @@ class CommandLineInterface
      */
     public static function error(string $message): string
     {
-        return self::RED . $message . self::EOL;
+        return self::RED . $message . self::EOL . self::RESET;
     }
 }
