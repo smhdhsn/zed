@@ -61,7 +61,7 @@ trait CommandResolve
 
             return call_user_func($callback);
         } catch (Exception $exception) {
-            return CLI::error($exception->getMessage());
+            return CLI::out($exception->getMessage(), CLI::RED);
         }
     }
 
@@ -79,7 +79,7 @@ trait CommandResolve
         try {
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return CLI::error($exception->getMessage());
+            return CLI::out($exception->getMessage(), CLI::RED);
         }
     }
 
@@ -92,6 +92,6 @@ trait CommandResolve
      */
     private function commandNotFound(): string
     {
-        return CLI::error("Command Not Found !");
+        return CLI::out("Command Not Found !", CLI::RED);
     }
 }

@@ -60,44 +60,17 @@ class CommandLineInterface
     CONST CROSS = "\033[9m";
 
     /**
-     * Styling Output For Normal Messages.
+     * Styling Terminal's Output Message.
      *
      * @since 1.0.0
      *
      * @param string $message
-     *
+     * @param string $color
+     * 
      * @return string
      */
-    public static function out(string $message): string
+    public static function out(string $message, string $extra = self::WHITE): string
     {
-        return self::RESET . $message . self::EOL . self::RESET;
-    }
-
-    /**
-     * Styling Output For Successful Messages.
-     *
-     * @since 1.0.0
-     *
-     * @param string $message
-     *
-     * @return string
-     */
-    public static function success(string $message): string
-    {
-        return self::GREEN . $message . self::EOL . self::RESET;
-    }
-
-    /**
-     * Styling Output For Unsuccessful Messages.
-     *
-     * @since 1.0.0
-     *
-     * @param string $message
-     *
-     * @return string
-     */
-    public static function error(string $message): string
-    {
-        return self::RED . $message . self::EOL . self::RESET;
+        return $extra . $message . self::EOL . self::RESET;
     }
 }
