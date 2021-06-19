@@ -70,7 +70,7 @@ class CommandLineInterface
      */
     public static function out(string $message): string
     {
-        return self::RESET . $message . self::EOL . self::RESET;
+        return self::EOL . self::RESET . $message . self::EOL . self::RESET;
     }
 
     /**
@@ -84,7 +84,7 @@ class CommandLineInterface
      */
     public static function success(string $message): string
     {
-        return self::GREEN . $message . self::EOL . self::RESET;
+        return self::EOL . self::GREEN . $message . self::EOL . self::RESET;
     }
 
     /**
@@ -98,6 +98,6 @@ class CommandLineInterface
      */
     public static function error(string $message): string
     {
-        return self::RED . $message . self::EOL . self::RESET;
+        return self::EOL . self::RED . $message . self::EOL . self::RESET;
     }
 }
