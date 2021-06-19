@@ -30,9 +30,6 @@ trait CommandResolve
             case 'NULL':
                 return $this->commandNotFound();
             break;
-            case 'array':
-                return $this->fromArray($callback);
-            break;
             case 'string':
                 return $this->fromString($callback);
             break;
@@ -47,46 +44,22 @@ trait CommandResolve
      * 
      * @since 1.0.0
      * 
-     * @param string $map
+     * @param string $class
      * 
      * @return string|null
      */
-    private function fromString(string $map): ?string
+    private function fromString(string $class): ?string
     {
         try {
-            $parts = explode('@', $map);
-
-            $class = "\\App\\Commands\\$parts[0]";
+            $object = new $class();
+            $object->params = $this->params;
 
             $callback = [
-                new $class(),
-                $parts[1]
+                $object,
+                'handle'
             ];
 
-            return call_user_func_array($callback, $this->params);
-        } catch (Exception $exception) {
-            return CLI::error($exception->getMessage());
-        }
-    }
-
-    /**
-     * In Case Command Is Mapped Using [Command::class, 'action'] Syntax.
-     * 
-     * @since 1.0.0
-     * 
-     * @param array $map
-     * 
-     * @return string|null
-     */
-    private function fromArray(array $map): ?string
-    {
-        try {
-            $callback = [
-                new $map[0],
-                $map[1]
-            ];
-
-            return call_user_func_array($callback, $this->params);
+            return call_user_func($callback);
         } catch (Exception $exception) {
             return CLI::error($exception->getMessage());
         }
