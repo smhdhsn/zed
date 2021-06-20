@@ -18,7 +18,25 @@ trait CommandHelper
      */
     public function __construct()
     {
-        $this->argument = $_SERVER['argv'][1] ?? null;
+        $this->setArgument();
+    }
+
+    /**
+     * Setting Argument And Checking If Sub-Command Is Set,
+     * Then Saving Sub-Command Into Params If It's Provided.
+     * 
+     * @since 1.0.0
+     * 
+     * @return void
+     */
+    private function setArgument(): void
+    {
+        $exploded = explode(':', $_SERVER['argv'][1]);
+
+        $this->argument = $exploded[0] ?? null;
+
+        if ($exploded[1])
+            $this->params[] = $exploded[1];
     }
 
     /**
