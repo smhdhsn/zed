@@ -20,10 +20,20 @@ trait Reset
      */
     protected function reset(): string
     {
-        echo CLI::out('Migrations Table Is Being Dropped !', CLI::RED);
-        $this->connection->exec("DROP TABLE IF EXISTS migrations;");
-        echo CLI::out('Migrations Table Has Been Dropped !', CLI::PURPLE);
+        $migrations = $this->getApplied();
 
-        return CLI::out('All Migrations Reseted !', CLI::BLINK_FAST);
+        foreach ($migrations as $migration) {
+            require_once $this->getFile($migration);
+            
+            $className = $this->getClassName($migration);
+            $class = "\\Database\\Migrations\\$className";
+
+            $object = new $class();
+            $object->backward(rtrim($migration, '.php'));
+
+            $this->destroyWhere('migration', $migration);
+        }
+
+        return CLI::out('Migrations Reseted !', CLI::BLINK_FAST);
     }
 }

@@ -41,22 +41,4 @@ trait Migrate
 
         return CLI::out('All Files Migrated !', CLI::BLINK_FAST);
     }
-
-    /**
-     * Running Up Method On Migration And Storing It Into Database.
-     * 
-     * @since 1.0.0
-     * 
-     * @param string $migration
-     * @param int $batchNumber
-     * 
-     * @return void
-     */
-    protected function forward(string $migration, int $batchNumber): void
-    {
-        echo CLI::out("Applying {$migration}", CLI::CYAN);
-        $this->up();
-        $this->store($migration, ++$batchNumber);
-        echo CLI::out("Applied  {$migration}", CLI::BLUE);
-    }
 }

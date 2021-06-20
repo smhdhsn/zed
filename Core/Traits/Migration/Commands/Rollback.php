@@ -38,24 +38,8 @@ trait Rollback
             $object->backward(rtrim($migration['migration'], '.php'));
         }
 
-        $this->destroy($batchNumber);
+        $this->destroyWhere('batch', $batchNumber);
 
         return CLI::out('Rolled Back One Step !', CLI::BLINK_FAST);
-    }
-
-    /**
-     * Running Down Method On One Step Of Migrations And Deleting Them From Database.
-     * 
-     * @since 1.0.0
-     * 
-     * @param string $migration
-     * 
-     * @return void
-     */
-    protected function backward(string $migration): void
-    {
-        echo CLI::out("Dismissing {$migration}", CLI::RED);
-        $this->down();
-        echo CLI::out("Dismissed  {$migration}", CLI::PURPLE);
     }
 }

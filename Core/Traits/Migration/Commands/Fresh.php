@@ -21,9 +21,6 @@ trait Fresh
     protected function fresh(): string
     {
         $this->reset();
-
-        $this->createTable();
-
         $this->migrate();
 
         return CLI::out('All Migrations Reruned !', CLI::BLINK_FAST);

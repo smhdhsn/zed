@@ -3,6 +3,7 @@
 namespace Core\Classes;
 
 use PDO;
+use Core\Classes\CommandLineInterface as CLI;
 use Core\Traits\Migration\{MigrationHelper as Helper, MigrationCommands as Commands};
 
 /**
@@ -37,6 +38,40 @@ class Migration extends Database
     }
 
     /**
+     * Running Up Method On Migration And Storing It Into Database.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string $migration
+     * @param int $batchNumber
+     * 
+     * @return void
+     */
+    protected function forward(string $migration, int $batchNumber): void
+    {
+        echo CLI::out("Applying {$migration}", CLI::CYAN);
+        $this->up();
+        $this->store($migration, ++$batchNumber);
+        echo CLI::out("Applied  {$migration}", CLI::BLUE);
+    }
+
+    /**
+     * Running Down Method On One Step Of Migrations And Deleting Them From Database.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string $migration
+     * 
+     * @return void
+     */
+    protected function backward(string $migration): void
+    {
+        echo CLI::out("Dismissing {$migration}", CLI::RED);
+        $this->down();
+        echo CLI::out("Dismissed  {$migration}", CLI::PURPLE);
+    }
+
+    /**
      * Storing Applied Migration Into Migrations Table.
      * 
      * @since 1.0.0
@@ -57,20 +92,22 @@ class Migration extends Database
     }
 
     /**
-     * Deleting Dissmissed Migration From Migrations Table.
+     * Deleting Migration Column From Migrations Table.
+     * 
      * 
      * @since 1.0.0
      * 
-     * @param int $batchNumber
+     * @param string $columnName
+     * @param mixed $value
      * 
      * @return void
      */
-    private function destroy(int $batchNumber): void
+    private function destroyWhere(string $columnName, $value): void
     {
-        $statement = $this->connection->prepare("DELETE FROM migrations WHERE batch=:batch");
+        $statement = $this->connection->prepare("DELETE FROM migrations WHERE {$columnName}=:{$columnName}");
 
         $statement->execute([
-            'batch' => $batchNumber,
+            $columnName => $value,
         ]);
     }
 
