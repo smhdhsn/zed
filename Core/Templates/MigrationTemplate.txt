@@ -1,0 +1,37 @@
+<?php
+
+namespace Database\Migrations;
+
+use Core\Classes\Migration;
+
+/**
+ * @author @id
+ * 
+ * @version x.x.x
+ */
+class Xxx extends Migration
+{
+    /**
+     * Doing Some Changes To a Certain Table.
+     * 
+     * @since x.x.x
+     * 
+     * @return void
+     */
+    public function up(): void
+    {
+        //
+    }
+
+    /**
+     * Undoing Some Changes In a Certain Table.
+     * 
+     * @since x.x.x
+     * 
+     * @return void
+     */
+    public function down(): void
+    {
+        //
+    }
+}

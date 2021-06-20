@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Core\Classes\BaseModel;
+
+/**
+ * @author @id
+ * 
+ * @version x.x.x
+ */
+class Xxx extends BaseModel
+{
+    /**
+     * Model's Table Name.
+     * 
+     * @since x.x.x
+     * 
+     * @var string
+     */
+    protected $table = 'xxxs';
+}

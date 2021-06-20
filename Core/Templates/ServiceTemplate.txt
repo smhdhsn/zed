@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Services;
+
+use Core\Classes\Request;
+
+/**
+ * @author @id
+ * 
+ * @version x.x.x
+ */
+class Xxx
+{
+    /**
+     * Related Model's Repository.
+     * 
+     * @since x.x.x
+     * 
+     * @var object
+     */
+    private $repository;
+
+    /**
+     * Creates an Instance Of This Class.
+     * 
+     * @since x.x.x
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+}

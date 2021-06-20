@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Repositories;
+
+/**
+ * @author @id
+ * 
+ * @since x.x.x
+ */
+class Xxx
+{
+    //
+}

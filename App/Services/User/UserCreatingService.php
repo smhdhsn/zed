@@ -4,7 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use Core\Classes\Request;
-use Core\Traits\Service\RelatedRepository;
+use App\Repositories\UserRepository;
 
 /**
  * @author @smhdhsn
@@ -13,7 +13,26 @@ use Core\Traits\Service\RelatedRepository;
  */
 class UserCreatingService
 {
-    use RelatedRepository;
+    /**
+     * Related Model's Repository.
+     * 
+     * @since 1.0.0
+     * 
+     * @var object
+     */
+    private $repository;
+
+    /**
+     * Creates an Instance Of This Class.
+     * 
+     * @since 1.0.0
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->repository = new UserRepository;
+    }
 
     /**
      * Storing User Into Database.

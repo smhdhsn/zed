@@ -3,7 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
-use Core\Traits\Service\RelatedRepository;
+use App\Repositories\UserRepository;
 use Core\Classes\{BaseController, Request, Response};
 
 /**
@@ -13,7 +13,26 @@ use Core\Classes\{BaseController, Request, Response};
  */
 class UserFetchingService
 {
-    use RelatedRepository;
+    /**
+     * Related Model's Repository.
+     * 
+     * @since 1.0.0
+     * 
+     * @var object
+     */
+    private $repository;
+
+    /**
+     * Creates an Instance Of This Class.
+     * 
+     * @since 1.0.0
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->repository = new UserRepository;
+    }
 
     /**
      * Logging User In.

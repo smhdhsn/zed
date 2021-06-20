@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Controllers;
+
+use Core\Classes\{BaseController, Request, Response};
+
+/**
+ * @author @id
+ * 
+ * @version x.x.x
+ */
+class Xxx extends BaseController
+{
+    //
+}
