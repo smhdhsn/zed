@@ -40,7 +40,7 @@ class MigrateCommand extends Migration implements Console
             case 'reset':
                 return $this->reset();
             default:
-                return CLI::out('Command Not Found !', CLI::RED);
+                return CLI::out('Sub-Command Not Found !', CLI::RED);
         }
     }
 }
