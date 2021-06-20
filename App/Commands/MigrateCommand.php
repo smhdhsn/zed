@@ -43,40 +43,4 @@ class MigrateCommand extends Migration implements Console
                 return CLI::out('Command Not Found !', CLI::RED);
         }
     }
-
-    /**
-     * Running Down Method On 1 Batch.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function rollback(): string
-    {
-        return CLI::out('Rolled Back One Batch !', CLI::BLINK_FAST);
-    }
-
-    /**
-     * Running Down Then Up Methods On Every Migration.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function fresh(): string
-    {
-        return CLI::out('All Migrations Reruned !', CLI::BLINK_FAST);
-    }
-
-    /**
-     * Running Down Method On Every Migration.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function reset(): string
-    {
-        return CLI::out('All Migrations Reseted !', CLI::BLINK_FAST);
-    }
 }

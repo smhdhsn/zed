@@ -100,7 +100,7 @@ trait MigrationHelper
                 2
             );
         }
-        
+
         return ucfirst($fileName);
     }
 }

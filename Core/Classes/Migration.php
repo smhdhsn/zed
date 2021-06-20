@@ -3,8 +3,7 @@
 namespace Core\Classes;
 
 use PDO;
-use Core\Traits\Migration\MigrationHelper as Helper;
-use Core\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
+use Core\Traits\Migration\{MigrationHelper as Helper, MigrationCommands as Commands};
 
 /**
  * @author @smhdhsn
@@ -13,7 +12,7 @@ use Core\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
  */
 class Migration extends Database
 {
-    use Migrate, Rollback, Fresh, Reset, Helper;
+    use Commands, Helper;
 
     /**
      * Database Connection.
