@@ -72,6 +72,20 @@ class Migration extends Database
     }
 
     /**
+     * Executing SQL Command.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string $sequel
+     * 
+     * @return void
+     */
+    protected function exec(string $sequel): void
+    {
+        $this->connection->exec($sequel);
+    }
+
+    /**
      * Storing Applied Migration Into Migrations Table.
      * 
      * @since 1.0.0
