@@ -3,9 +3,8 @@
 namespace Core\Classes;
 
 use PDO;
-use App\Models\Migration as Model;
-use Core\Classes\CommandLineInterface as CLI;
 use Core\Traits\Migration\MigrationHelper as Helper;
+use Core\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
 
 /**
  * @author @smhdhsn
@@ -14,7 +13,7 @@ use Core\Traits\Migration\MigrationHelper as Helper;
  */
 class Migration extends Database
 {
-    use Helper;
+    use Migrate, Rollback, Fresh, Reset, Helper;
 
     /**
      * Database Connection.
@@ -39,55 +38,6 @@ class Migration extends Database
     }
 
     /**
-     * Applying Migration Files.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    public function apply(): string
-    {
-        $batch = $this->lastBatch();
-        $migrations = $this->getToApply(
-            $this->getApplied(), 
-            $this->getFiles()
-        );
-
-        if (empty($migrations))
-            return CLI::out('Nothing To Migrate !', CLI::BLINK_FAST);
-
-        foreach ($migrations as $migration) {
-            require_once $this->getFile($migration);
-            
-            $className = $this->getClassName($migration);
-            $class = "\\Database\\Migrations\\$className";
-
-            $object = new $class();
-            $object->forward(rtrim($migration, '.php'), $batch);
-        }
-
-        return CLI::out('All Files Migrated !', CLI::BLINK_FAST);
-    }
-
-    /**
-     * Running Up Method On Migration And Storing It Into Database.
-     * 
-     * @since 1.0.0
-     * 
-     * @param string $migration
-     * @param int $batchNumber
-     * 
-     * @return void
-     */
-    protected function forward(string $migration, int $batch): void
-    {
-        echo CLI::out("Applying {$migration}", CLI::CYAN);
-        $this->up();
-        $this->store($migration, $batch);
-        echo CLI::out("Applied  {$migration}", CLI::BLUE);
-    }
-
-    /**
      * Storing Applied Migration.
      * 
      * @since 1.0.0
@@ -109,6 +59,7 @@ class Migration extends Database
 
     /**
      * Getting Last Batch Number Of Migrations.
+     * (Returns "0" If Migrations Table Is Empty)
      * 
      * @since 1.0.0
      * 
@@ -121,7 +72,7 @@ class Migration extends Database
 
         $statement->execute();
 
-        return 1 + $statement->fetchColumn();
+        return $statement->fetchColumn() ?? 0;
     }
 
     /**

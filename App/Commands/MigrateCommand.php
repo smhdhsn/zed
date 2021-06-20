@@ -45,18 +45,6 @@ class MigrateCommand extends Migration implements Console
     }
 
     /**
-     * Running Up Method On Every New Migration.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function migrate(): string
-    {
-        return $this->apply();
-    }
-
-    /**
      * Running Down Method On 1 Batch.
      * 
      * @since 1.0.0
