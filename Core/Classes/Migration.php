@@ -37,7 +37,7 @@ class Migration extends Database
     }
 
     /**
-     * Storing Applied Migration.
+     * Storing Applied Migration Into Migrations Table.
      * 
      * @since 1.0.0
      * 
@@ -52,6 +52,24 @@ class Migration extends Database
 
         $statement->execute([
             'migration' => "{$fileName}.php",
+            'batch' => $batchNumber,
+        ]);
+    }
+
+    /**
+     * Deleting Dissmissed Migration From Migrations Table.
+     * 
+     * @since 1.0.0
+     * 
+     * @param int $batchNumber
+     * 
+     * @return void
+     */
+    private function destroy(int $batchNumber): void
+    {
+        $statement = $this->connection->prepare("DELETE FROM migrations WHERE batch=:batch");
+
+        $statement->execute([
             'batch' => $batchNumber,
         ]);
     }
@@ -72,6 +90,27 @@ class Migration extends Database
         $statement->execute();
 
         return $statement->fetchColumn() ?? 0;
+    }
+
+    /**
+     * Getting Last Step Of Applied Migration Based On Batch Column.
+     * 
+     * @since 1.0.0
+     * 
+     * @param int $batchNumber
+     * 
+     * @return array
+     */
+    private function fetchLastBatch(int $batchNumber): array
+    {
+        $statement = $this->connection
+            ->prepare("SELECT * FROM migrations WHERE batch=:batch");
+
+        $statement->execute([
+            'batch' => $batchNumber
+        ]);
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**

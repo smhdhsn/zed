@@ -52,11 +52,11 @@ trait Migrate
      * 
      * @return void
      */
-    protected function forward(string $migration, int $batch): void
+    protected function forward(string $migration, int $batchNumber): void
     {
         echo CLI::out("Applying {$migration}", CLI::CYAN);
         $this->up();
-        $this->store($migration, ++$batch);
+        $this->store($migration, ++$batchNumber);
         echo CLI::out("Applied  {$migration}", CLI::BLUE);
     }
 }
