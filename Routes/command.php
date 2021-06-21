@@ -11,9 +11,6 @@ use Core\Classes\CommandLineInterface as CLI;
 |
 */
 
-$command->modify('migrate', \App\Commands\MigrateCommand::class);
-$command->modify('make', \App\Commands\MakeCommand::class);
-
 $command->modify('say', function (string $message = 'Hello') {
     return CLI::out($message);
 });
