@@ -250,6 +250,34 @@ You have 2 choices, whether you can find a record with where clause, or you can 
   
 ### Command
 PHP-M also provides a way to interact with application via command line.
+You can create your own command with command below:
+
+    php command make:command YourCommand
+    
+This command will create your command in path \App\Commands.
+
+After creating command you need to address it to the application inside \Routes\command.php file like following:
+
+    $command->define('command-name', \App\Command\YourCommand::class);
+    
+You can also provide a closure as the second parameter to the define method to handle your command's action:
+
+    $command->modify('command-name', function () {
+        //
+    });
+
+Keep in mind that every parameter after the command name can be accessed within command's class or closure:
+
+    php command say 'Hello World !'
+
+    use Core\Classes\CommandLineInterface as CLI;
+    
+    $command->modify('say', function (string $message = 'Hello') {
+        return CLI::out($message);
+    });
+    
+Also the class CommandLineInterface indludes massive command line options for you to take advantage of like cli color, background, font, etc..
+You may wish to check it out at the path \Core\Classes\CommandLineInterface
 
 #### Available commands
 ##### Migrate
