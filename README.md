@@ -162,9 +162,9 @@ The only available response type is JSON, for the sake of consistency of respons
             $data = "{$projectId} - {$logId}";
             
             return $this->response(
-            'Success',
-            $data,
-            200
+                'Success',
+                $data,
+                200
             );
         }
     }
