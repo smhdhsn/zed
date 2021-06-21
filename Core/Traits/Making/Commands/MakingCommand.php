@@ -36,7 +36,7 @@ trait MakingCommand
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = trim($fileName, 'Command') . ' - Command';
+        $fileName = str_ireplace("Command", '', $fileName) .  ' - Command';
 
         return CLI::out("{$fileName} Created !", CLI::BLUE);
     }

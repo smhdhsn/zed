@@ -36,7 +36,7 @@ trait MakingService
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = trim($fileName, 'Service') . ' - Service';
+        $fileName = str_ireplace("Service", '', $fileName) . ' - Service';
 
         return CLI::out("{$fileName} Created !", CLI::BLUE);
     }

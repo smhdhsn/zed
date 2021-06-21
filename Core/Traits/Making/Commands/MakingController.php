@@ -36,7 +36,7 @@ trait MakingController
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = trim($fileName, 'Controller') . ' - Controller';
+        $fileName = str_ireplace("Controller", '', $fileName) .  ' - Controller';
 
         return CLI::out("{$fileName} Created !", CLI::BLUE);
     }

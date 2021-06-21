@@ -36,7 +36,7 @@ trait MakingRepository
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = trim($fileName, 'Repository') . ' - Repository';
+        $fileName = str_ireplace("Repository", '', $fileName) .  ' - Repository';
 
         return CLI::out("{$fileName} Created !", CLI::BLUE);
     }

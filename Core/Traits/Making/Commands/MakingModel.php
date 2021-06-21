@@ -36,7 +36,7 @@ trait MakingModel
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = trim($fileName, 'Model') . ' - Model';
+        $fileName = str_ireplace("Model", '', $fileName) .  ' - Model';
 
         return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
