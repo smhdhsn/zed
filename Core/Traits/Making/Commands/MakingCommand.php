@@ -28,7 +28,7 @@ trait MakingCommand
         $fileName = ucfirst($params[1]);
 
         $templatePath = $this->templatePath('Command');
-        $originPath = $this->originPath('Commands', $fileName);
+        $originPath = $this->originPath('App', 'Commands', $fileName);
 
         $content = $this->getContent($templatePath);
 
@@ -36,6 +36,8 @@ trait MakingCommand
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Command Created !", CLI::BLUE);
+        $fileName = trim($fileName, 'Command') . ' - Command';
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }

@@ -28,7 +28,7 @@ trait MakingController
         $fileName = ucfirst($params[1]);
 
         $templatePath = $this->templatePath('Controller');
-        $originPath = $this->originPath('Controllers', $fileName);
+        $originPath = $this->originPath('App', 'Controllers', $fileName);
 
         $content = $this->getContent($templatePath);
 
@@ -36,6 +36,8 @@ trait MakingController
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Controller Created !", CLI::BLUE);
+        $fileName = trim($fileName, 'Controller') . ' - Controller';
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }

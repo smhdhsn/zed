@@ -28,7 +28,7 @@ trait MakingService
         $fileName = ucfirst($params[1]);
 
         $templatePath = $this->templatePath('Service');
-        $originPath = $this->originPath('Services', $fileName);
+        $originPath = $this->originPath('App', 'Services', $fileName);
 
         $content = $this->getContent($templatePath);
 
@@ -36,6 +36,8 @@ trait MakingService
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Service Created !", CLI::BLUE);
+        $fileName = trim($fileName, 'Service') . ' - Service';
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }

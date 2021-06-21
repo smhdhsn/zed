@@ -22,6 +22,22 @@ trait MakingMigration
      */
     protected function migration(array $params): string
     {
-        return CLI::out('This Section Is Under Construction !', CLI::BLINK_FAST);
+        if (! $params[1])
+            return CLI::out('Please Enter A Name For Your Migration !', CLI::RED);
+
+        $date = date('Y_m_d_') . (time() % 86400) . '_';
+        $fileName = $date . $params[1];
+        $className = $this->getMigrationClassName($fileName);
+
+        $templatePath = $this->templatePath('Migration');
+        $originPath = $this->originPath('Database', 'Migrations', $fileName);
+
+        $content = $this->getContent($templatePath);
+
+        $finalContent = $this->replacePlaceholders($content, $className);
+
+        $this->createFile($originPath, $finalContent);
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }

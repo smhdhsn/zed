@@ -28,7 +28,7 @@ trait MakingModel
         $fileName = ucfirst($params[1]);
 
         $templatePath = $this->templatePath('Model');
-        $originPath = $this->originPath('Models', $fileName);
+        $originPath = $this->originPath('App', 'Models', $fileName);
 
         $content = $this->getContent($templatePath);
 
@@ -36,6 +36,8 @@ trait MakingModel
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Model Created !", CLI::BLUE);
+        $fileName = trim($fileName, 'Model') . ' - Model';
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }

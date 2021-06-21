@@ -28,7 +28,7 @@ trait MakingRepository
         $fileName = ucfirst($params[1]);
 
         $templatePath = $this->templatePath('Repository');
-        $originPath = $this->originPath('Repositories', $fileName);
+        $originPath = $this->originPath('App', 'Repositories', $fileName);
 
         $content = $this->getContent($templatePath);
 
@@ -36,6 +36,8 @@ trait MakingRepository
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Repository Created !", CLI::BLUE);
+        $fileName = trim($fileName, 'Repository') . ' - Repository';
+
+        return CLI::out("{$fileName} Created !", CLI::BLUE);
     }
 }
