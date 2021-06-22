@@ -326,7 +326,7 @@ For creating new migration:
     
 For creating new command:
 
-    php command make:command UserCreatindCommand
+    php command make:command UserCreatingCommand
     
 ## License
 The PHP-M micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
