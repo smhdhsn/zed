@@ -22,7 +22,7 @@ class ServeCommand
     {
         $port = $this->port();
 
-        exec("cd Public && php -S localhost:{$port}");
+        exec("php -S localhost:{$port} -t Public");
     }
 
     /**
