@@ -162,9 +162,9 @@ The only available response type is JSON, for the sake of consistency of respons
             $data = "{$projectId} - {$logId}";
             
             return $this->response(
-                'Success',
+                Response::SUCCESS,
                 $data,
-                200
+                Response::HTTP_OK
             );
         }
     }
@@ -198,15 +198,15 @@ In case of possible errors you can also use BaseController's error() method:
             
             try {
                 return $this->response(
-                    'Success',
+                    Response::SUCCESS,
                     $data,
-                    200
+                    Response::HTTP_OK
                 );
             } catch (Exception $exception) {
                 return $this->error(
-                    'Error',
+                    Response::ERROR,
                     $exception->getMessage(),
-                    500
+                    Response::HTTP_INTERNAL_SERVER_ERROR
                 );
             }
         }
@@ -326,7 +326,7 @@ For creating new migration:
     
 For creating new command:
 
-    php command make:command UserCreatindCommand
+    php command make:command UserCreatingCommand
     
 ## License
 The PHP-M micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
