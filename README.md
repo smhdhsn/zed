@@ -271,6 +271,8 @@ You can also provide a closure as the second parameter to the define method to h
 Keep in mind that every parameter after the command name can be accessed within the command's class or closure:
 
     php command say 'Hello World !'
+    
+Inside command.php file:
 
     use Core\Classes\CommandLineInterface as CLI;
 
