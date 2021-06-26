@@ -22,6 +22,13 @@ class ServeCommand
     {
         $port = $this->port();
 
+        echo CLI::out(
+            CLI::GREEN 
+            . "PHP-M development server started:" 
+            . CLI::WHITE 
+            . " <http://127.0.0.1:{$port}>"
+        );
+
         exec("php -S localhost:{$port} -t Public");
     }
 
