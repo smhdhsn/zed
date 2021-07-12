@@ -40,7 +40,7 @@ trait MakingHelper
     {
         return dirname(dirname(__DIR__))
         . DIRECTORY_SEPARATOR
-        . 'Templates'
+        . 'BluePrints'
         . DIRECTORY_SEPARATOR
         . "{$file}Template.txt";
     }

@@ -12,6 +12,15 @@ use Core\Classes\CommandLineInterface as CLI;
 class ServeCommand
 {
     /**
+     * Extra Arguments Passed To Script Via Command Line.
+     * 
+     * @since 1.0.0
+     * 
+     * @var array
+     */
+    public ?array $params;
+
+    /**
      * This Method Handles The Command's Action.
      * 
      * @since 1.0.0
@@ -42,7 +51,7 @@ class ServeCommand
      */
     private function port(): int
     {
-        return explode('=', $_SERVER['argv'][2])[1] ?? 8000;
+        return explode('=', $this->params[0])[1] ?? 8000;
     }
 }
   
