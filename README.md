@@ -5,6 +5,12 @@
 ## About
 PHP-M is an API-based micro-framework powered by PHP.
 
+### Features
+- ORM.
+- Routing.
+- Migration.
+- Command.
+- Request Validation.
 ## Serving application
 You can serve the application with the following command, just head to the root of the project with the command line and type:
 
