@@ -63,7 +63,7 @@ trait MigrationHelper
      */
     private function getPath(): string
     {
-        return dirname(dirname(dirname(__DIR__)))
+        return dirname(__DIR__, 3)
         . DIRECTORY_SEPARATOR
         . 'Database'
         . DIRECTORY_SEPARATOR

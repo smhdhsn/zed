@@ -38,7 +38,7 @@ trait MakingHelper
      */
     private function templatePath(string $file): string
     {
-        return dirname(dirname(__DIR__))
+        return dirname(__DIR__, 2)
         . DIRECTORY_SEPARATOR
         . 'BluePrints'
         . DIRECTORY_SEPARATOR
@@ -58,7 +58,7 @@ trait MakingHelper
      */
     private function originPath(string $mainFolder, string $folder, string $fileName): string
     {
-        return dirname(dirname(dirname(__DIR__)))
+        return dirname(__DIR__, 3)
         . DIRECTORY_SEPARATOR
         . $mainFolder
         . DIRECTORY_SEPARATOR
