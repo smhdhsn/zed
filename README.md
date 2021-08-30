@@ -59,7 +59,7 @@ $route->get('/project/:projectId', 'ProjectController@show', [
     'auth'
 ]);
 ```
-The middleware auth is responsible for protecting routes from unauthenticated requests. This middleware is powered by JWT, you may check out Token class under path \Core\Classes\Token for more information about how the middleware works.
+The middleware auth is responsible for protecting routes from unauthenticated requests. This middleware is powered by JWT, you may check out Token class under path `Core/Classes/Token` for more information about how the middleware works.
 
 ### Route params
 You may wish to pass your route parameters to your application. You may do so like the following.
@@ -262,9 +262,9 @@ PHP-M also provides a way to interact with the application via the command line.
 ```shell
 php command make:command YourCommand
 ```
-This command will create your command in path \App\Commands.
+This command will create your command in path `App/Commands`.
 
-After creating the command you need to address it to the application inside \Routes\command.php file like the following:
+After creating the command you need to address it to the application inside `Routes/command` file like the following:
 ```php
 $command->define('command-name', \App\Command\YourCommand::class);
 ```
@@ -286,7 +286,7 @@ $command->modify('say', function (string $message = 'Hello') {
     return CLI::out($message);
 });
 ```
-Also, the class CommandLineInterface includes massive command-line options for you to take advantage of like cli color, background, font, etc... You may wish to check it out at the path \Core\Classes\CommandLineInterface
+Also, the class CommandLineInterface includes massive command-line options for you to take advantage of like cli color, background, font, etc... You may wish to check it out at the path `Core/Classes/CommandLineInterface`
 
 #### Available commands
 
