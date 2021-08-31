@@ -100,10 +100,10 @@ $request->projectName;
 You can validate your request and in case of any errors show a proper error message.
 ```php
 $request->validate([
-    'name' => ['required', 'string'],
-    'age' => ['required', 'numeric', ['min' => 18]],
-    'height' => ['required', 'numeric', ['max' => 190]],
-    'email' => ['required', 'email', ['unique' => 'users']],
+    'name' => 'required|string',
+    'age' => 'required|numeric|min:18',
+    'height' => 'required|numeric|max:190',
+    'email' => 'required|email|unique:users,email',
 ]);
 ```
 #### Available validation rules
@@ -124,21 +124,21 @@ The field under this rule must be a valid email.
 The field under this rule must be less than the given value.
 ```php
 $request->validate([
-    'height' => ['required', 'numeric', ['max' => 190]],
+    'height' => 'max:190',
 ]);
 ```
 ##### Minimum
 The field under this rule must be more than the given value.
 ```php
 $request->validate([
-    'age' => ['required', 'numeric', ['min' => 18]],
+    'age' => 'min:18',
 ]);
 ```
 ##### Unique
-The field under this rule must be unique in the database.
+The field under this rule must be unique in the database, you have to provide the column you wish to check for uniqueness of the request attribute after table name.
 ```php
 $request->validate([
-    'email' => ['required', 'email', ['unique' => 'users']],
+    'email' => 'unique:users,email',
 ]);
 ```
 In this case, application will look through users table on database and checks if column email exists with the same value or not.
