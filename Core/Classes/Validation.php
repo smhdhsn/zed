@@ -38,6 +38,15 @@ class Validation extends Database
     CONST RULE_MAX = 'max';
     CONST RULE_MIN = 'min';
 
+    /*
+    'name' => ['required', 'string'],
+    'surname' => ['required', 'string'],
+    'email' => ['required', 'string', 'email', ['unique' => 'users']],
+    'username' => ['required', 'string', ['unique' => 'users']],
+    'password' => ['required', 'string', ['min' => 8]],
+    'phone_number' => ['required', 'numeric', ['max' => 11]],
+    */
+
     /**
      * Validating Request Prameters.
      * 
@@ -49,36 +58,36 @@ class Validation extends Database
      */
     public function validate(array $validationRules): object
     {
-        foreach ($validationRules as $attribute => $rules) {
-            foreach ($rules as $rule) {
-                $ruleName = is_array($rule) ? array_search(reset($rule), $rule) : $rule;
+        foreach ($validationRules as $requestAttribute => $rules) {
+            foreach (explode('|', $rules) as $rule) {
+                
+                $ruleName = explode(':', $rule)[0] ?? $rule;
 
                 switch ($ruleName) {
                     case self::RULE_MAX:
-                        $this->validateMaximum($attribute, $rule);
+                        $this->validateMaximum($requestAttribute, $rule);
                     break;
                     case self::RULE_MIN:
-                        $this->validateMinimum($attribute, $rule);
+                        $this->validateMinimum($requestAttribute, $rule);
                     break;
                     case self::RULE_UNIQUE:
-                        $this->validateUnique($attribute, $rule);
+                        $this->validateUnique($requestAttribute, $rule);
                     break;
                     case self::RULE_REQUIRED:
-                        $this->validateRequired($attribute);
+                        $this->validateRequired($requestAttribute);
                     break;
                     case self::RULE_NUMERIC:
-                        $this->validateNumeric($attribute);
+                        $this->validateNumeric($requestAttribute);
                     break;
                     case self::RULE_STRING:
-                        $this->validateString($attribute);
+                        $this->validateString($requestAttribute);
                     break;
                     case self::RULE_EMAIL:
-                        $this->validateEmail($attribute);
+                        $this->validateEmail($requestAttribute);
                     break;
                 }
             }
         }
-        
         
         return empty($this->errors)
         ? $this
@@ -124,6 +133,24 @@ class Validation extends Database
             self::RULE_UNIQUE => 'Given {unique} Already Exists In Database.',
             self::RULE_MIN => 'Minimum Length Of This Field Must Be More Than {min} Characters.',
             self::RULE_MAX => 'Maximum Length Of This Field Must Be Less Than {max} Characters.',
+        ];
+    }
+
+    /**
+     * Splits Rule Syntax Into Parts That Can Be Used By Validation Section.
+     * 
+     * @since 1.0.0
+     * 
+     * @param string $rawRule
+     * 
+     * @return array
+     */
+    private function getParts(string $rawRule): array
+    {
+        $rule = explode(':', $rawRule);
+
+        return [
+            $rule[0] => strpos($rule[1], ',') ? explode(',', $rule[1]) : $rule[1]
         ];
     }
 

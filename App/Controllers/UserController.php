@@ -44,8 +44,8 @@ class UserController extends BaseController
     private function validateLoginRequest(Request $request): object
     {
         return $request->validate([
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
     }
 
@@ -81,12 +81,12 @@ class UserController extends BaseController
     private function validateRegisterRequest(Request $request): object
     {
         return $request->validate([
-            'name' => ['required', 'string'],
-            'surname' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', ['unique' => 'users']],
-            'username' => ['required', 'string', ['unique' => 'users']],
-            'password' => ['required', 'string', ['min' => 8]],
-            'phone_number' => ['required', 'numeric', ['max' => 11]],
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+            'username' => 'required|string|unique:users,username',
+            'password' => 'required|string|min:8',
+            'phone_number' => 'required|numeric|max:11',
         ]);
     }
 }

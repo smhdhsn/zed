@@ -14,14 +14,14 @@ trait EmailValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
+     * @param string $requestAttribute
      * 
      * @return void
      */
-    private function validateEmail(string $attribute): void
+    private function validateEmail(string $requestAttribute): void
     {
-        if (! filter_var($this->{$attribute}, FILTER_VALIDATE_EMAIL)) {
-            $this->addError($attribute, self::RULE_EMAIL);
+        if (! filter_var($this->{$requestAttribute}, FILTER_VALIDATE_EMAIL)) {
+            $this->addError($requestAttribute, self::RULE_EMAIL);
         }
     }
 }

@@ -14,14 +14,14 @@ trait StringValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
+     * @param string $requestAttribute
      * 
      * @return void
      */
-    private function validateString(string $attribute): void
+    private function validateString(string $requestAttribute): void
     {
-        if (! is_string($this->{$attribute})) {
-            $this->addError($attribute, self::RULE_STRING);
+        if (! is_string($this->{$requestAttribute})) {
+            $this->addError($requestAttribute, self::RULE_STRING);
         }
     }
 }

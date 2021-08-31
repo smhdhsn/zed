@@ -14,15 +14,17 @@ trait MinimumValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
-     * @param array $rule
+     * @param string $requestAttribute
+     * @param string $rawRule
      * 
      * @return void
      */
-    private function validateMinimum(string $attribute, array $rule): void
+    private function validateMinimum(string $requestAttribute, string $rawRule): void
     {
-        if (strlen($this->{$attribute}) < $rule['min']) {
-            $this->addError($attribute, self::RULE_MIN, $rule);
+        $rule = $this->getParts($rawRule);
+
+        if (strlen($this->{$requestAttribute}) < $rule['min']) {
+            $this->addError($requestAttribute, self::RULE_MIN, $rule);
         }
     }
 }

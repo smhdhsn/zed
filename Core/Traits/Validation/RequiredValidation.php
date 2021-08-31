@@ -14,14 +14,14 @@ trait RequiredValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
+     * @param string $requestAttribute
      * 
      * @return void
      */
-    private function validateRequired(string $attribute): void
+    private function validateRequired(string $requestAttribute): void
     {
-        if (! $this->{$attribute}) {
-            $this->addError($attribute, self::RULE_REQUIRED);
+        if (! $this->{$requestAttribute}) {
+            $this->addError($requestAttribute, self::RULE_REQUIRED);
         }
     }
 }

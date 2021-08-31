@@ -14,16 +14,18 @@ trait UniqueValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
-     * @param array $rule
+     * @param string $requestAttribute
+     * @param string $rawRule
      * 
      * @return void
      */
-    private function validateUnique(string $attribute, array $rule): void
+    private function validateUnique(string $requestAttribute, string $rawRule): void
     {
-        if ($this->paramExists($attribute, $rule['unique'])) {
-            $rule['unique'] = $attribute;
-            $this->addError($attribute, self::RULE_UNIQUE, $rule);
+        $rule = $this->getParts($rawRule);
+
+        if ($this->paramExists($requestAttribute, $rule['unique'][0], $rule['unique'][1])) {
+            $rule['unique'] = $requestAttribute;
+            $this->addError($requestAttribute, self::RULE_UNIQUE, $rule);
         }
     }
 
@@ -32,18 +34,19 @@ trait UniqueValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
+     * @param string $requestAttribute
+     * @param string $column
      * @param string $table
      * 
      * @return bool
      */
-    private function paramExists(string $attribute, string $table): bool
+    private function paramExists(string $requestAttribute, string $table, string $column): bool
     {
-        $query = "SELECT * FROM \n\t{$table} \nWHERE \n\t{$attribute}=:{$attribute}";
+        $query = "SELECT * FROM \n\t{$table} \nWHERE \n\t{$column}=:{$requestAttribute}";
 
         $statement = $this->connect()->prepare($query);
         
-        $statement->bindParam(":{$attribute}", $this->{$attribute});
+        $statement->bindParam(":{$requestAttribute}", $this->{$requestAttribute});
         
         $statement->execute();
 

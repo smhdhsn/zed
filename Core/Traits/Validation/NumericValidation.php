@@ -14,14 +14,14 @@ trait NumericValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
+     * @param string $requestAttribute
      * 
      * @return void
      */
-    private function validateNumeric(string $attribute): void
+    private function validateNumeric(string $requestAttribute): void
     {
-        if (! is_numeric($this->{$attribute})) {
-            $this->addError($attribute, self::RULE_NUMERIC);
+        if (! is_numeric($this->{$requestAttribute})) {
+            $this->addError($requestAttribute, self::RULE_NUMERIC);
         }
     }
 }

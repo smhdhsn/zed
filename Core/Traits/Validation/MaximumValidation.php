@@ -14,15 +14,17 @@ trait MaximumValidation
      * 
      * @since 1.0.0
      * 
-     * @param string $attribute
-     * @param array $rule
+     * @param string $requestAttribute
+     * @param string $rawRule
      * 
      * @return void
      */
-    private function validateMaximum(string $attribute, array $rule): void
+    private function validateMaximum(string $requestAttribute, string $rawRule): void
     {
-        if (strlen($this->{$attribute}) > $rule['max']) {
-            $this->addError($attribute, self::RULE_MAX, $rule);
+        $rule = $this->getParts($rawRule);
+
+        if (strlen($this->{$requestAttribute}) > $rule['max']) {
+            $this->addError($requestAttribute, self::RULE_MAX, $rule);
         }
     }
 }
