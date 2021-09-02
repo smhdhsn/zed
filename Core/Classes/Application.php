@@ -35,15 +35,6 @@ class Application
     public Command $command;
 
     /**
-     * Holds an Instance Of This Class.
-     * 
-     * @since 1.0.0
-     * 
-     * @var object
-     */
-    public static Application $instance;
-
-    /**
      * Bootstraping Main Classes.
      * 
      * @since 1.0.0
@@ -52,7 +43,6 @@ class Application
      */
     public function __construct()
     {
-        self::$instance = $this;
         $this->router = new Router;
         $this->command = new Command;
     }

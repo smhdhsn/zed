@@ -20,7 +20,7 @@ class BaseModel extends Database
      * 
      * @var object
      */
-    private $connection;
+    private object $connection;
 
     /**
      * SQL Query.
@@ -29,7 +29,7 @@ class BaseModel extends Database
      * 
      * @var string
      */
-    private $query;
+    private string $query;
 
     /**
      * Query Statement.
@@ -38,7 +38,7 @@ class BaseModel extends Database
      * 
      * @var object
      */
-    private $statement;
+    private object $statement;
 
     /**
      * Provided Inputs.
@@ -47,7 +47,7 @@ class BaseModel extends Database
      * 
      * @var array
      */
-    protected $inputs;
+    protected array $inputs;
 
     /**
      * Creates an Instance Of This Class.
@@ -96,7 +96,7 @@ class BaseModel extends Database
      * 
      * @return object
      */
-    private function checkForModelExistance()
+    private function checkForModelExistance(): object
     {
         if (! isset($this->id))
             die(

@@ -40,7 +40,7 @@ $command = $app->command;
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'command.php';
 
 /**
- * Defining Systemic Commands.
+ * Mapping Predefined Commands.
  */
 $command->modify('migrate', \App\Commands\MigrateCommand::class);
 $command->modify('serve', \App\Commands\ServeCommand::class);

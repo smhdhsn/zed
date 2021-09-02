@@ -78,7 +78,7 @@ trait MakingHelper
      * 
      * @return void
      */
-    private function createFile(string $path, string $content)
+    private function createFile(string $path, string $content): void
     {
         $myfile = fopen($path, "w");
         fwrite($myfile, $content);

@@ -38,15 +38,6 @@ class Validation extends Database
     CONST RULE_MAX = 'max';
     CONST RULE_MIN = 'min';
 
-    /*
-    'name' => ['required', 'string'],
-    'surname' => ['required', 'string'],
-    'email' => ['required', 'string', 'email', ['unique' => 'users']],
-    'username' => ['required', 'string', ['unique' => 'users']],
-    'password' => ['required', 'string', ['min' => 8]],
-    'phone_number' => ['required', 'numeric', ['max' => 11]],
-    */
-
     /**
      * Validating Request Prameters.
      * 
@@ -105,7 +96,7 @@ class Validation extends Database
      * 
      * @return void
      */
-    private function addError(string $attribute, string $rule, ?array $params = [])
+    private function addError(string $attribute, string $rule, ?array $params = []): void
     {
         $message = $this->messages()[$rule];
 

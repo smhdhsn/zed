@@ -16,7 +16,7 @@ trait Delete
      * 
      * @return bool
      */
-    public function delete()
+    public function delete(): bool
     {
         return $this->checkForModelExistance()
             ->makeDeleteQuery()

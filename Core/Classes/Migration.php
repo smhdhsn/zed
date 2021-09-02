@@ -190,7 +190,7 @@ class Migration extends Database
      */
     private function createTable(): void
     {
-        $this->connection->exec("CREATE TABLE IF NOT EXISTS migrations (
+        $this->exec("CREATE TABLE IF NOT EXISTS migrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
             migration VARCHAR(255),
             batch INT

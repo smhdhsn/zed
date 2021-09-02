@@ -18,7 +18,7 @@ class Token
      * 
      * @var string
      */
-    private $key;
+    private string $key;
 
     /**
      * Token Expiration Time.
@@ -27,7 +27,7 @@ class Token
      * 
      * @var string
      */
-    private $expirationTime;
+    private string $expirationTime;
     
     /**
      * Creates Token's Instance.
@@ -49,7 +49,7 @@ class Token
      * 
      * @return bool
      */
-    public function verify()
+    public function verify(): bool
     {
         $token = apache_request_headers()['Authorization'];
         $decoded = $this->decode($token);
