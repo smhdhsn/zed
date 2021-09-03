@@ -29,24 +29,24 @@ You can choose between three options for defining a route for your application.
 
 #### Via closure
 ```php
-$route->get('/projects', function () {
+$router->get('/projects', function () {
     return 'Hello, World !';
 });
 ```
 #### Via string
 ```php
-$route->get('/projects', 'ProjectController@index');
+$router->get('/projects', 'ProjectController@index');
 ```
 #### Via array
 ```php
 use App\Controllers\ProjectController;
 
-$route->get('/projects', [ProjectController::class, 'index']);
+$router->get('/projects', [ProjectController::class, 'index']);
 ```
 ### Middleware
 You can implement a middleware to a route like the following.
 ```php
-$route->get('/project/:projectId', 'ProjectController@show', [
+$router->get('/project/:projectId', 'ProjectController@show', [
     'checkAvailability'
 ]);
 ```
@@ -55,7 +55,7 @@ Keep in mind that you need to provide method name that is responsible for your m
 ### Protecting routes
 As I mentioned before, you can provide middleware within an array as the third parameter to the route.
 ```php
-$route->get('/project/:projectId', 'ProjectController@show', [
+$router->get('/project/:projectId', 'ProjectController@show', [
     'auth'
 ]);
 ```
@@ -64,7 +64,7 @@ The middleware auth is responsible for protecting routes from unauthenticated re
 ### Route params
 You may wish to pass your route parameters to your application. You may do so like the following.
 ```php
-$route->get('/projects/:projectId/logs/:logId', 'ProjectController@index');
+$router->get('/projects/:projectId/logs/:logId', 'ProjectController@index');
 ```
 Keep in mind that in your controller or closure you'll receive Request object as your first parameter:
 ```php
