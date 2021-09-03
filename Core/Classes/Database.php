@@ -2,9 +2,9 @@
 
 namespace Core\Classes;
 
-use PDO;
-use PDOException;
 use Core\Classes\BaseController;
+use PDOException;
+use PDO;
 
 /**
  * @author @smhdhsn

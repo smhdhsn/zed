@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Request, Response};
 use App\Services\User\{UserFetchingService, UserCreatingService};
+use Core\Classes\{BaseController, Request, Response};
 
 /**
  * @author @smhdhsn

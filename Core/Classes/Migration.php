@@ -2,9 +2,9 @@
 
 namespace Core\Classes;
 
-use PDO;
-use Core\Classes\CommandLineInterface as CLI;
 use Core\Traits\Migration\{MigrationHelper as Helper, MigrationCommands as Commands};
+use Core\Classes\CommandLineInterface as CLI;
+use PDO;
 
 /**
  * @author @smhdhsn

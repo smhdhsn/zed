@@ -2,8 +2,8 @@
 
 namespace Core\Traits\Sequel;
 
-use PDOException;
 use Core\Classes\{BaseController, Response};
+use PDOException;
 
 /**
  * @author @smhdhsn

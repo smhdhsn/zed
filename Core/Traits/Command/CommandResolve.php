@@ -2,8 +2,8 @@
 
 namespace Core\Traits\Command;
 
-use Exception;
 use Core\Classes\CommandLineInterface as CLI;
+use Exception;
 
 /**
  * @author @smhdhsn

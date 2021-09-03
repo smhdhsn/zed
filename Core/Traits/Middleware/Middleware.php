@@ -2,8 +2,8 @@
 
 namespace Core\Traits\Middleware;
 
-use Exception;
 use Core\Classes\{BaseController, Response};
+use Exception;
 
 /**
  * @author @smhdhsn

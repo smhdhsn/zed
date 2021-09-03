@@ -2,9 +2,9 @@
 
 namespace App\Services\User;
 
-use App\Models\User;
-use Core\Classes\Request;
 use App\Repositories\UserRepository;
+use Core\Classes\Request;
+use App\Models\User;
 
 /**
  * @author @smhdhsn
@@ -20,7 +20,7 @@ class UserCreatingService
      * 
      * @var object
      */
-    private $repository;
+    private object $repository;
 
     /**
      * Creates an Instance Of This Class.

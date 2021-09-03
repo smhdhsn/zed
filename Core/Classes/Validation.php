@@ -2,8 +2,8 @@
 
 namespace Core\Classes;
 
-use Core\Classes\{BaseController, Database, Response};
 use Core\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation};
+use Core\Classes\{BaseController, Database, Response};
 
 /**
  * @author @smhdhsn

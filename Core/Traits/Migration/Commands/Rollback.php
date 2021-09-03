@@ -2,8 +2,8 @@
 
 namespace Core\Traits\Migration\Commands;
 
-use PDO;
 use Core\Classes\CommandLineInterface as CLI;
+use PDO;
 
 /**
  * @author @smhdhsn

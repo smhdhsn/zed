@@ -3,13 +3,14 @@
 namespace App\Commands;
 
 use Core\Classes\CommandLineInterface as CLI;
+use Core\Interfaces\Console;
 
 /**
  * @author @smhdhsn
  * 
  * @version 1.0.0
  */
-class ServeCommand
+class ServeCommand implements Console
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.
@@ -27,7 +28,7 @@ class ServeCommand
      * 
      * @return string
      */
-    public function handle()
+    public function handle(): string
     {
         $port = $this->port();
 
@@ -38,7 +39,7 @@ class ServeCommand
             . " <http://127.0.0.1:{$port}>"
         );
 
-        exec("php -S localhost:{$port} -t Public");
+        return exec("php -S localhost:{$port} -t Public");
     }
 
     /**

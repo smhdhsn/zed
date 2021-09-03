@@ -2,8 +2,8 @@
 
 namespace App\Commands;
 
-use Core\Interfaces\Console;
 use Core\Classes\{CommandLineInterface as CLI, Migration};
+use Core\Interfaces\Console;
 
 /**
  * @author @smhdhsn
