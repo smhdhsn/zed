@@ -110,16 +110,32 @@ $request->validate([
 
 ##### Required
 The field under this rule is required and must be provided to the application.
-
+```php
+$request->validate([
+    'name' => 'required',
+]);
+```
 ##### String
 The field under this rule must be a valid string.
-
+```php
+$request->validate([
+    'surname' => 'string',
+]);
+```
 ##### Numeric
 The field under this rule must be a valid numeric string.
-
+```php
+$request->validate([
+    'age' => 'numeric',
+]);
+```
 ##### Email
 The field under this rule must be a valid email.
-
+```php
+$request->validate([
+    'email' => 'email',
+]);
+```
 ##### Maximum
 The field under this rule must be less than the given value.
 ```php
