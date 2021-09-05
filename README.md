@@ -304,53 +304,55 @@ $command->modify('say', function (string $message = 'Hello') {
 ```
 Also, the class CommandLineInterface includes massive command-line options for you to take advantage of like cli color, background, font, etc... You may wish to check it out at the path `Core/Classes/CommandLineInterface`
 
-#### Available commands
+#### Predefined commands
 
 ##### Migrate
 This command handles migration operations
 
-For running migrations:
+Running migrations:
 ```shell
 php command migrate
 ```
-For rolling back migration:
+Rolling back migration:
 ```shell
 php command migrate:rollback
 ```
-For resetting all migrations:
+Resetting all migrations:
 ```shell
 php command migrate:reset
 ```
-For resetting and then running all migrations again:
+Resetting and then running all migrations again:
 ```shell
 php command migrate:fresh
 ```
 ##### Make
 This command is responsible for creating classes within the application to save time.
 
-For creating a new controller:
+Creating a new controller:
 ```shell
 php command make:controller UserController
 ```
-For creating a new model:
+Creating a new model:
 ```shell
 php command make:model User
 ```
-For creating a new repository:
+Creating a new repository:
 ```shell
 php command make:repository UserRepository
 ```
-For creating a new service:
+Creating a new service:
 ```shell
 php command make:service UserCreatingService
 ```
-For creating new migration:
+Creating new migration:
 ```shell
 php command make:migration create_users_table
 ```
-For creating new command:
+Creating new command:  
+There are 2 types of commands `Close-Ended`, `Open-Ended` default type is `Close-Ended`.  
+Further explanation is available within `Core\Traits\Making\Commands\MakingCommand::determineCommandType()` docblock.
 ```shell
-php command make:command UserCreatingCommand
+php command make:command UserCreatingCommand [--open, --close]
 ```
 ## License
 The PHP-M micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
