@@ -349,10 +349,11 @@ Creating new migration:
 php command make:migration create_users_table
 ```
 Creating new command:  
-There are 2 types of commands `Close-Ended`, `Open-Ended` default type is `Close-Ended`.  
+There are 2 types of commands **Close-Ended**, **Open-Ended**.  
 Further explanation is available within `Core\Traits\Making\Commands\MakingCommand::determineCommandType()` docblock.
 ```shell
 php command make:command UserCreatingCommand [--open, --close]
 ```
+> :information_source: Default command type is **Close-Ended**.
 ## License
 The PHP-M micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
