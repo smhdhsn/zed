@@ -3,14 +3,14 @@
 namespace App\Commands;
 
 use Core\Classes\CommandLineInterface as CLI;
-use Core\Interfaces\Console;
+use Core\Interfaces\#InterfaceType as #InterfaceAbbreviation;
 
 /**
  * @author @id
  * 
  * @version x.x.x
  */
-class Xxx implements Console
+class Xxx implements #InterfaceAbbreviation
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.
@@ -26,9 +26,9 @@ class Xxx implements Console
      * 
      * @since x.x.x
      * 
-     * @return string
+     * @return #Returning
      */
-    public function handle(): string
+    public function handle(): #Returning
     {
         //
     }
