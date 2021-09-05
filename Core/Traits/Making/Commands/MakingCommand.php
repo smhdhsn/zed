@@ -7,7 +7,7 @@ use Core\Classes\CommandLineInterface as CLI;
 /**
  * @author @smhdhsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 trait MakingCommand
 {
@@ -66,7 +66,7 @@ trait MakingCommand
     {
         switch ($commandType) {
             case '--open':
-                return $this->replaceClassAndInterface([
+                return $this->placeInterface([
                     'type' => 'OpenEndedCommand',
                     'abbreviation' => 'OEC',
                     'returning' => 'void',
@@ -74,34 +74,34 @@ trait MakingCommand
 
             case null:
             case '--close':
-                return $this->replaceClassAndInterface([
+                return $this->placeInterface([
                     'type' => 'CloseEndedCommand',
                     'abbreviation' => 'CEC',
                     'returning' => 'string',
                 ], $bluePrintContent);
 
             default:
-                echo CLI::out('Valid Command Types Are (--open, --close)', CLI::GREEN);
+                echo CLI::out('Valid Command Types Are [--open, --close]', CLI::GREEN);
                 echo CLI::out('Invalid Command Type !', CLI::BLINK_FAST . CLI::RED);
                 die();
         }
     }
 
     /**
-     * Modifying Interface To Use On Command.
+     * Placing Related Interface To Be Used On Command.
      * 
      * @since 1.0.1
      * 
+     * @param array $interfaceInformation
      * @param string $bluePrintContent
-     * @param array $interfaceType
      * 
      * @return string
      */
-    private function replaceClassAndInterface(array $interfaceType, string $bluePrintContent): string
+    private function placeInterface(array $interfaceInformation, string $bluePrintContent): string
     {
-        $content = str_replace("#InterfaceType", $interfaceType['type'], $bluePrintContent);
-        $content = str_replace("#InterfaceAbbreviation", $interfaceType['abbreviation'], $content);
-        $finalContent = str_replace("#Returning", $interfaceType['returning'], $content);
+        $content = str_replace("#InterfaceType", $interfaceInformation['type'], $bluePrintContent);
+        $content = str_replace("#InterfaceAbbreviation", $interfaceInformation['abbreviation'], $content);
+        $finalContent = str_replace("#Returning", $interfaceInformation['returning'], $content);
 
         return $finalContent;
     }
