@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://repository-images.githubusercontent.com/367858748/2dafa900-cf67-11eb-8ff5-e6f4882cef15" width="400">
+  <img title="Brainsss...!" src="https://raw.githubusercontent.com/SMhdHsn/SMhdHsn/master/Assets/Images/zed.jpeg">
 </p>
 
 ## About
-PHP-M is an API-based micro-framework powered by PHP.
+ZED is an API-Based Micro-Framework powered by PHP.
 
 ### Features
 - ORM.
@@ -235,7 +235,7 @@ class ProjectController extends BaseController
 }
 ```
 ### ORM
-PHP-M Provides some functionalities to interact with the database and perform simple CRUD operations.
+ZED Provides some functionalities to interact with the database and perform simple CRUD operations.
 
 #### Creating
 ```php
@@ -274,7 +274,7 @@ $project = Project::find($id);
 $project->delete();
 ```
 ### Command
-PHP-M also provides a way to interact with the application via the command line. You can create your own command with the command below:
+ZED also provides a way to interact with the application via the command line. You can create your own command with the command below:
 ```shell
 php command make:command YourCommand
 ```
@@ -356,4 +356,4 @@ php command make:command UserCreatingCommand [--open, --close]
 ```
 > :information_source: Default command type is **Close-Ended**.
 ## License
-The PHP-M micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
+The ZED micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
