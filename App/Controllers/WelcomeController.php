@@ -22,7 +22,7 @@ class WelcomeController extends BaseController
     {
         return $this->response(
             Response::SUCCESS,
-            'Welcome To php-m Framework.',
+            'Welcome To ZED Framework.',
             Response::HTTP_OK
         );
     }

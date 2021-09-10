@@ -23,7 +23,7 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autolo
  * 
  * @author @smhdhsn
  * 
- * @package php-m
+ * @package ZED
  * 
  * @version 1.0.0
  */

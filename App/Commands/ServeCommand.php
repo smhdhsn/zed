@@ -34,7 +34,7 @@ class ServeCommand implements OEC
 
         echo CLI::out(
             CLI::GREEN 
-            . "PHP-M development server started:" 
+            . "ZED development server started:" 
             . CLI::WHITE 
             . " <http://127.0.0.1:{$port}>"
         );

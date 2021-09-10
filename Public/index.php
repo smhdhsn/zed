@@ -22,7 +22,7 @@ require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR 
  * 
  * @author @smhdhsn
  * 
- * @package php-m
+ * @package ZED
  * 
  * @version 1.0.0
  */
