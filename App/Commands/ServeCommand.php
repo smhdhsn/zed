@@ -3,14 +3,13 @@
 namespace App\Commands;
 
 use Core\Classes\CommandLineInterface as CLI;
-use Core\Interfaces\OpenEndedCommand as OEC;
 
 /**
  * @author @smhdhsn
  * 
  * @version 1.0.0
  */
-class ServeCommand implements OEC
+class ServeCommand
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.

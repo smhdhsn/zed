@@ -3,14 +3,13 @@
 namespace App\Commands;
 
 use Core\Classes\{CommandLineInterface as CLI, Making};
-use Core\Interfaces\CloseEndedCommand as CEC;
 
 /**
  * @author @smhdhsn
  * 
  * @version 1.0.0
  */
-class MakeCommand extends Making implements CEC
+class MakeCommand extends Making
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.

@@ -349,11 +349,8 @@ Creating new migration:
 php command make:migration create_users_table
 ```
 Creating new command:  
-There are 2 types of commands **Close-Ended**, **Open-Ended**.  
-Further explanation is available within `Core\Traits\Making\Commands\MakingCommand::determineCommandType()` docblock.
 ```shell
-php command make:command UserCreatingCommand [--open, --close]
+php command make:command UserCreatingCommand
 ```
-> :information_source: Default command type is **Close-Ended**.
 ## License
 The ZED micro-framework is open-sourced software licensed under the [MIT license](LICENSE).
