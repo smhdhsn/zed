@@ -50,8 +50,7 @@ $router->get('/project/:projectId', 'ProjectController@show', [
     'checkAvailability'
 ]);
 ```
-Keep in mind that you need to provide method name that is responsible for your middleware.
-
+> :information_source: You need to list the method name that is responsible for your middleware inside the array.
 ### Protecting routes
 As I mentioned before, you can provide middleware within an array as the third parameter to the route.
 ```php
@@ -66,7 +65,7 @@ You may wish to pass your route parameters to your application. You may do so li
 ```php
 $router->get('/projects/:projectId/logs/:logId', 'ProjectController@index');
 ```
-Keep in mind that in your controller or closure you'll receive Request object as your first parameter:
+> :information_source: In your controller or closure you'll receive Request object as your first parameter.
 ```php
 <?php
 
@@ -290,7 +289,7 @@ $command->modify('command-name', function () {
     //
 });
 ```
-Keep in mind that every parameter after the command name can be accessed within the command's class or closure:
+> :information_source: Every parameter after the command name can be accessed within the command's class or closure.
 ```shell
 php command say 'Hello World !'
 ```
