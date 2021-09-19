@@ -2,7 +2,7 @@
 
 namespace Core\Traits\Making\Commands;
 
-use Core\Classes\CommandLineInterface as CLI;
+use Core\Classes\{CommandLineInterface as CLI, Str};
 
 /**
  * @author @smhdhsn
@@ -27,17 +27,22 @@ trait MakingMigration
 
         $date = date('Y_m_d_') . (time() % 86400) . '_';
         $fileName = $date . $params[1];
-        $className = $this->getMigrationClassName($fileName);
+
+        $className = Str::snakeToPascal($params[1]);
 
         $templatePath = $this->templatePath('Migration');
         $originPath = $this->originPath('Database', 'Migrations', $fileName);
 
         $content = $this->getContent($templatePath);
 
-        $finalContent = $this->replacePlaceholders($content, $className);
+        $finalContent = Str::placeValue([
+            '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
+            '{%version%}' => $_ENV['CURRENT_VERSION'],
+            '{%PascalCase%}' => $className,
+        ], $content);
 
         $this->createFile($originPath, $finalContent);
 
-        return CLI::out("{$fileName} Created !", CLI::BLUE);
+        return CLI::out("Created Migration: " . CLI::WHITE . $fileName, CLI::BLUE);
     }
 }

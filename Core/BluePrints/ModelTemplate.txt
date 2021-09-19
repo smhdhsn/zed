@@ -5,18 +5,18 @@ namespace App\Models;
 use Core\Classes\BaseModel;
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @version x.x.x
+ * @version {%version%}
  */
-class Xxx extends BaseModel
+class {%PascalCase%} extends BaseModel
 {
     /**
      * Model's Table Name.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @var string
      */
-    protected $table = 'xxxs';
+    protected $table = '{%snake_case%}';
 }
