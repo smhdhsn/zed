@@ -5,11 +5,11 @@ namespace App\Controllers;
 use Core\Classes\{BaseController, Request, Response};
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @version x.x.x
+ * @version {%version%}
  */
-class Xxx extends BaseController
+class {%PascalCase%} extends BaseController
 {
     //
 }

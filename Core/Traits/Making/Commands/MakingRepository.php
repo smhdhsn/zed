@@ -2,7 +2,7 @@
 
 namespace Core\Traits\Making\Commands;
 
-use Core\Classes\CommandLineInterface as CLI;
+use Core\Classes\{CommandLineInterface as CLI, Str};
 
 /**
  * @author @smhdhsn
@@ -32,12 +32,14 @@ trait MakingRepository
 
         $content = $this->getContent($templatePath);
 
-        $finalContent = $this->replacePlaceholders($content, $fileName);
+        $finalContent = Str::placeValue([
+            '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
+            '{%version%}' => $_ENV['CURRENT_VERSION'],
+            '{%PascalCase%}' => $fileName,
+        ], $content);
 
         $this->createFile($originPath, $finalContent);
 
-        $fileName = str_ireplace("Repository", '', $fileName) .  ' - Repository';
-
-        return CLI::out("{$fileName} Created !", CLI::BLUE);
+        return CLI::out("Repository created successfully.", CLI::BLUE);
     }
 }
