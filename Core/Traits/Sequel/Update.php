@@ -39,7 +39,7 @@ trait Update
     {
         $this->inputs = array_merge($this->inputs, $inputs);
 
-        $this->query = "UPDATE \n\t{$this->table} \nSET" 
+        $this->query = "UPDATE \n\t{$this->getTableName()} \nSET" 
         . $this->prepareParams($inputs)
         . "\nWHERE \n\tid=:id;";
 

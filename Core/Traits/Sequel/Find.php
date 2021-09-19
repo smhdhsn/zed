@@ -40,7 +40,7 @@ trait Find
      */
     private function makeFindQuery(): object
     {
-        $this->query = "SELECT * FROM \n\t{$this->table} \nWHERE \n\tid=:id";
+        $this->query = "SELECT * FROM \n\t{$this->getTableName()} \nWHERE \n\tid=:id";
 
         return $this;
     }

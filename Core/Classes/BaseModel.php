@@ -174,4 +174,21 @@ class BaseModel extends Database
 
         $this->inputs = array_merge($this->inputs, ['id' => $statement->fetchColumn()]);
     }
+
+    /**
+     * Get model's table name from property table inside model's instance.
+     * If it's not defined, it'll be gotten from reflection class on called
+     * class's instance.
+     * 
+     * @since 1.0.0
+     * 
+     * @return string
+     */
+    private function getTableName(): string
+    {
+        if ($this->table)
+            return $this->table;
+
+        return strtolower((new \ReflectionClass(get_called_class()))->getShortName());
+    }
 }
