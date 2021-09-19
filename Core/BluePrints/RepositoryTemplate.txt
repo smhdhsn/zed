@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @since x.x.x
+ * @version {%version%}
  */
-class Xxx
+class {%PascalCase%}
 {
     //
 }

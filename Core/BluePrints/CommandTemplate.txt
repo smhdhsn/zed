@@ -5,16 +5,16 @@ namespace App\Commands;
 use Core\Classes\CommandLineInterface as CLI;
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @version x.x.x
+ * @version {%version%}
  */
-class Xxx
+class {%PascalCase%}
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @var array
      */
@@ -23,7 +23,7 @@ class Xxx
     /**
      * This Method Handles The Command's Action.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @return void
      */

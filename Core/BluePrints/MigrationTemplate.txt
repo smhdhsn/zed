@@ -5,16 +5,16 @@ namespace Database\Migrations;
 use Core\Classes\Migration;
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @version x.x.x
+ * @version {%version%}
  */
-class Xxx extends Migration
+class {%PascalCase%} extends Migration
 {
     /**
      * Doing Some Changes To a Certain Table.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @return void
      */
@@ -26,7 +26,7 @@ class Xxx extends Migration
     /**
      * Undoing Some Changes In a Certain Table.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @return void
      */

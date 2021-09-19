@@ -5,16 +5,16 @@ namespace App\Services;
 use Core\Classes\Request;
 
 /**
- * @author @id
+ * @author {%author%}
  * 
- * @version x.x.x
+ * @version {%version%}
  */
-class Xxx
+class {%PascalCase%}
 {
     /**
      * Related Model's Repository.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @var object
      */
@@ -23,7 +23,7 @@ class Xxx
     /**
      * Creates an Instance Of This Class.
      * 
-     * @since x.x.x
+     * @since {%version%}
      * 
      * @return void
      */
