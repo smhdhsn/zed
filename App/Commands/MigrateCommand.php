@@ -3,14 +3,13 @@
 namespace App\Commands;
 
 use Core\Classes\{CommandLineInterface as CLI, Migration};
-use Core\Interfaces\CloseEndedCommand as CEC;
 
 /**
  * @author @smhdhsn
  * 
  * @version 1.0.0
  */
-class MigrateCommand extends Migration implements CEC
+class MigrateCommand extends Migration
 {
     /**
      * Extra Arguments Passed To Script Via Command Line.
