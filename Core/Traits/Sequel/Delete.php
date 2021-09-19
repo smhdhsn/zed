@@ -33,7 +33,7 @@ trait Delete
      */
     private function makeDeleteQuery(): object
     {
-        $this->query = "DELETE FROM \n\t{$this->table} \nWHERE \n\tid=:id";
+        $this->query = "DELETE FROM \n\t{$this->getTableName()} \nWHERE \n\tid=:id";
 
         return $this;
     }

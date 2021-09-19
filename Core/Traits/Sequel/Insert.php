@@ -43,7 +43,7 @@ trait Insert
         $placeHolders = $this->prepareColumns(':');
         $columns = $this->prepareColumns(null);
 
-        $this->query = "INSERT INTO \n{$this->table}({$columns}\n) \nVALUES({$placeHolders}\n);";
+        $this->query = "INSERT INTO \n{$this->getTableName()}({$columns}\n) \nVALUES({$placeHolders}\n);";
 
         return $this;
     }
