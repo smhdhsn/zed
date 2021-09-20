@@ -9,7 +9,7 @@ use Core\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
  * 
  * @version 1.0.0
  */
-class Model extends Database
+class Model
 {
     use Insert, Update, Find, Delete, Where, Get;
 
@@ -58,7 +58,7 @@ class Model extends Database
      */
     public function __construct()
     {
-        $this->connection = $this->connect();
+        $this->connection = Application::$database->getConnection();
     }
 
     /**
@@ -102,7 +102,7 @@ class Model extends Database
             die(
                 (new Controller)->error(
                     Response::ERROR,
-                    'Model not found !',
+                    'Model not found!',
                     Response::HTTP_NOT_FOUND
                 )
             );

@@ -24,7 +24,7 @@ class Making
      */
     private function getBlueprint(string $classType): string
     {
-        $path = Application::$root
+        $path = Application::$frameworkRoot
         . DIRECTORY_SEPARATOR
         . 'Core'
         . DIRECTORY_SEPARATOR
@@ -52,7 +52,7 @@ class Making
      */
     private function originPath(string $mainFolder, string $folder, string $file): string
     {
-        return Application::$root
+        return Application::$appRoot
         . DIRECTORY_SEPARATOR
         . $mainFolder
         . DIRECTORY_SEPARATOR

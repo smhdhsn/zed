@@ -11,7 +11,7 @@ use PDO;
  * 
  * @version 1.0.0
  */
-class Migration extends Database
+class Migration
 {
     use Commands, Helper;
 
@@ -33,7 +33,7 @@ class Migration extends Database
      */
     public function __construct()
     {
-        $this->connection = $this->connect();
+        $this->connection = Application::$database->getConnection();
         $this->createTable();
     }
 

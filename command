@@ -23,7 +23,7 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autolo
  * 
  * @package SMhdHsn/Zed
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 $app = new Application(__DIR__);
 

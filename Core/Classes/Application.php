@@ -7,6 +7,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 error_reporting(E_ERROR | E_PARSE);
 
+use Core\Classes\Database\{DatabaseCreator, Database};
 use Exception;
 
 /**
@@ -21,7 +22,7 @@ class Application
      * 
      * @since 1.0.0
      * 
-     * @var object
+     * @var Router
      */
     public Router $router;
 
@@ -30,18 +31,36 @@ class Application
      * 
      * @since 1.0.0
      * 
-     * @var object
+     * @var Command
      */
     public Command $command;
 
     /**
-     * Path to the root of the project.
+     * Database's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @var Database
+     */
+    public static Database $database;
+
+    /**
+     * Path to project's root folder.
      * 
      * @since 1.0.0
      * 
      * @var string
      */
-    public static string $root;
+    public static string $appRoot;
+
+    /**
+     * Path to framework's root folder.
+     * 
+     * @since 1.0.1
+     * 
+     * @var string
+     */
+    public static string $frameworkRoot;
 
     /**
      * Creates an instance of this class.
@@ -52,9 +71,26 @@ class Application
      */
     public function __construct(string $root)
     {
-        self::$root = $root;
+        $this->setDatabase();
+
+        self::$appRoot = $root;
+        self::$frameworkRoot = dirname(__DIR__);
+
         $this->router = new Router;
         $this->command = new Command;
+    }
+
+    /**
+     * Set database's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @return void
+     */
+    private function setDatabase(): void
+    {
+        self::$database = (new DatabaseCreator)
+            ->getDatabase();
     }
 
     /**
