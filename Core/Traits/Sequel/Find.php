@@ -62,7 +62,7 @@ trait Find
                     die(
                         (new Controller)->error(
                             Response::ERROR,
-                            'Not Found !',
+                            'Not Found!',
                             Response::HTTP_NOT_FOUND
                         )
                     );

@@ -10,7 +10,7 @@ use Core\Classes\{Controller, Database, Response};
  * 
  * @version 1.0.0
  */
-class Validation extends Database
+class Validation
 {
     use RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation;
 
@@ -22,6 +22,15 @@ class Validation extends Database
      * @var array
      */
     private array $errors = [];
+
+    /**
+     * Database connection.
+     * 
+     * @since 1.0.1
+     * 
+     * @var object
+     */
+    private object $connection;
 
     /**
      * Available rules.
@@ -37,6 +46,18 @@ class Validation extends Database
     CONST RULE_EMAIL = 'email';
     CONST RULE_MAX = 'max';
     CONST RULE_MIN = 'min';
+
+    /**
+     * Creates an instance of this class.
+     * 
+     * @since 1.0.1
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->connection = Application::$database->getConnection();
+    }
 
     /**
      * Validate request prameter(s).

@@ -44,7 +44,7 @@ trait UniqueValidation
     {
         $query = "SELECT * FROM \n\t{$table} \nWHERE \n\t{$column}=:{$requestAttribute}";
 
-        $statement = $this->connect()->prepare($query);
+        $statement = $this->connection->prepare($query);
         
         $statement->bindParam(":{$requestAttribute}", $this->{$requestAttribute});
         
