@@ -1,44 +1,42 @@
 <?php
 
-use Dotenv\Dotenv;
 use Core\Classes\Application;
+use Dotenv\Dotenv;
 
 /**
- * Autoloading Installed Applications And Classes.
+ * Autoloading installed applications and classes.
  */
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 /**
- * Loading Environment Variables.
- * 
- * @since 1.0.0
+ * Loading environment variables.
  * 
  * @package vlucas/phpdotenv
  */
 (Dotenv::createImmutable(dirname(__DIR__)))->load();
 
 /**
- * Creating an Instance Of The Application.
+ * Creating an instance of the application.
  * 
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
- * @package ZED
+ * @package SMhdHsn/Zed
  * 
  * @version 1.0.0
  */
-$app = new Application;
+$app = new Application(dirname(__DIR__));
 
 /**
- * Shorten The Router Instance's Accessability.
+ * Shorten the router instance's accessability.
  */
 $router = $app->router;
 
 /**
- * Getting Routings From Routes Folder.
+ * Get defined routes.
  */
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'api.php';
 
 /**
- * Resolve Requested Route.
+ * Resolve requested route.
  */
 $app->resolve();

@@ -3,19 +3,19 @@
 namespace App\Models;
 
 use Core\Traits\Model\Authenticatable;
-use Core\Classes\BaseModel;
+use Core\Classes\Model;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class User extends BaseModel
+class User extends Model
 {
     use Authenticatable;
 
     /**
-     * Model's Table Name.
+     * Model's table name.
      * 
      * @since 1.0.0
      * 

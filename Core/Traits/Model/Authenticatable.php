@@ -5,7 +5,7 @@ namespace Core\Traits\Model;
 use Core\Classes\Token;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

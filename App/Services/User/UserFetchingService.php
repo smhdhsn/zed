@@ -2,19 +2,19 @@
 
 namespace App\Services\User;
 
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Controller, Request, Response};
 use App\Repositories\UserRepository;
 use App\Models\User;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class UserFetchingService
 {
     /**
-     * Related Model's Repository.
+     * Model's repository.
      * 
      * @since 1.0.0
      * 
@@ -23,7 +23,7 @@ class UserFetchingService
     private object $repository;
 
     /**
-     * Creates an Instance Of This Class.
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
@@ -35,7 +35,7 @@ class UserFetchingService
     }
 
     /**
-     * Logging User In.
+     * Login user.
      * 
      * @since 1.0.0
      * 
@@ -52,7 +52,7 @@ class UserFetchingService
     }
 
     /**
-     * Unauthorized Action.
+     * Unauthorized action.
      * 
      * @since 1.0.0
      * 
@@ -61,9 +61,9 @@ class UserFetchingService
     private function abort(): void
     {
         die(
-            (new BaseController)->error(
+            (new Controller)->error(
                 Response::ERROR,
-                'Username Or Password Is Wrong.',
+                'Username or password is wrong.',
                 Response::HTTP_FORBIDDEN
             )
         );

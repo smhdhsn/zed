@@ -5,14 +5,14 @@ namespace App\Commands;
 use Core\Classes\CommandLineInterface as CLI;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class ServeCommand
 {
     /**
-     * Extra Arguments Passed To Script Via Command Line.
+     * Extra arguments passed to script via command line.
      * 
      * @since 1.0.0
      * 
@@ -21,7 +21,7 @@ class ServeCommand
     public ?array $params;
 
     /**
-     * This Method Handles The Command's Action.
+     * Handle the command's action.
      * 
      * @since 1.0.0
      * 

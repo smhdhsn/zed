@@ -6,7 +6,7 @@ use Core\Classes\CommandLineInterface as CLI;
 use PDO;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -26,7 +26,7 @@ trait Rollback
         if ($batchNumber === 0)
             return CLI::out('Nothing To Rollback To !', CLI::BLINK_FAST);
         
-        $migrations = $this->fetchLastBatch($batchNumber);
+        $migrations = $this->fetchLastStep($batchNumber);
 
         foreach ($migrations as $migration) {
             require_once $this->getFile($migration['migration']);

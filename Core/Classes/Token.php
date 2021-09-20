@@ -5,14 +5,14 @@ namespace Core\Classes;
 use App\Models\User;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class Token
 {
     /**
-     * Token Key.
+     * Token key.
      * 
      * @since 1.0.0
      * 
@@ -21,7 +21,7 @@ class Token
     private string $key;
 
     /**
-     * Token Expiration Time.
+     * Expiration time.
      * 
      * @since 1.0.0
      * 
@@ -30,20 +30,20 @@ class Token
     private string $expirationTime;
     
     /**
-     * Creates Token's Instance.
-     *
+     * Creates an instance of this class.
+     * 
      * @since 1.0.0
      * 
      * @return void
      */
     public function __construct()
     {
-        $this->key = $_ENV['TOKEN_KEY'];
         $this->expirationTime = $_ENV['TOKEN_EXPIRATION_TIME'];
+        $this->key = $_ENV['TOKEN_KEY'];
     }
 
     /**
-     * Verifying Access Token.
+     * Verify access token.
      * 
      * @since 1.0.0
      * 
@@ -62,7 +62,7 @@ class Token
     }
 
     /**
-     * Generates JWT Token.
+     * Generate JWT token.
      * 
      * @since 1.0.0
      * 
@@ -102,7 +102,7 @@ class Token
     }
 
     /**
-     * Decodes Access Token.
+     * Decode access token.
      * 
      * @since 1.0.0
      * 

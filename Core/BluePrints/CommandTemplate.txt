@@ -12,7 +12,7 @@ use Core\Classes\CommandLineInterface as CLI;
 class {%PascalCase%}
 {
     /**
-     * Extra Arguments Passed To Script Via Command Line.
+     * Extra arguments passed to script via command line.
      * 
      * @since {%version%}
      * 
@@ -21,7 +21,7 @@ class {%PascalCase%}
     public ?array $params;
 
     /**
-     * This Method Handles The Command's Action.
+     * Handle the command's action.
      * 
      * @since {%version%}
      * 

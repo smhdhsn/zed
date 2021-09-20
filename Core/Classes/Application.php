@@ -2,57 +2,101 @@
 
 namespace Core\Classes;
 
-error_reporting(E_ERROR | E_PARSE);
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Content-Type, Authorization, X-Requested-With');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+error_reporting(E_ERROR | E_PARSE);
 
+use Core\Classes\Database\{DatabaseCreator, Database};
 use Exception;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class Application
 {
     /**
-     * Router's Instance.
+     * Router's instance.
      * 
      * @since 1.0.0
      * 
-     * @var object
+     * @var Router
      */
     public Router $router;
 
     /**
-     * Command's Instance.
+     * Command's instance.
      * 
      * @since 1.0.0
      * 
-     * @var object
+     * @var Command
      */
     public Command $command;
 
     /**
-     * Bootstraping Main Classes.
+     * Database's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @var Database
+     */
+    public static Database $database;
+
+    /**
+     * Path to project's root folder.
+     * 
+     * @since 1.0.0
+     * 
+     * @var string
+     */
+    public static string $appRoot;
+
+    /**
+     * Path to framework's root folder.
+     * 
+     * @since 1.0.1
+     * 
+     * @var string
+     */
+    public static string $frameworkRoot;
+
+    /**
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
      * @return void
      */
-    public function __construct()
+    public function __construct(string $root)
     {
+        $this->setDatabase();
+
+        self::$appRoot = $root;
+        self::$frameworkRoot = dirname(__DIR__);
+
         $this->router = new Router;
         $this->command = new Command;
     }
 
     /**
-     * Resolve Requested Route.
+     * Set database's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @return void
+     */
+    private function setDatabase(): void
+    {
+        self::$database = (new DatabaseCreator)
+            ->getDatabase();
+    }
+
+    /**
+     * Resolve requested route.
      * 
      * @since 1.0.0
-     * 
-     * @throws Exception If Anything Goes Wrong.
      * 
      * @return void
      */
@@ -64,7 +108,7 @@ class Application
             );
         } catch (Exception $exception) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     $exception->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR
@@ -74,7 +118,7 @@ class Application
     }
 
     /**
-     * Executing Called Command.
+     * Execute called command.
      * 
      * @since 1.0.0
      * 

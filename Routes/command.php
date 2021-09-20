@@ -4,10 +4,10 @@ use Core\Classes\CommandLineInterface as CLI;
 
 /*
 |--------------------------------------------------------------------------
-| Command Routes
+| Command routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register Command routes for your application. 
+| Here is where you can register command routes for your application. 
 |
 */
 

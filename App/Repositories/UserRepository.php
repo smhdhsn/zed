@@ -5,14 +5,14 @@ namespace App\Repositories;
 use App\Models\User;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
- * @since 1.0.0
+ * @version 1.0.0
  */
 class UserRepository
 {
     /**
-     * Storing Model Into Database.
+     * Store user into database.
      * 
      * @since 1.0.0
      * 
@@ -26,7 +26,7 @@ class UserRepository
     }
 
     /**
-     * Finding User By Chosen Attributes.
+     * Find user by attribute(s).
      * 
      * @since 1.0.0
      * 

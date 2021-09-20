@@ -71,9 +71,9 @@ $router->get('/projects/:projectId/logs/:logId', 'ProjectController@index');
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Request};
+use Core\Classes\{Controller, Request};
 
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
     * Showing project's index page.
@@ -159,15 +159,15 @@ $request->validate([
 In this case, application will look through users table on database and checks if column email exists with the same value or not.
 
 ### Response
-The only available response type is JSON, for the sake of consistency of response properties you may use BaseController's response() method. This method accepts 3 parameters: Response word, Response data, Response HTTP-code.
+The only available response type is JSON, for the sake of consistency of response properties you may use Controller's response() method. This method accepts 3 parameters: Response word, Response data, Response HTTP-code.
 ```php
 <?php
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Controller, Request, Response};
 
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
     * Showing project's index page.
@@ -193,16 +193,16 @@ class ProjectController extends BaseController
 You may want to check out Response class, there's plenty of response words and codes there that you can use.
 
 #### Error
-In case of possible errors you can also use BaseController's error() method:
+In case of possible errors you can also use Controller's error() method:
 ```php
 <?php
 
 namespace App\Controllers;
 
 use Exception;
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Controller, Request, Response};
 
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
     * Showing project's index page.

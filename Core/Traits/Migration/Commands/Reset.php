@@ -5,7 +5,7 @@ namespace Core\Traits\Migration\Commands;
 use Core\Classes\CommandLineInterface as CLI;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

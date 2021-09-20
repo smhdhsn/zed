@@ -2,10 +2,10 @@
 
 namespace Core\Traits\Router;
 
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Request, Response};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

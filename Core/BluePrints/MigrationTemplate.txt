@@ -12,7 +12,7 @@ use Core\Classes\Migration;
 class {%PascalCase%} extends Migration
 {
     /**
-     * Doing Some Changes To a Certain Table.
+     * Apply some changes to a certain table.
      * 
      * @since {%version%}
      * 
@@ -24,7 +24,7 @@ class {%PascalCase%} extends Migration
     }
 
     /**
-     * Undoing Some Changes In a Certain Table.
+     * Unapply some changes to a certain table.
      * 
      * @since {%version%}
      * 

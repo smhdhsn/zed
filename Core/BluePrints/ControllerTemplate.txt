@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Controller, Request, Response};
 
 /**
  * @author {%author%}
  * 
  * @version {%version%}
  */
-class {%PascalCase%} extends BaseController
+class {%PascalCase%} extends Controller
 {
     //
 }

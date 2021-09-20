@@ -2,11 +2,11 @@
 
 namespace Core\Traits\Middleware;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{Controller, Response};
 use Exception;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -33,7 +33,7 @@ trait Middleware
             }
         } catch (Exception $exception) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     $exception->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR

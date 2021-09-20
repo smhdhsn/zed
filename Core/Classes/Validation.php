@@ -3,19 +3,19 @@
 namespace Core\Classes;
 
 use Core\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation};
-use Core\Classes\{BaseController, Database, Response};
+use Core\Classes\{Controller, Database, Response};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class Validation extends Database
+class Validation
 {
     use RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation;
 
     /**
-     * Validation Errors.
+     * Validation error(s).
      * 
      * @since 1.0.0
      * 
@@ -24,7 +24,16 @@ class Validation extends Database
     private array $errors = [];
 
     /**
-     * Available Rules.
+     * Database connection.
+     * 
+     * @since 1.0.1
+     * 
+     * @var object
+     */
+    private object $connection;
+
+    /**
+     * Available rules.
      * 
      * @since 1.0.0
      * 
@@ -39,7 +48,19 @@ class Validation extends Database
     CONST RULE_MIN = 'min';
 
     /**
-     * Validating Request Prameters.
+     * Creates an instance of this class.
+     * 
+     * @since 1.0.1
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->connection = Application::$database->getConnection();
+    }
+
+    /**
+     * Validate request prameter(s).
      * 
      * @since 1.0.0
      * 
@@ -86,17 +107,17 @@ class Validation extends Database
     }
 
     /**
-     * Recording Validation Errors.
+     * Record validation error(s).
      * 
      * @since 1.0.0
      * 
-     * @param array|null $params
-     * @param string $attribute
      * @param string $rule
+     * @param string $attribute
+     * @param array|null $params
      * 
      * @return void
      */
-    private function addError(string $attribute, string $rule, ?array $params = []): void
+    private function addError(string $rule, string $attribute, ?array $params = []): void
     {
         $message = $this->messages()[$rule];
 
@@ -108,7 +129,7 @@ class Validation extends Database
     }
     
     /**
-     * Validation Error Messages.
+     * Validation error messages.
      * 
      * @since 1.0.0
      * 
@@ -117,18 +138,18 @@ class Validation extends Database
     private function messages(): array
     {
         return [
-            self::RULE_REQUIRED => 'This Field Is Required.',
-            self::RULE_STRING => 'This Field Must Be String.',
-            self::RULE_NUMERIC => 'This Field Must Be Numeric.',
-            self::RULE_EMAIL => 'This Field Must Be Valid Email Address.',
-            self::RULE_UNIQUE => 'Given {unique} Already Exists In Database.',
-            self::RULE_MIN => 'Minimum Length Of This Field Must Be More Than {min} Characters.',
-            self::RULE_MAX => 'Maximum Length Of This Field Must Be Less Than {max} Characters.',
+            self::RULE_MAX => 'Maximum length of this field must be less than {max} characters.',
+            self::RULE_MIN => 'Minimum length of this field must be more than {min} characters.',
+            self::RULE_UNIQUE => 'Given {unique} already exists in database.',
+            self::RULE_EMAIL => 'This field must be valid email address.',
+            self::RULE_NUMERIC => 'This field must be numeric.',
+            self::RULE_STRING => 'This field must be string.',
+            self::RULE_REQUIRED => 'This field is required.',
         ];
     }
 
     /**
-     * Splits Rule Syntax Into Parts That Can Be Used By Validation Section.
+     * Splits rule syntax into parts that can be used by validation section.
      * 
      * @since 1.0.0
      * 
@@ -146,7 +167,7 @@ class Validation extends Database
     }
 
     /**
-     * In Case The Validation Has Errors.
+     * In case validation has failure(s).
      * 
      * @since 1.0.0
      * 
@@ -155,7 +176,7 @@ class Validation extends Database
     private function abort(): void
     {
         die(
-            (new BaseController)->error(
+            (new Controller)->error(
                 Response::ERROR,
                 $this->errors,
                 Response::HTTP_MISDIRECTED_REQUEST

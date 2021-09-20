@@ -2,11 +2,11 @@
 
 namespace Core\Traits\Sequel;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{Controller, Response};
 use PDOException;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -64,7 +64,7 @@ trait Insert
             return $this;
         } catch (PDOException $e) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     $e->getMessage(),
                     Response::HTTP_BAD_REQUEST

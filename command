@@ -1,52 +1,50 @@
 #!/usr/bin/env php
 <?php
 
-use Dotenv\Dotenv;
 use Core\Classes\Application;
+use Dotenv\Dotenv;
 
 /**
- * Autoloading Installed Applications And Classes.
+ * Autoloading installed applications and classes.
  */
 require __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 /**
- * Loading Environment Variables.
- * 
- * @since 1.0.0
+ * Loading environment variables.
  * 
  * @package vlucas/phpdotenv
  */
 (Dotenv::createImmutable(__DIR__))->load();
 
 /**
- * Creating an Instance Of The Application.
+ * Creating an instance of the application.
  * 
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
- * @package ZED
+ * @package SMhdHsn/Zed
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-$app = new Application;
+$app = new Application(__DIR__);
 
 /**
- * Shorten The Command Instance's Accessability.
+ * Shorten the command instance's accessability.
  */
 $command = $app->command;
 
 /**
- * Getting Command Routing From Routes Folder.
+ * Get defined commands.
  */
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'command.php';
 
 /**
- * Mapping Predefined Commands.
+ * Map predefined commands.
  */
 $command->modify('migrate', \App\Commands\MigrateCommand::class);
 $command->modify('serve', \App\Commands\ServeCommand::class);
 $command->modify('make', \App\Commands\MakeCommand::class);
 
 /**
- * Executing Command.
+ * Executing command.
  */
 $app->execute();

@@ -5,16 +5,16 @@ namespace Core\Classes;
 use Core\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class BaseModel extends Database
+class Model
 {
     use Insert, Update, Find, Delete, Where, Get;
 
     /**
-     * Database Connection.
+     * Database connection.
      * 
      * @since 1.0.0
      * 
@@ -23,7 +23,7 @@ class BaseModel extends Database
     private object $connection;
 
     /**
-     * SQL Query.
+     * SQL query.
      * 
      * @since 1.0.0
      * 
@@ -32,7 +32,7 @@ class BaseModel extends Database
     private string $query;
 
     /**
-     * Query Statement.
+     * Query statement.
      * 
      * @since 1.0.0
      * 
@@ -41,7 +41,7 @@ class BaseModel extends Database
     private object $statement;
 
     /**
-     * Provided Inputs.
+     * Provided inputs.
      * 
      * @since 1.0.0
      * 
@@ -50,7 +50,7 @@ class BaseModel extends Database
     protected array $inputs;
 
     /**
-     * Creates an Instance Of This Class.
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
@@ -58,11 +58,11 @@ class BaseModel extends Database
      */
     public function __construct()
     {
-        $this->connection = $this->connect();
+        $this->connection = Application::$database->getConnection();
     }
 
     /**
-     * Instantiating Class.
+     * Instantiate class.
      * 
      * @since 1.0.0
      * 
@@ -76,7 +76,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Preparing Database Connection.
+     * Prepare database connection.
      * 
      * @since 1.0.0
      * 
@@ -90,7 +90,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Checking If Model's Instance Or Model's Id Exist.
+     * Check if model's instance or model's id are present.
      * 
      * @since 1.0.0
      * 
@@ -100,9 +100,9 @@ class BaseModel extends Database
     {
         if (! isset($this->id))
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
-                    'Model Not Found !',
+                    'Model not found!',
                     Response::HTTP_NOT_FOUND
                 )
             );
@@ -113,7 +113,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Preparing SQL Syntax For Binding Query Parameters.
+     * Prepare SQL syntax for binding query parameters.
      * 
      * @since 1.0.0
      * 
@@ -128,7 +128,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Preparing Columns For Query.
+     * Prepare columns for query.
      * 
      * @since 1.0.0
      * 
@@ -145,7 +145,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Setting Inputs Property As Model Attributes.
+     * Set input properties as model attributes.
      * 
      * @since 1.0.0
      * 
@@ -161,8 +161,7 @@ class BaseModel extends Database
     }
 
     /**
-     * Getting Last Inserted ID From Database 
-     * And Storing It In Model's Inputs Property.
+     * Get last inserted id from database and store it in model's input property.
      * 
      * @since 1.0.0
      * 

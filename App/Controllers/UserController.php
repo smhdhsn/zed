@@ -3,17 +3,17 @@
 namespace App\Controllers;
 
 use App\Services\User\{UserFetchingService, UserCreatingService};
-use Core\Classes\{BaseController, Request, Response};
+use Core\Classes\{Controller, Request, Response};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class UserController extends BaseController
+class UserController extends Controller
 {
     /**
-     * Logging In The User.
+     * User login.
      * 
      * @since 1.0.0
      * 
@@ -33,7 +33,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Validating Login Action's Request Parameters.
+     * Validate login parameters.
      * 
      * @since 1.0.0
      * 
@@ -50,7 +50,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Registering User.
+     * Register user.
      * 
      * @since 1.0.0
      * 
@@ -70,7 +70,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Validating Register Action's Request Parameters.
+     * Validate register parameters.
      * 
      * @since 1.0.0
      * 

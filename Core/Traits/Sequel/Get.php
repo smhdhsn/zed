@@ -2,11 +2,11 @@
 
 namespace Core\Traits\Sequel;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{Controller, Response};
 use PDOException;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -37,9 +37,9 @@ trait Get
             if ($this->statement->execute($this->inputs)) {
                 if (is_bool($data = $this->statement->fetchObject(static::class)))
                     die(
-                        (new BaseController)->error(
+                        (new Controller)->error(
                             Response::ERROR,
-                            'Not Found !',
+                            'Not Found!',
                             Response::HTTP_NOT_FOUND
                         )
                     );
@@ -48,7 +48,7 @@ trait Get
             }
         } catch (PDOException $e) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     $e->getMessage(),
                     Response::HTTP_BAD_REQUEST

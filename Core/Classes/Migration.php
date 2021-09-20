@@ -7,16 +7,16 @@ use Core\Classes\CommandLineInterface as CLI;
 use PDO;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class Migration extends Database
+class Migration
 {
     use Commands, Helper;
 
     /**
-     * Database Connection.
+     * Database connection.
      * 
      * @since 1.0.0
      * 
@@ -25,7 +25,7 @@ class Migration extends Database
     private object $connection;
 
     /**
-     * Creates an Instance Of This Class.
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
@@ -33,12 +33,12 @@ class Migration extends Database
      */
     public function __construct()
     {
-        $this->connection = $this->connect();
+        $this->connection = Application::$database->getConnection();
         $this->createTable();
     }
 
     /**
-     * Running Up Method On Migration And Storing It Into Database.
+     * Execute "up" method of the migration(s) and store the migration(s) of that step into database.
      * 
      * @since 1.0.0
      * 
@@ -56,7 +56,7 @@ class Migration extends Database
     }
 
     /**
-     * Running Down Method On One Step Of Migrations And Deleting Them From Database.
+     * Execute "down" method on one step of migration(s) and delete migration(s) of that step from database.
      * 
      * @since 1.0.0
      * 
@@ -72,7 +72,7 @@ class Migration extends Database
     }
 
     /**
-     * Executing SQL Command.
+     * Execute SQL command.
      * 
      * @since 1.0.0
      * 
@@ -86,7 +86,7 @@ class Migration extends Database
     }
 
     /**
-     * Storing Applied Migration Into Migrations Table.
+     * Store applied migration(s) into "migrations" table.
      * 
      * @since 1.0.0
      * 
@@ -106,8 +106,7 @@ class Migration extends Database
     }
 
     /**
-     * Deleting Migration Column From Migrations Table.
-     * 
+     * Delete migration(s) log from "migrations" table.
      * 
      * @since 1.0.0
      * 
@@ -126,8 +125,8 @@ class Migration extends Database
     }
 
     /**
-     * Getting Last Batch Number Of Migrations.
-     * (Returns "0" If Migrations Table Is Empty)
+     * Get last batch number of migrations.
+     * (Returns "0" if "migrations" table is empty)
      * 
      * @since 1.0.0
      * 
@@ -144,7 +143,7 @@ class Migration extends Database
     }
 
     /**
-     * Getting Last Step Of Applied Migration Based On Batch Column.
+     * Get last step of applied migration(s) based on batch number.
      * 
      * @since 1.0.0
      * 
@@ -152,7 +151,7 @@ class Migration extends Database
      * 
      * @return array
      */
-    private function fetchLastBatch(int $batchNumber): array
+    private function fetchLastStep(int $batchNumber): array
     {
         $statement = $this->connection
             ->prepare("SELECT * FROM migrations WHERE batch=:batch");
@@ -165,7 +164,7 @@ class Migration extends Database
     }
 
     /**
-     * Getting Applied Migrations.
+     * Get applied migration(s).
      * 
      * @since 1.0.0
      * 
@@ -182,7 +181,7 @@ class Migration extends Database
     }
 
     /**
-     * Creating Migration Table To Keep Track Of Implemented Migration Files.
+     * Create "migrations" table to keep track of implemented migration files.
      * 
      * @since 1.0.0
      * 
