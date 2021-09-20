@@ -5,14 +5,14 @@ namespace App\Commands;
 use Core\Classes\{CommandLineInterface as CLI, Making};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class MakeCommand extends Making
 {
     /**
-     * Extra Arguments Passed To Script Via Command Line.
+     * Extra arguments passed to script via command line.
      * 
      * @since 1.0.0
      * 
@@ -21,7 +21,7 @@ class MakeCommand extends Making
     public ?array $params;
 
     /**
-     * This Method Handles The Command's Action.
+     * Handle the command's action.
      * 
      * @since 1.0.0
      * 
@@ -43,7 +43,7 @@ class MakeCommand extends Making
             case 'model':
                 return $this->model($this->params);
             default:
-                return CLI::out('Sub-Command Not Found !', CLI::RED);
+                return CLI::out('No such sub-command is defined!', CLI::RED);
         }
     }
 }

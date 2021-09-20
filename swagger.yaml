@@ -33,7 +33,7 @@ paths:
                     example: "Success"
                   data:
                     type: string
-                    example: "Welcome To ZED Framework."
+                    example: "Welcome to ZED framework."
                   code:
                     type: integer
                     example: 200

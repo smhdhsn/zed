@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use Core\Classes\BaseModel;
+use Core\Classes\Model;
 
 /**
  * @author {%author%}
  * 
  * @version {%version%}
  */
-class {%PascalCase%} extends BaseModel
+class {%PascalCase%} extends Model
 {
     /**
-     * Model's Table Name.
+     * Model's table name.
      * 
      * @since {%version%}
      * 

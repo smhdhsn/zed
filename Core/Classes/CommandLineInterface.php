@@ -3,14 +3,14 @@
 namespace Core\Classes;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class CommandLineInterface
 {
     /**
-     * Command Line Foreground Colors.
+     * Foreground colors.
      * 
      * @since 1.0.0
      * 
@@ -26,7 +26,7 @@ class CommandLineInterface
     CONST WHITE = "\033[37m";
 
     /**
-     * Command Line Background Colors.
+     * Background colors.
      * 
      * @since 1.0.0
      * 
@@ -42,7 +42,7 @@ class CommandLineInterface
     CONST BG_WHITE = "\033[47m";
 
     /**
-     * Command Line Options.
+     * Options.
      * 
      * @since 1.0.0
      * 
@@ -60,7 +60,7 @@ class CommandLineInterface
     CONST CROSS = "\033[9m";
 
     /**
-     * Styling Terminal's Output Message.
+     * Style terminal's output message.
      *
      * @since 1.0.0
      *

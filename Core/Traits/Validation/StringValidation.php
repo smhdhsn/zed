@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -21,7 +21,7 @@ trait StringValidation
     private function validateString(string $requestAttribute): void
     {
         if (! is_string($this->{$requestAttribute})) {
-            $this->addError($requestAttribute, self::RULE_STRING);
+            $this->addError(self::RULE_STRING, $requestAttribute);
         }
     }
 }

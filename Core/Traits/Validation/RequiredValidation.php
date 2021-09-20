@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -21,7 +21,7 @@ trait RequiredValidation
     private function validateRequired(string $requestAttribute): void
     {
         if (! $this->{$requestAttribute}) {
-            $this->addError($requestAttribute, self::RULE_REQUIRED);
+            $this->addError(self::RULE_REQUIRED, $requestAttribute);
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -25,7 +25,7 @@ trait UniqueValidation
 
         if ($this->paramExists($requestAttribute, $rule['unique'][0], $rule['unique'][1])) {
             $rule['unique'] = $requestAttribute;
-            $this->addError($requestAttribute, self::RULE_UNIQUE, $rule);
+            $this->addError(self::RULE_UNIQUE, $requestAttribute, $rule);
         }
     }
 

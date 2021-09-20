@@ -3,14 +3,14 @@
 namespace Core\Classes;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class Request extends Validation
 {
     /**
-     * Given Parameters.
+     * Given parameters.
      * 
      * @since 1.0.0
      * 
@@ -19,7 +19,7 @@ class Request extends Validation
     protected array $params;
 
     /**
-     * Creates an Instance Of This Class.
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
@@ -32,7 +32,7 @@ class Request extends Validation
     }
 
     /**
-     * Setting Given Array's Items As Request Properties.
+     * Set given array's items as properties of request class.
      * 
      * @since 1.0.0
      * 

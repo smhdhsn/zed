@@ -3,14 +3,14 @@
 namespace Core\Classes;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class Response
 {
     /**
-     * Status Words.
+     * Status words.
      * 
      * @since 1.0.0
      * 
@@ -28,7 +28,7 @@ class Response
     CONST INVALID_ROUTE = "Invalid route.";
 
     /**
-     * Response Codes.
+     * Response codes.
      * 
      * @since 1.0.0
      * 
@@ -98,7 +98,7 @@ class Response
     CONST HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;                             // RFC6585
 
     /**
-     * Response Words.
+     * Response words.
      * 
      * @since 1.0.0
      * 
@@ -106,65 +106,65 @@ class Response
      */
     CONST WORD = [
         100 => 'Continue',
-        101 => 'Switching Protocols',
+        101 => 'Switching protocols',
         102 => 'Processing',            // RFC2518
         200 => 'OK',
         201 => 'Created',
         202 => 'Accepted',
-        203 => 'Non-Authoritative Information',
-        204 => 'No Content',
-        205 => 'Reset Content',
-        206 => 'Partial Content',
+        203 => 'Non-Authoritative information',
+        204 => 'No content',
+        205 => 'Reset content',
+        206 => 'Partial content',
         207 => 'Multi-Status',          // RFC4918
-        208 => 'Already Reported',      // RFC5842
-        226 => 'IM Used',               // RFC3229
-        300 => 'Multiple Choices',
-        301 => 'Moved Permanently',
+        208 => 'Already reported',      // RFC5842
+        226 => 'I\'m used',               // RFC3229
+        300 => 'Multiple choices',
+        301 => 'Moved permanently',
         302 => 'Found',
-        303 => 'See Other',
-        304 => 'Not Modified',
-        305 => 'Use Proxy',
-        307 => 'Temporary Redirect',
-        308 => 'Permanent Redirect',    // RFC7238
-        400 => 'Bad Request',
+        303 => 'See other',
+        304 => 'Not modified',
+        305 => 'Use proxy',
+        307 => 'Temporary redirect',
+        308 => 'Permanent redirect',    // RFC7238
+        400 => 'Bad request',
         401 => 'Unauthorized',
-        402 => 'Payment Required',
+        402 => 'Payment required',
         403 => 'Forbidden',
-        404 => 'Not Found',
-        405 => 'Method Not Allowed',
-        406 => 'Not Acceptable',
-        407 => 'Proxy Authentication Required',
-        408 => 'Request Timeout',
+        404 => 'Not found',
+        405 => 'Method not allowed',
+        406 => 'Not acceptable',
+        407 => 'Proxy authentication required',
+        408 => 'Request timeout',
         409 => 'Conflict',
         410 => 'Gone',
-        411 => 'Length Required',
-        412 => 'Precondition Failed',
-        413 => 'Payload Too Large',
-        414 => 'URI Too Long',
-        415 => 'Unsupported Media Type',
-        416 => 'Range Not Satisfiable',
-        417 => 'Expectation Failed',
+        411 => 'Length required',
+        412 => 'Precondition failed',
+        413 => 'Payload too large',
+        414 => 'URI too long',
+        415 => 'Unsupported media type',
+        416 => 'Range not satisfiable',
+        417 => 'Expectation failed',
         418 => 'I\'m a teapot',                                               // RFC2324
-        421 => 'Misdirected Request',                                         // RFC7540
-        422 => 'Unprocessable Entity',                                        // RFC4918
+        421 => 'Misdirected request',                                         // RFC7540
+        422 => 'Unprocessable entity',                                        // RFC4918
         423 => 'Locked',                                                      // RFC4918
-        424 => 'Failed Dependency',                                           // RFC4918
+        424 => 'Failed dependency',                                           // RFC4918
         425 => 'Reserved for WebDAV advanced collections expired proposal',   // RFC2817
-        426 => 'Upgrade Required',                                            // RFC2817
-        428 => 'Precondition Required',                                       // RFC6585
-        429 => 'Too Many Requests',                                           // RFC6585
-        431 => 'Request Header Fields Too Large',                             // RFC6585
-        451 => 'Unavailable For Legal Reasons',                               // RFC7725
-        500 => 'Internal Server Error',
-        501 => 'Not Implemented',
-        502 => 'Bad Gateway',
-        503 => 'Service Unavailable',
-        504 => 'Gateway Timeout',
-        505 => 'HTTP Version Not Supported',
-        506 => 'Variant Also Negotiates',                                     // RFC2295
-        507 => 'Insufficient Storage',                                        // RFC4918
-        508 => 'Loop Detected',                                               // RFC5842
-        510 => 'Not Extended',                                                // RFC2774
-        511 => 'Network Authentication Required',                             // RFC6585
+        426 => 'Upgrade required',                                            // RFC2817
+        428 => 'Precondition required',                                       // RFC6585
+        429 => 'Too many requests',                                           // RFC6585
+        431 => 'Request header fields too large',                             // RFC6585
+        451 => 'Unavailable for legal reasons',                               // RFC7725
+        500 => 'Internal server error',
+        501 => 'Not implemented',
+        502 => 'Bad gateway',
+        503 => 'Service unavailable',
+        504 => 'Gateway timeout',
+        505 => 'HTTP version not supported',
+        506 => 'Variant also negotiates',                                     // RFC2295
+        507 => 'Insufficient storage',                                        // RFC4918
+        508 => 'Loop detected',                                               // RFC5842
+        510 => 'Not extended',                                                // RFC2774
+        511 => 'Network authentication required',                             // RFC6585
     ];
 }

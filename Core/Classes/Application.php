@@ -2,22 +2,22 @@
 
 namespace Core\Classes;
 
-error_reporting(E_ERROR | E_PARSE);
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Content-Type, Authorization, X-Requested-With');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+error_reporting(E_ERROR | E_PARSE);
 
 use Exception;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class Application
 {
     /**
-     * Router's Instance.
+     * Router's instance.
      * 
      * @since 1.0.0
      * 
@@ -26,7 +26,7 @@ class Application
     public Router $router;
 
     /**
-     * Command's Instance.
+     * Command's instance.
      * 
      * @since 1.0.0
      * 
@@ -35,24 +35,32 @@ class Application
     public Command $command;
 
     /**
-     * Bootstraping Main Classes.
+     * Path to the root of the project.
+     * 
+     * @since 1.0.0
+     * 
+     * @var string
+     */
+    public static string $root;
+
+    /**
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
      * @return void
      */
-    public function __construct()
+    public function __construct(string $root)
     {
+        self::$root = $root;
         $this->router = new Router;
         $this->command = new Command;
     }
 
     /**
-     * Resolve Requested Route.
+     * Resolve requested route.
      * 
      * @since 1.0.0
-     * 
-     * @throws Exception If Anything Goes Wrong.
      * 
      * @return void
      */
@@ -64,7 +72,7 @@ class Application
             );
         } catch (Exception $exception) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     $exception->getMessage(),
                     Response::HTTP_INTERNAL_SERVER_ERROR
@@ -74,7 +82,7 @@ class Application
     }
 
     /**
-     * Executing Called Command.
+     * Execute called command.
      * 
      * @since 1.0.0
      * 

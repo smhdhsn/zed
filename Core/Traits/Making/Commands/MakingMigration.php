@@ -5,7 +5,7 @@ namespace Core\Traits\Making\Commands;
 use Core\Classes\{CommandLineInterface as CLI, Str};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -30,18 +30,16 @@ trait MakingMigration
 
         $className = Str::snakeToPascal($params[1]);
 
-        $templatePath = $this->templatePath('Migration');
+        $blueprint = $this->getBlueprint('Migration');
         $originPath = $this->originPath('Database', 'Migrations', $fileName);
-
-        $content = $this->getContent($templatePath);
 
         $finalContent = Str::placeValue([
             '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
             '{%version%}' => $_ENV['CURRENT_VERSION'],
             '{%PascalCase%}' => $className,
-        ], $content);
+        ], $blueprint);
 
-        $this->createFile($originPath, $finalContent);
+        $this->createFile($finalContent, $originPath);
 
         return CLI::out("Created Migration: " . CLI::WHITE . $fileName, CLI::BLUE);
     }

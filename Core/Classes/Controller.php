@@ -3,14 +3,14 @@
 namespace Core\Classes;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class BaseController extends Response
+class Controller extends Response
 {
     /**
-     * Styling Response For Successful Responses.
+     * Successful response.
      *
      * @since 1.0.0
      *
@@ -32,7 +32,7 @@ class BaseController extends Response
     }
 
     /**
-     * Styling Response For Unsuccessful Responses.
+     * Unsuccessful response.
      *
      * @since 1.0.0
      *

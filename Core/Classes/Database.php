@@ -2,19 +2,19 @@
 
 namespace Core\Classes;
 
-use Core\Classes\BaseController;
+use Core\Classes\Controller;
 use PDOException;
 use PDO;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 abstract class Database
 {
     /**
-     * Database Connection.
+     * Database connection.
      * 
      * @since 1.0.0
      * 
@@ -23,7 +23,7 @@ abstract class Database
     private object $connection;
 
     /**
-     * Connecting To The Database.
+     * Connect to the database.
      * 
      * @since 1.0.0
      * 
@@ -45,9 +45,9 @@ abstract class Database
                 );
             } catch (PDOException $e) {
                 die(
-                    (new BaseController)->error(
+                    (new Controller)->error(
                         Response::ERROR,
-                        'Connection Error: ' . $e->getMessage(),
+                        'Connection error: ' . $e->getMessage(),
                         Response::HTTP_INTERNAL_SERVER_ERROR
                     )
                 );

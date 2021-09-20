@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -24,7 +24,7 @@ trait MinimumValidation
         $rule = $this->getParts($rawRule);
 
         if (strlen($this->{$requestAttribute}) < $rule['min']) {
-            $this->addError($requestAttribute, self::RULE_MIN, $rule);
+            $this->addError(self::RULE_MIN, $requestAttribute, $rule);
         }
     }
 }

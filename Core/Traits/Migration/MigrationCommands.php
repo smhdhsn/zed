@@ -5,7 +5,7 @@ namespace Core\Traits\Migration;
 use Core\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

@@ -5,14 +5,14 @@ namespace Database\Migrations;
 use Core\Classes\Migration;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class CreateUsersTable extends Migration
 {
     /**
-     * Doing Some Changes To a Certain Table.
+     * Apply some changes to a certain table.
      * 
      * @since 1.0.0
      * 
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
     }
 
     /**
-     * Undoing Some Changes In a Certain Table.
+     * Unapply some changes to a certain table.
      * 
      * @since 1.0.0
      * 

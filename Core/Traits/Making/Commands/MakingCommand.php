@@ -5,7 +5,7 @@ namespace Core\Traits\Making\Commands;
 use Core\Classes\{CommandLineInterface as CLI, Str};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -27,18 +27,16 @@ trait MakingCommand
 
         $fileName = ucfirst($params[1]);
 
-        $templatePath = $this->templatePath('Command');
+        $blueprint = $this->getBlueprint('Command');
         $originPath = $this->originPath('App', 'Commands', $fileName);
-
-        $content = $this->getContent($templatePath);
 
         $finalContent = Str::placeValue([
             '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
             '{%version%}' => $_ENV['CURRENT_VERSION'],
             '{%PascalCase%}' => $fileName,
-        ], $content);
+        ], $blueprint);
 
-        $this->createFile($originPath, $finalContent);
+        $this->createFile($finalContent, $originPath);
 
         return CLI::out("Command created successfully.", CLI::BLUE);
     }

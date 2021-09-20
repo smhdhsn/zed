@@ -6,7 +6,7 @@ use Core\Traits\Router\{RouteHelper as Helper, RouteResolve as Resolve};
 use Core\Traits\Middleware\Middleware;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -15,7 +15,7 @@ class Router
     use Middleware, Resolve, Helper;
     
     /**
-     * Application's Routes.
+     * Route list.
      * 
      * @since 1.0.0
      * 
@@ -24,7 +24,7 @@ class Router
     private array $routes = [];
 
     /**
-     * Route Parameters.
+     * Route parameter(s).
      * 
      * @since 1.0.0
      * 
@@ -33,13 +33,13 @@ class Router
     private ?array $params = [];
 
     /**
-     * Mapping GET Request.
+     * Map GET method.
      * 
      * @since 1.0.0
      * 
-     * @param array|null $middlewares
-     * @param mixed $callback
      * @param string $url
+     * @param mixed $callback
+     * @param array|null $middlewares
      * 
      * @return void
      */
@@ -49,13 +49,13 @@ class Router
     }
 
     /**
-     * Mapping POST Request.
+     * Map POST method.
      * 
      * @since 1.0.0
      * 
-     * @param array|null $middlewares
-     * @param mixed $callback
      * @param string $url
+     * @param mixed $callback
+     * @param array|null $middlewares
      * 
      * @return void
      */
@@ -65,13 +65,13 @@ class Router
     }
 
     /**
-     * Mapping PUT Request.
+     * Map PUT method.
      * 
      * @since 1.0.0
      * 
-     * @param array|null $middlewares
-     * @param mixed $callback
      * @param string $url
+     * @param mixed $callback
+     * @param array|null $middlewares
      * 
      * @return void
      */
@@ -81,13 +81,13 @@ class Router
     }
 
     /**
-     * Mapping DELETE Request.
+     * Map DELETE method.
      * 
      * @since 1.0.0
      * 
-     * @param array|null $middlewares
-     * @param mixed $callback
      * @param string $url
+     * @param mixed $callback
+     * @param array|null $middlewares
      * 
      * @return void
      */

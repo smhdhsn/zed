@@ -6,7 +6,7 @@ use Core\Classes\CommandLineInterface as CLI;
 use Exception;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

@@ -5,7 +5,7 @@ namespace Core\Traits\Making;
 use Core\Traits\Making\Commands\{MakingCommand as Command, MakingController as Controller, MakingMigration as Migration, MakingModel as Model, MakingRepository as Repository, MakingService as Service};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

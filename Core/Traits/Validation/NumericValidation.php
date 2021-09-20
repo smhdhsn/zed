@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -21,7 +21,7 @@ trait NumericValidation
     private function validateNumeric(string $requestAttribute): void
     {
         if (! is_numeric($this->{$requestAttribute})) {
-            $this->addError($requestAttribute, self::RULE_NUMERIC);
+            $this->addError(self::RULE_NUMERIC, $requestAttribute);
         }
     }
 }

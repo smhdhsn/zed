@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{Controller, Response};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class WelcomeController extends BaseController
+class WelcomeController extends Controller
 {
     /**
-     * Main Index Method.
+     * Home page.
      * 
      * @since 1.0.0
      * 
@@ -22,7 +22,7 @@ class WelcomeController extends BaseController
     {
         return $this->response(
             Response::SUCCESS,
-            'Welcome To ZED Framework.',
+            'Welcome to ZED framework.',
             Response::HTTP_OK
         );
     }

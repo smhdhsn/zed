@@ -3,7 +3,7 @@
 namespace Core\Traits\Migration;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -63,7 +63,7 @@ trait MigrationHelper
      */
     private function getPath(): string
     {
-        return dirname(__DIR__, 3)
+        return Application::$root
         . DIRECTORY_SEPARATOR
         . 'Database'
         . DIRECTORY_SEPARATOR

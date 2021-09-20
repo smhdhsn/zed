@@ -3,7 +3,7 @@
 namespace Core\Traits\Sequel;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */

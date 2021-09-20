@@ -7,14 +7,14 @@ use Core\Classes\Request;
 use App\Models\User;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
 class UserCreatingService
 {
     /**
-     * Related Model's Repository.
+     * Model's repository.
      * 
      * @since 1.0.0
      * 
@@ -23,7 +23,7 @@ class UserCreatingService
     private object $repository;
 
     /**
-     * Creates an Instance Of This Class.
+     * Creates an instance of this class.
      * 
      * @since 1.0.0
      * 
@@ -35,7 +35,7 @@ class UserCreatingService
     }
 
     /**
-     * Storing User Into Database.
+     * Store user into database.
      * 
      * @since 1.0.0
      * 
@@ -51,7 +51,7 @@ class UserCreatingService
     }
 
     /**
-     * Preparing Data For Storing User Into Database.
+     * Prepare data for storing user.
      * 
      * @since 1.0.0
      * 

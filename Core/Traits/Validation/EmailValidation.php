@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -21,7 +21,7 @@ trait EmailValidation
     private function validateEmail(string $requestAttribute): void
     {
         if (! filter_var($this->{$requestAttribute}, FILTER_VALIDATE_EMAIL)) {
-            $this->addError($requestAttribute, self::RULE_EMAIL);
+            $this->addError(self::RULE_EMAIL, $requestAttribute);
         }
     }
 }

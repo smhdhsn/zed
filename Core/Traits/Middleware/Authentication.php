@@ -2,10 +2,10 @@
 
 namespace Core\Traits\Middleware;
 
-use Core\Classes\{BaseController, Response, Token};
+use Core\Classes\{Controller, Response, Token};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -22,7 +22,7 @@ trait Authentication
     {
         if (! (new Token)->verify()) {
             die(
-                (new BaseController)->error(
+                (new Controller)->error(
                     Response::ERROR,
                     Response::UNAUTHORIZED,
                     Response::HTTP_UNAUTHORIZED

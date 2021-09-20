@@ -2,11 +2,11 @@
 
 namespace Core\Traits\Router;
 
-use Core\Classes\{BaseController, Response};
+use Core\Classes\{Controller, Response};
 use Exception;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -68,7 +68,7 @@ trait RouteResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseController)->error(
+            return (new Controller)->error(
                 Response::ERROR,
                 $exception->getMessage(),
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -95,7 +95,7 @@ trait RouteResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseController)->error(
+            return (new Controller)->error(
                 Response::ERROR,
                 $exception->getMessage(),
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -117,7 +117,7 @@ trait RouteResolve
         try {
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new BaseController)->error(
+            return (new Controller)->error(
                 Response::ERROR,
                 $exception->getMessage(),
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -134,7 +134,7 @@ trait RouteResolve
      */
     private function routeNotFound(): string
     {
-        return (new BaseController)->error(
+        return (new Controller)->error(
             Response::ERROR,
             Response::INVALID_ROUTE,
             Response::HTTP_NOT_FOUND

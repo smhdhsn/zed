@@ -5,7 +5,7 @@ namespace Core\Traits\Making\Commands;
 use Core\Classes\{CommandLineInterface as CLI, Str};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -27,19 +27,17 @@ trait MakingModel
 
         $fileName = ucfirst($params[1]);
 
-        $templatePath = $this->templatePath('Model');
+        $blueprint = $this->getBlueprint('Model');
         $originPath = $this->originPath('App', 'Models', $fileName);
-
-        $content = $this->getContent($templatePath);
 
         $finalContent = Str::placeValue([
             '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
             '{%version%}' => $_ENV['CURRENT_VERSION'],
             '{%PascalCase%}' => $fileName,
             '{%snake_case%}' => Str::pascalToSnake($fileName)
-        ], $content);
+        ], $blueprint);
 
-        $this->createFile($originPath, $finalContent);
+        $this->createFile($finalContent, $originPath);
 
         return CLI::out("Model created successfully.", CLI::BLUE);
     }

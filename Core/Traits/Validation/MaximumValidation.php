@@ -3,7 +3,7 @@
 namespace Core\Traits\Validation;
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -24,7 +24,7 @@ trait MaximumValidation
         $rule = $this->getParts($rawRule);
 
         if (strlen($this->{$requestAttribute}) > $rule['max']) {
-            $this->addError($requestAttribute, self::RULE_MAX, $rule);
+            $this->addError(self::RULE_MAX, $requestAttribute, $rule);
         }
     }
 }

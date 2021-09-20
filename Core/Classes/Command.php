@@ -5,7 +5,7 @@ namespace Core\Classes;
 use Core\Traits\Command\{CommandHelper as Helper, CommandResolve as Resolve};
 
 /**
- * @author @smhdhsn
+ * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
@@ -14,7 +14,7 @@ class Command extends Database
     use Resolve, Helper;
 
     /**
-     * Application's Commands.
+     * Command list.
      * 
      * @since 1.0.0
      * 
@@ -23,7 +23,7 @@ class Command extends Database
     private array $commands;
 
     /**
-     * The Command Passed To Script Via Command Line.
+     * The command passed to script via command line.
      * 
      * @since 1.0.0
      * 
@@ -32,7 +32,7 @@ class Command extends Database
     private ?string $argument;
 
     /**
-     * Extra Arguments Passed To Script Via Command Line.
+     * Extra arguments passed to script via command line.
      * 
      * @since 1.0.0
      * 
@@ -41,7 +41,7 @@ class Command extends Database
     private ?array $params = [];
 
     /**
-     * Saving Commands.
+     * Save command.
      * 
      * @since 1.0.0
      * 
