@@ -1,6 +1,6 @@
 <?php
 
-use Core\Classes\CommandLineInterface as CLI;
+use Zed\Framework\CommandLineInterface as CLI;
 
 /*
 |--------------------------------------------------------------------------

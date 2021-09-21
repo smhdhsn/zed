@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Sequel;
+namespace Zed\Framework\Traits\Sequel;
 
-use Core\Classes\{Controller, Response};
+use Zed\Framework\{Controller, Response};
 use PDOException;
 
 /**

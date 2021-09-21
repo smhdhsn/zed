@@ -3,7 +3,7 @@
 namespace App\Services\User;
 
 use App\Repositories\UserRepository;
-use Core\Classes\Request;
+use Zed\Framework\Request;
 use App\Models\User;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Migration\Commands;
+namespace Zed\Framework\Traits\Migration\Commands;
 
-use Core\Classes\CommandLineInterface as CLI;
+use Zed\Framework\CommandLineInterface as CLI;
 use PDO;
 
 /**

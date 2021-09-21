@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Router;
+namespace Zed\Framework\Traits\Router;
 
-use Core\Classes\{Request, Response};
+use Zed\Framework\{Request, Response};
 
 /**
  * @author @SMhdHsn

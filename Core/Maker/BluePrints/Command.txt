@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Commands;
+
+use Zed\Framework\CommandLineInterface as CLI;
+
+/**
+ * @author {%author%}
+ * 
+ * @version {%version%}
+ */
+class {%PascalCase%}
+{
+    /**
+     * Extra arguments passed to script via command line.
+     * 
+     * @since {%version%}
+     * 
+     * @var array
+     */
+    public ?array $params;
+
+    /**
+     * Handle the command's action.
+     * 
+     * @since {%version%}
+     * 
+     * @return void
+     */
+    public function handle(): void
+    {
+        //
+    }
+}

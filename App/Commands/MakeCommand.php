@@ -2,14 +2,15 @@
 
 namespace App\Commands;
 
-use Core\Classes\{CommandLineInterface as CLI, Making};
+use Zed\Framework\CommandLineInterface as CLI;
+use Zed\Framework\Maker\Maker;
 
 /**
  * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class MakeCommand extends Making
+class MakeCommand extends Maker
 {
     /**
      * Extra arguments passed to script via command line.
