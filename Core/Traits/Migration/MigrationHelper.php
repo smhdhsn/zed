@@ -51,25 +51,9 @@ trait MigrationHelper
      */
     private function getFile(string $fileName): string
     {
-        return $this->getPath()
+        return Application::$path['migrations']
         . DIRECTORY_SEPARATOR
         . $fileName;
-    }
-
-    /**
-     * Getting Path To The Folder That Contains Migration Files.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function getPath(): string
-    {
-        return Application::$appRoot
-        . DIRECTORY_SEPARATOR
-        . 'Database'
-        . DIRECTORY_SEPARATOR
-        . 'Migrations';
     }
 
     /**
