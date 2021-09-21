@@ -2,7 +2,7 @@
 
 namespace App\Commands;
 
-use Core\Classes\{CommandLineInterface as CLI, Migration};
+use Zed\Framework\{CommandLineInterface as CLI, Migration};
 
 /**
  * @author @SMhdHsn

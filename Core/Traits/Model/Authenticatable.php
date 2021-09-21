@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Model;
+namespace Zed\Framework\Traits\Model;
 
-use Core\Classes\Token;
+use Zed\Framework\Token;
 
 /**
  * @author @SMhdHsn

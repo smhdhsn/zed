@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Migration;
+namespace Zed\Framework\Traits\Migration;
 
-use Core\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
+use Zed\Framework\Traits\Migration\Commands\{Migrate, Rollback, Fresh, Reset};
 
 /**
  * @author @SMhdHsn

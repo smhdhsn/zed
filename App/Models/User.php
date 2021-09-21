@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Core\Traits\Model\Authenticatable;
-use Core\Classes\Model;
+use Zed\Framework\Traits\Model\Authenticatable;
+use Zed\Framework\Model;
 
 /**
  * @author @SMhdHsn

@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Classes\{Controller, Response};
+use Zed\Framework\{Controller, Response};
 
 /**
  * @author @SMhdHsn

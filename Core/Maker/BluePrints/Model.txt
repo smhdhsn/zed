@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Zed\Framework\Model;
+
+/**
+ * @author {%author%}
+ * 
+ * @version {%version%}
+ */
+class {%PascalCase%} extends Model
+{
+    /**
+     * Model's table name.
+     * 
+     * @since {%version%}
+     * 
+     * @var string
+     */
+    protected $table = '{%snake_case%}';
+}

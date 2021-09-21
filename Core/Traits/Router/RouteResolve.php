@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Router;
+namespace Zed\Framework\Traits\Router;
 
-use Core\Classes\{Controller, Response};
+use Zed\Framework\{Controller, Response};
 use Exception;
 
 /**

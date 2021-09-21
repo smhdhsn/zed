@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Middleware;
+namespace Zed\Framework\Traits\Middleware;
 
-use Core\Classes\{Controller, Response, Token};
+use Zed\Framework\{Controller, Response, Token};
 
 /**
  * @author @SMhdHsn

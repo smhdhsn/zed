@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Services;
+
+use Zed\Framework\Request;
+
+/**
+ * @author {%author%}
+ * 
+ * @version {%version%}
+ */
+class {%PascalCase%}
+{
+    /**
+     * Model's repository.
+     * 
+     * @since {%version%}
+     * 
+     * @var object
+     */
+    private $repository;
+
+    /**
+     * Creates an instance of this class.
+     * 
+     * @since {%version%}
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+}

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Migration;
+namespace Zed\Framework\Traits\Migration;
 
-use Core\Classes\Application;
+use Zed\Framework\Application;
 
 /**
  * @author @SMhdHsn

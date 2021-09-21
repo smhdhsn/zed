@@ -2,7 +2,7 @@
 
 namespace App\Services\User;
 
-use Core\Classes\{Controller, Request, Response};
+use Zed\Framework\{Controller, Request, Response};
 use App\Repositories\UserRepository;
 use App\Models\User;
 

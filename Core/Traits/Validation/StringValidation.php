@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Traits\Validation;
+namespace Zed\Framework\Traits\Validation;
 
 /**
  * @author @SMhdHsn

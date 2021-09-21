@@ -5,7 +5,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "App/",
-            "Core\\": "Core/"
+            "Zed\\Framework\\": "Core/"
         }
     }
 }
