@@ -33,24 +33,4 @@ class Str
     {
         return str_replace('_', '', ucwords(strtolower($input), '_'));
     }
-
-    /**
-     * Place value(s) in related placeholder(s).
-     * #TODO: WRONG PLACED
-     * 
-     * @since 1.0.0
-     * 
-     * @param array $information
-     * @param string $content
-     * 
-     * @return string
-     */
-    public static function placeValue(array $information, string $content): string
-    {
-        foreach ($information as $placeholder => $value) {
-            $content = str_replace($placeholder, $value, $content);
-        }
-
-        return $content;
-    }
 }

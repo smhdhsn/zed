@@ -1,49 +1,63 @@
 <?php
 
-namespace Zed\Framework\Maker;
+namespace Zed\Framework\Maker\Strategy;
 
+use Zed\Framework\{Application, CommandLineInterface as CLI, File, Str};
 use Zed\Framework\Maker\Protocol\Makeable;
 
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Maker implements Makeable
+final class ModelMaker implements Makeable
 {
     /**
-     * Maker strategy's instance.
+     * Final content of the file.
      * 
      * @since 1.0.1
      * 
-     * @var Makeable
+     * @var string
      */
-    private Makeable $strategy;
+    private string $content;
 
     /**
-     * Creates an instance of this class.
+     * Filename.
      * 
      * @since 1.0.1
      * 
-     * @return void
+     * @var string
      */
-    public function __construct(Makeable $strategy)
-    {
-        $this->strategy = $strategy;
-    }
+    private string $filename;
+
+    /**
+     * File's blueprint.
+     * 
+     * @since 1.0.1
+     * 
+     * @var string
+     */
+    private string $blueprint;
+
+    /**
+     * Destination of the file.
+     * 
+     * @since 1.0.1
+     * 
+     * @var string
+     */
+    private string $destination;
 
     /**
      * Set a filename for the file that is being created.
      * 
      * @since 1.0.1
      * 
-     * @param string $filename
-     * 
      * @return Makeable
      */
     public function setFilename(string $filename): Makeable
     {
-        $this->strategy->setFilename($filename);
+        $this->filename = ucfirst($filename);
 
         return $this;
     }
@@ -57,7 +71,9 @@ class Maker implements Makeable
      */
     public function getBlueprint(): Makeable
     {
-        $this->strategy->getBlueprint();
+        $this->blueprint = File::getFileContent(
+            Application::$path['blueprints'] . '/Model.txt'
+        );
 
         return $this;
     }
@@ -71,7 +87,7 @@ class Maker implements Makeable
      */
     public function getDestination(): Makeable
     {
-        $this->strategy->getDestination();
+        $this->destination = Application::$path['models'] . "/{$this->filename}.php";
 
         return $this;
     }
@@ -85,7 +101,12 @@ class Maker implements Makeable
      */
     public function fillPlaceholders(): Makeable
     {
-        $this->strategy->fillPlaceholders();
+        $this->content = File::placeValue([
+            '{%author%}' => '@' . ltrim($_ENV['CURRENT_AUTHOR'], '@'),
+            '{%version%}' => $_ENV['CURRENT_VERSION'],
+            '{%PascalCase%}' => $this->filename,
+            '{%snake_case%}' => Str::pascalToSnake($this->filename)
+        ], $this->blueprint);
 
         return $this;
     }
@@ -99,7 +120,7 @@ class Maker implements Makeable
      */
     public function createFile(): Makeable
     {
-        $this->strategy->createFile();
+        File::createFile($this->content, $this->destination);
 
         return $this;
     }
@@ -113,6 +134,6 @@ class Maker implements Makeable
      */
     public function getMessage(): string
     {
-        return $this->strategy->getMessage();
+        return CLI::out("Model created successfully.", CLI::BLUE);
     }
 }

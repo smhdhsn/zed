@@ -45,22 +45,13 @@ class Application
     public static Database $database;
 
     /**
-     * Path to project's root folder.
-     * 
-     * @since 1.0.0
-     * 
-     * @var string
-     */
-    public static string $appRoot;
-
-    /**
-     * Path to framework's root folder.
+     * Path to different sections of the application.
      * 
      * @since 1.0.1
      * 
-     * @var string
+     * @var array
      */
-    public static string $frameworkRoot;
+    public static $path = [];
 
     /**
      * Creates an instance of this class.
@@ -72,12 +63,36 @@ class Application
     public function __construct(string $root)
     {
         $this->setDatabase();
-
-        self::$appRoot = $root;
-        self::$frameworkRoot = dirname(__DIR__);
+        $this->setPath($root);
 
         $this->router = new Router;
         $this->command = new Command;
+    }
+
+    /**
+     * Set path to different sections of the application.
+     * 
+     * @since 1.0.1
+     * 
+     * @param string $projectRoot
+     * 
+     * @return void
+     */
+    private function setPath(string $projectRoot): void
+    {
+        self::$path = [
+            'project' => $projectRoot,
+
+            'models' => $projectRoot . '/App/Models',
+            'commands' => $projectRoot . '/App/Commands',
+            'services' => $projectRoot . '/App/Services',
+            'controllers' => $projectRoot . '/App/Controllers',
+            'repositories' => $projectRoot . '/App/Repositories',
+            'migrations' => $projectRoot . '/Database/Migrations',
+
+            'framework' => __DIR__,
+            'blueprints' => __DIR__ . '/Maker/BluePrints',
+        ];
     }
 
     /**
