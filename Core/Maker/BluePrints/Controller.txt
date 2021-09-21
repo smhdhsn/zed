@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Controllers;
+
+use Zed\Framework\{Controller, Request, Response};
+
+/**
+ * @author {%author%}
+ * 
+ * @version {%version%}
+ */
+class {%PascalCase%} extends Controller
+{
+    //
+}

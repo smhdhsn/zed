@@ -1,6 +1,6 @@
 <?php
 
-use Core\Classes\Application;
+use Zed\Framework\Application;
 use Dotenv\Dotenv;
 
 /**

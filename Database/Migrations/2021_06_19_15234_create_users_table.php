@@ -2,7 +2,7 @@
 
 namespace Database\Migrations;
 
-use Core\Classes\Migration;
+use Zed\Framework\Migration;
 
 /**
  * @author @SMhdHsn

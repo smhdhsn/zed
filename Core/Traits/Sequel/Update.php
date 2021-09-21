@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Traits\Sequel;
+namespace Zed\Framework\Traits\Sequel;
 
 /**
  * @author @SMhdHsn

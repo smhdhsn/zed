@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\User\{UserFetchingService, UserCreatingService};
-use Core\Classes\{Controller, Request, Response};
+use Zed\Framework\{Controller, Request, Response};
 
 /**
  * @author @SMhdHsn

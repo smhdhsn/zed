@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Traits\Migration;
+namespace Zed\Framework\Traits\Migration;
 
-use Core\Classes\Application;
+use Zed\Framework\Application;
 
 /**
  * @author @SMhdHsn
@@ -51,25 +51,9 @@ trait MigrationHelper
      */
     private function getFile(string $fileName): string
     {
-        return $this->getPath()
+        return Application::$path['migrations']
         . DIRECTORY_SEPARATOR
         . $fileName;
-    }
-
-    /**
-     * Getting Path To The Folder That Contains Migration Files.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function getPath(): string
-    {
-        return Application::$appRoot
-        . DIRECTORY_SEPARATOR
-        . 'Database'
-        . DIRECTORY_SEPARATOR
-        . 'Migrations';
     }
 
     /**

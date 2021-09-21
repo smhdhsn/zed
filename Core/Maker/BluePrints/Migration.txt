@@ -1,0 +1,37 @@
+<?php
+
+namespace Database\Migrations;
+
+use Zed\Framework\Migration;
+
+/**
+ * @author {%author%}
+ * 
+ * @version {%version%}
+ */
+class {%PascalCase%} extends Migration
+{
+    /**
+     * Apply some changes to a certain table.
+     * 
+     * @since {%version%}
+     * 
+     * @return void
+     */
+    public function up(): void
+    {
+        //
+    }
+
+    /**
+     * Unapply some changes to a certain table.
+     * 
+     * @since {%version%}
+     * 
+     * @return void
+     */
+    public function down(): void
+    {
+        //
+    }
+}

@@ -71,7 +71,7 @@ $router->get('/projects/:projectId/logs/:logId', 'ProjectController@index');
 
 namespace App\Controllers;
 
-use Core\Classes\{Controller, Request};
+use Zed\Framework\{Controller, Request};
 
 class ProjectController extends Controller
 {
@@ -165,7 +165,7 @@ The only available response type is JSON, for the sake of consistency of respons
 
 namespace App\Controllers;
 
-use Core\Classes\{Controller, Request, Response};
+use Zed\Framework\{Controller, Request, Response};
 
 class ProjectController extends Controller
 {
@@ -199,8 +199,8 @@ In case of possible errors you can also use Controller's error() method:
 
 namespace App\Controllers;
 
+use Zed\Framework\{Controller, Request, Response};
 use Exception;
-use Core\Classes\{Controller, Request, Response};
 
 class ProjectController extends Controller
 {
@@ -295,13 +295,13 @@ php command say 'Hello World !'
 ```
 Inside command.php file:
 ```php
-use Core\Classes\CommandLineInterface as CLI;
+use Zed\Framework\CommandLineInterface as CLI;
 
 $command->modify('say', function (string $message = 'Hello') {
     return CLI::out($message);
 });
 ```
-Also, the class CommandLineInterface includes massive command-line options for you to take advantage of like cli color, background, font, etc... You may wish to check it out at the path `Core/Classes/CommandLineInterface`
+Also, the class CommandLineInterface includes massive command-line options for you to take advantage of like cli color, background, font, etc... You may wish to check it out at the path `Core/CommandLineInterface`
 
 #### Predefined commands
 
