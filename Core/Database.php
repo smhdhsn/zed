@@ -1,6 +1,6 @@
 <?php
 
-namespace Zed\Framework\Database;
+namespace Zed\Framework;
 
 /**
  * @author @SMhdHsn

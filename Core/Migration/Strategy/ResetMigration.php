@@ -1,39 +1,27 @@
 <?php
 
-namespace Zed\Framework;
+namespace Zed\Framework\Migration\Strategy;
 
+use Zed\Framework\{CommandLineInterface as CLI, Application, Str};
 use Zed\Framework\Migration\MigrationDatabaseManager as Manager;
 use Zed\Framework\Migration\Contract\Migrateable;
+use Exception;
 
 /**
  * @author @SMhdHsn
  * 
  * @version 1.0.1
  */
-class Migration implements Migrateable
+class ResetMigration implements Migrateable
 {
     /**
-     * Migration strategy's instance.
+     * Database manager's instance.
      * 
      * @since 1.0.1
      * 
-     * @var Migrateable
+     * @var Manager
      */
-    private Migrateable $strategy;
-
-    /**
-     * Set strategy's instance.
-     * 
-     * @since 1.0.1
-     * 
-     * @return void
-     */
-    public function setStrategy(Migrateable $strategy): Migrateable
-    {
-        $this->strategy = $strategy;
-
-        return $this;
-    }
+    private Manager $manager;
 
     /**
      * Prepare execution's parameters.
@@ -46,7 +34,7 @@ class Migration implements Migrateable
      */
     public function setParam(Manager $manager): Migrateable
     {
-        $this->strategy->setParam($manager);
+        $this->manager = $manager;
 
         return $this;
     }
@@ -62,7 +50,8 @@ class Migration implements Migrateable
      */
     public function preExecution(): Migrateable
     {
-        $this->strategy->preExecution();
+        if ($this->manager->lastBatch() === 0)
+            throw new Exception(CLI::out('Nothing to reset!', CLI::RED . CLI::BLINK_FAST));
 
         return $this;
     }
@@ -76,7 +65,17 @@ class Migration implements Migrateable
      */
     public function execute(): Migrateable
     {
-        $this->strategy->execute();
+        foreach ($this->manager->getApplied() as $migration) {
+            require_once Application::$path['migrations'] . "/{$migration}.php";
+
+            $class = Str::extractClassname($migration);
+            $object = new $class();
+
+            echo CLI::out("Dismissing {$migration}", CLI::RED);
+            array_map(fn($query) => $this->manager->exec($query), $object->down());
+            $this->manager->destroyWhere('migration', $migration);
+            echo CLI::out("Dismissed  {$migration}", CLI::PURPLE);
+        }
 
         return $this;
     }
@@ -90,6 +89,6 @@ class Migration implements Migrateable
      */
     public function getMessage(): string
     {
-        return $this->strategy->getMessage();
+        return CLI::out('Migrations reseted!', CLI::BLINK_FAST);
     }
 }

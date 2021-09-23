@@ -3,7 +3,7 @@
 namespace Zed\Framework\Maker\Strategy;
 
 use Zed\Framework\{Application, CommandLineInterface as CLI, File, Str};
-use Zed\Framework\Maker\Protocol\Makeable;
+use Zed\Framework\Maker\Contract\Makeable;
 
 /**
  * @author @SMhdHsn
