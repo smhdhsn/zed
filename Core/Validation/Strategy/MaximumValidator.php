@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class MaximumValidator implements Validator
+final class MaximumValidator implements Validator
 {
     /**
      * Validation error.

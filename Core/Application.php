@@ -14,14 +14,14 @@ use Exception;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Application
+final class Application
 {
     /**
      * Router's instance.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var Router
      */
@@ -30,7 +30,7 @@ class Application
     /**
      * Command's instance.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var Command
      */
@@ -57,7 +57,7 @@ class Application
     /**
      * Creates an instance of this class.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */
@@ -112,7 +112,7 @@ class Application
     /**
      * Resolve requested route.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */
@@ -132,7 +132,7 @@ class Application
     /**
      * Execute called command.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */

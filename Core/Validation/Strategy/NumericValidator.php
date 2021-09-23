@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class NumericValidator implements Validator
+final class NumericValidator implements Validator
 {
     /**
      * Validation error.

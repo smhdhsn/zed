@@ -19,7 +19,7 @@ trait Authentication
      * 
      * @return void
      */
-    private static function auth(): void
+    final private static function auth(): void
     {
         if (! (new Token)->verify())
             throw new MiddlewareException(

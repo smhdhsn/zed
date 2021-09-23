@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class EmailValidator implements Validator
+final class EmailValidator implements Validator
 {
     /**
      * Validation error.

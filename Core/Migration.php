@@ -10,7 +10,7 @@ use Zed\Framework\Migration\Contract\Migrateable;
  * 
  * @version 1.0.1
  */
-class Migration implements Migrateable
+final class Migration implements Migrateable
 {
     /**
      * Migration strategy's instance.

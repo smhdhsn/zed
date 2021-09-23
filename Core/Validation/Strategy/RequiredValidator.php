@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class RequiredValidator implements Validator
+final class RequiredValidator implements Validator
 {
     /**
      * Validation error.

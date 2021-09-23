@@ -9,7 +9,7 @@ use Zed\Framework\Validation\Contract\Validator;
  * 
  * @version 1.0.1
  */
-class Validation implements Validator
+final class Validation implements Validator
 {
     /**
      * Available validation rules.

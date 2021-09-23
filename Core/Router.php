@@ -12,7 +12,7 @@ use Exception;
  * 
  * @version 1.0.1
  */
-class Router
+final class Router
 {
     use Middleware;
 

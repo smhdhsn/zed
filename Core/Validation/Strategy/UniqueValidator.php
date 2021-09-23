@@ -10,7 +10,7 @@ use Zed\Framework\{Application, Validation};
  * 
  * @version 1.0.1
  */
-class UniqueValidator implements Validator
+final class UniqueValidator implements Validator
 {
     /**
      * Database connection.

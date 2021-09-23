@@ -9,7 +9,7 @@ use Zed\Framework\Validation\ValidationInitiator;
  * 
  * @version 1.0.1
  */
-class Request
+final class Request
 {
     /**
      * Given parameters.

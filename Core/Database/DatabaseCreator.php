@@ -10,7 +10,7 @@ use Zed\Framework\Database\Platform\MySQL;
  * 
  * @version 1.0.1
  */
-class DatabaseCreator implements Connectable
+final class DatabaseCreator implements Connectable
 {
     /**
      * Database type.

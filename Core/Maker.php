@@ -7,9 +7,9 @@ use Zed\Framework\Maker\Contract\Makeable;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Maker implements Makeable
+final class Maker implements Makeable
 {
     /**
      * Maker strategy's instance.

@@ -22,7 +22,7 @@ require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR 
  * 
  * @package SMhdHsn/Zed
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 $app = new Application(dirname(__DIR__));
 
