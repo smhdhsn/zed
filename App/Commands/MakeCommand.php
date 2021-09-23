@@ -4,21 +4,21 @@ namespace App\Commands;
 
 use Zed\Framework\Maker\Strategy\{CommandMaker, ControllerMaker, MigrationMaker, ModelMaker, RepositoryMaker, ServiceMaker};
 use Zed\Framework\CommandLineInterface as CLI;
-use Zed\Framework\Maker\Protocol\Makeable;
-use Zed\Framework\Maker\Maker;
+use Zed\Framework\Maker\Contract\Makeable;
+use Zed\Framework\Maker;
 use Exception;
 
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 final class MakeCommand
 {
     /**
      * Extra arguments passed to script via command line.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array
      */
@@ -27,7 +27,7 @@ final class MakeCommand
     /**
      * Handle the command's action.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */
@@ -51,26 +51,26 @@ final class MakeCommand
     {
         switch ($type) {
             case 'repository':
-                $strategy = new Maker(new RepositoryMaker);
+                $strategy = new RepositoryMaker;
                 break;
             case 'controller':
-                $strategy = new Maker(new ControllerMaker);
+                $strategy = new ControllerMaker;
                 break;
             case 'migration':
-                $strategy = new Maker(new MigrationMaker);
+                $strategy = new MigrationMaker;
                 break;
             case 'service':
-                $strategy = new Maker(new ServiceMaker);
+                $strategy = new ServiceMaker;
                 break;
             case 'command':
-                $strategy = new Maker(new CommandMaker);
+                $strategy = new CommandMaker;
                 break;
             case 'model':
-                $strategy = new Maker(new ModelMaker);
+                $strategy = new ModelMaker;
                 break;
             default:
                 throw new Exception(
-                    CLI::out('No such sub-command is defined!', CLI::RED)
+                    CLI::out('No such sub-command is defined!', CLI::RED . CLI::BLINK_FAST)
                 );
         }
 
@@ -105,7 +105,8 @@ final class MakeCommand
      */
     private function execute(Makeable $strategy): string
     {
-        return $strategy
+        return (new Maker)
+            ->setStrategy($strategy)
             ->setFilename($this->params[1])
             ->getBlueprint()
             ->getDestination()

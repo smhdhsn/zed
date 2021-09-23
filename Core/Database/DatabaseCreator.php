@@ -2,7 +2,7 @@
 
 namespace Zed\Framework\Database;
 
-use Zed\Framework\Database\Protocol\Connectable;
+use Zed\Framework\Database\Contract\Connectable;
 use Zed\Framework\Database\Platform\MySQL;
 
 /**
