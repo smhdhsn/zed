@@ -7,7 +7,8 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 error_reporting(E_ERROR | E_PARSE);
 
-use Zed\Framework\Database\{DatabaseCreator, Database};
+use Zed\Framework\Database\DatabaseCreator;
+use Zed\Framework\Database;
 use Exception;
 
 /**

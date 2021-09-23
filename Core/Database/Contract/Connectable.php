@@ -1,6 +1,6 @@
 <?php
 
-namespace Zed\Framework\Database\Protocol;
+namespace Zed\Framework\Database\Contract;
 
 /**
  * @author @SMhdHsn

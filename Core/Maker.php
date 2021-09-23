@@ -1,8 +1,8 @@
 <?php
 
-namespace Zed\Framework\Maker;
+namespace Zed\Framework;
 
-use Zed\Framework\Maker\Protocol\Makeable;
+use Zed\Framework\Maker\Contract\Makeable;
 
 /**
  * @author @SMhdHsn
@@ -21,15 +21,17 @@ class Maker implements Makeable
     private Makeable $strategy;
 
     /**
-     * Creates an instance of this class.
+     * Set strategy's instance.
      * 
      * @since 1.0.1
      * 
      * @return void
      */
-    public function __construct(Makeable $strategy)
+    public function setStrategy(Makeable $strategy): Makeable
     {
         $this->strategy = $strategy;
+
+        return $this;
     }
 
     /**

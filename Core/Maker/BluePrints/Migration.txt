@@ -2,25 +2,25 @@
 
 namespace Database\Migrations;
 
-use Zed\Framework\Migration;
-
 /**
  * @author {%author%}
  * 
  * @version {%version%}
  */
-class {%PascalCase%} extends Migration
+class {%PascalCase%}
 {
     /**
      * Apply some changes to a certain table.
      * 
      * @since {%version%}
      * 
-     * @return void
+     * @return array
      */
-    public function up(): void
+    public function up(): array
     {
-        //
+        return [
+            //
+        ];
     }
 
     /**
@@ -28,10 +28,12 @@ class {%PascalCase%} extends Migration
      * 
      * @since {%version%}
      * 
-     * @return void
+     * @return array
      */
-    public function down(): void
+    public function down(): array
     {
-        //
+        return [
+            //
+        ];
     }
 }

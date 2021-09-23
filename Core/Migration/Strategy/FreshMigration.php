@@ -1,39 +1,29 @@
 <?php
 
-namespace Zed\Framework;
+namespace Zed\Framework\Migration\Strategy;
 
 use Zed\Framework\Migration\MigrationDatabaseManager as Manager;
+use Zed\Framework\{CommandLineInterface as CLI, Application};
 use Zed\Framework\Migration\Contract\Migrateable;
+use Zed\Framework\Migration;
+use FilesystemIterator;
+use Exception;
 
 /**
  * @author @SMhdHsn
  * 
  * @version 1.0.1
  */
-class Migration implements Migrateable
+class FreshMigration implements Migrateable
 {
     /**
-     * Migration strategy's instance.
+     * Database manager's instance.
      * 
      * @since 1.0.1
      * 
-     * @var Migrateable
+     * @var Manager
      */
-    private Migrateable $strategy;
-
-    /**
-     * Set strategy's instance.
-     * 
-     * @since 1.0.1
-     * 
-     * @return void
-     */
-    public function setStrategy(Migrateable $strategy): Migrateable
-    {
-        $this->strategy = $strategy;
-
-        return $this;
-    }
+    private Manager $manager;
 
     /**
      * Prepare execution's parameters.
@@ -46,7 +36,7 @@ class Migration implements Migrateable
      */
     public function setParam(Manager $manager): Migrateable
     {
-        $this->strategy->setParam($manager);
+        $this->manager = $manager;
 
         return $this;
     }
@@ -62,7 +52,9 @@ class Migration implements Migrateable
      */
     public function preExecution(): Migrateable
     {
-        $this->strategy->preExecution();
+        $directoryEmpty = !(new FilesystemIterator(Application::$path['migrations']))->valid();
+        if ($directoryEmpty)
+            throw new Exception(CLI::out('Nothing to refresh!', CLI::RED . CLI::BLINK_FAST));
 
         return $this;
     }
@@ -76,7 +68,21 @@ class Migration implements Migrateable
      */
     public function execute(): Migrateable
     {
-        $this->strategy->execute();
+        try {
+            (new Migration)
+                ->setStrategy(new ResetMigration)
+                ->setParam(new Manager)
+                ->preExecution()
+                ->execute()
+            ;
+        } catch (Exception $exception) {}
+
+        (new Migration)
+            ->setStrategy(new MigrateMigration)
+            ->setParam(new Manager)
+            ->preExecution()
+            ->execute()
+        ;
 
         return $this;
     }
@@ -90,6 +96,6 @@ class Migration implements Migrateable
      */
     public function getMessage(): string
     {
-        return $this->strategy->getMessage();
+        return CLI::out('Migrations refreshed!', CLI::BLINK_FAST);
     }
 }

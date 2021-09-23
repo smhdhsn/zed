@@ -1,6 +1,6 @@
 <?php
 
-namespace Zed\Framework\Maker\Protocol;
+namespace Zed\Framework\Maker\Contract;
 
 /**
  * @author @SMhdHsn

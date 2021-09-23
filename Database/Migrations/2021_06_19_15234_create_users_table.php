@@ -2,45 +2,47 @@
 
 namespace Database\Migrations;
 
-use Zed\Framework\Migration;
-
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class CreateUsersTable extends Migration
+class CreateUsersTable
 {
     /**
      * Apply some changes to a certain table.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @return void
+     * @return array
      */
-    public function up(): void
+    public function up(): array
     {
-        $this->exec('CREATE TABLE users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            surname VARCHAR(255) NOT NULL, 
-            username VARCHAR(255) NOT NULL UNIQUE,
-            email VARCHAR(255) NOT NULL UNIQUE,
-            password VARCHAR(255) NOT NULL,
-            phone_number VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        ) ENGINE=INNODB');
+        return [
+            'CREATE TABLE users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                surname VARCHAR(255) NOT NULL, 
+                username VARCHAR(255) NOT NULL UNIQUE,
+                email VARCHAR(255) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL,
+                phone_number VARCHAR(255) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            ) ENGINE=INNODB'
+        ];
     }
 
     /**
      * Unapply some changes to a certain table.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @return void
+     * @return array
      */
-    public function down(): void
+    public function down(): array
     {
-        $this->exec("DROP TABLE IF EXISTS users");
+        return [
+            'DROP TABLE IF EXISTS users'
+        ];
     }
 }
