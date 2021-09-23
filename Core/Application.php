@@ -124,11 +124,7 @@ class Application
             );
         } catch (Exception $exception) {
             die(
-                (new Controller)->error(
-                    Response::ERROR,
-                    $exception->getMessage(),
-                    Response::HTTP_INTERNAL_SERVER_ERROR
-                )
+                $exception->getMessage()
             );
         }
     }
