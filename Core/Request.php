@@ -2,47 +2,44 @@
 
 namespace Zed\Framework;
 
+use Zed\Framework\Validation\ValidationInitiator;
+
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Request extends Validation
+class Request
 {
     /**
      * Given parameters.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @var array
+     * @var null|array
      */
-    protected array $params;
+    private array $params = [];
 
     /**
      * Creates an instance of this class.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */
     public function __construct(array $params)
     {
-        parent::__construct();
-
-        $this->params = $params;
-        $this->setRequestedParams($this->params);
+        $this->setRequestedParams($params);
     }
 
     /**
-     * Set given array's items as properties of request class.
+     * Set each "params" variable's index as properties of request class.
      * 
-     * @since 1.0.0
-     * 
-     * @param array $params
+     * @since 1.0.1
      * 
      * @return void
      */
-    protected function setRequestedParams(array $params): void
+    private function setRequestedParams(array $params): void
     {
         foreach ($params as $key => $chunk) {
             $this->$key = filter_input(
@@ -50,6 +47,37 @@ class Request extends Validation
                 $key, 
                 FILTER_SANITIZE_SPECIAL_CHARS
             );
+
+            $this->params[$key] = $chunk;
         }
+    }
+
+    /**
+     * Get request input(s) as array of parameters.
+     * 
+     * @since 1.0.1
+     * 
+     * @return array
+     */
+    public function input(): array
+    {
+        return $this->params;
+    }
+
+    /**
+     * Validate request input(s) with given rule(s).
+     * 
+     * @since 1.0.1
+     * 
+     * @param array $validationRules
+     * 
+     * @return Request
+     */
+    public function validate(array $validationRules): Request
+    {
+        (new ValidationInitiator($validationRules, $this->input()))
+            ->initiate();
+
+        return $this;
     }
 }

@@ -2,40 +2,19 @@
 
 namespace Zed\Framework;
 
-use Zed\Framework\Traits\Validation\{RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation};
-use Zed\Framework\{Controller, Database, Response};
+use Zed\Framework\Validation\Contract\Validator;
 
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Validation
+class Validation implements Validator
 {
-    use RequiredValidation, MaximumValidation, MinimumValidation, NumericValidation, StringValidation, UniqueValidation, EmailValidation;
-
     /**
-     * Validation error(s).
-     * 
-     * @since 1.0.0
-     * 
-     * @var array
-     */
-    private array $errors = [];
-
-    /**
-     * Database connection.
+     * Available validation rules.
      * 
      * @since 1.0.1
-     * 
-     * @var object
-     */
-    private ?object $connection = null;
-
-    /**
-     * Available rules.
-     * 
-     * @since 1.0.0
      * 
      * @var string
      */
@@ -48,96 +27,84 @@ class Validation
     CONST RULE_MIN = 'min';
 
     /**
-     * Creates an instance of this class.
+     * Validation strategy's instance.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @return void
+     * @var Validator
      */
-    public function __construct()
+    private Validator $validator;
+
+    /**
+     * Set validation strategy.
+     * 
+     * @since 1.0.1
+     * 
+     * @param Validator $validator
+     * 
+     * @return Validation
+     */
+    public function setStrategy(Validator $validator): Validation
     {
-        $this->connection = Application::$database->getConnection();
+        $this->validator = $validator;
+
+        return $this;
     }
 
     /**
-     * Validate request prameter(s).
+     * Set parameters needed to initiate validation.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @param array $validationRules
+     * @param array $requestInputs
      * 
-     * @return object
+     * @return Validator
      */
-    public function validate(array $validationRules): object
+    public function setParams(array $requestInputs): Validator
     {
-        foreach ($validationRules as $requestAttribute => $rules) {
-            foreach (explode('|', $rules) as $rule) {
-                
-                $ruleName = explode(':', $rule)[0] ?? $rule;
+        $this->validator->setParams($requestInputs);
 
-                switch ($ruleName) {
-                    case self::RULE_MAX:
-                        $this->validateMaximum($requestAttribute, $rule);
-                    break;
-                    case self::RULE_MIN:
-                        $this->validateMinimum($requestAttribute, $rule);
-                    break;
-                    case self::RULE_UNIQUE:
-                        $this->validateUnique($requestAttribute, $rule);
-                    break;
-                    case self::RULE_REQUIRED:
-                        $this->validateRequired($requestAttribute);
-                    break;
-                    case self::RULE_NUMERIC:
-                        $this->validateNumeric($requestAttribute);
-                    break;
-                    case self::RULE_STRING:
-                        $this->validateString($requestAttribute);
-                    break;
-                    case self::RULE_EMAIL:
-                        $this->validateEmail($requestAttribute);
-                    break;
-                }
-            }
-        }
-        
-        return empty($this->errors)
-        ? $this
-        : $this->abort();
+        return $this;
     }
 
     /**
-     * Record validation error(s).
+     * Initiate the validator's validation check.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @param string $rule
-     * @param string $attribute
-     * @param array|null $params
-     * 
-     * @return void
+     * @return Validator
      */
-    private function addError(string $rule, string $attribute, ?array $params = []): void
+    public function validate(array $validationInformation): Validator
     {
-        $message = $this->messages()[$rule];
+        $this->validator->validate($validationInformation);
 
-        foreach ($params as $key => $value) {
-            $message = str_replace("{{$key}}", $value, $message);
-        }
-
-        $this->errors[$attribute][] = $message;
+        return $this;
     }
-    
+
+    /**
+     * Get validation error if there are any.
+     * 
+     * @since 1.0.1
+     * 
+     * @return null|string
+     */
+    public function getError(): ?string
+    {
+        return $this->validator->getError();
+    }
+
     /**
      * Validation error messages.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @return array
+     * @param string $errorType
+     * 
+     * @return string
      */
-    private function messages(): array
+    public static function getErrorMessages(string $errorType): string
     {
-        return [
+        $messages = [
             self::RULE_MAX => 'Maximum length of this field must be less than {max} characters.',
             self::RULE_MIN => 'Minimum length of this field must be more than {min} characters.',
             self::RULE_UNIQUE => 'Given {unique} already exists in database.',
@@ -146,41 +113,25 @@ class Validation
             self::RULE_STRING => 'This field must be string.',
             self::RULE_REQUIRED => 'This field is required.',
         ];
+
+        return $messages[$errorType];
     }
 
     /**
      * Splits rule syntax into parts that can be used by validation section.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param string $rawRule
      * 
      * @return array
      */
-    private function getParts(string $rawRule): array
+    public static function getParts(string $rawRule): array
     {
         $rule = explode(':', $rawRule);
 
         return [
             $rule[0] => strpos($rule[1], ',') ? explode(',', $rule[1]) : $rule[1]
         ];
-    }
-
-    /**
-     * In case validation has failure(s).
-     * 
-     * @since 1.0.0
-     * 
-     * @return void
-     */
-    private function abort(): void
-    {
-        die(
-            (new Controller)->error(
-                Response::ERROR,
-                $this->errors,
-                Response::HTTP_MISDIRECTED_REQUEST
-            )
-        );
     }
 }
