@@ -10,24 +10,24 @@ use Exception;
  * 
  * @version 1.0.1
  */
-class ValidationException extends Exception
+class NotFoundException extends Exception
 {
     /**
      * Creates an instance of this class.
      * 
      * @since 1.0.1
      * 
-     * @param array $errors
+     * @param null|string $message
      * 
      * @return void
      */
-    public function __construct(array $errors)
+    public function __construct(string $message = Response::NOTFOUND)
     {
         parent::__construct(
             (new Controller)->error(
                 Response::ERROR,
-                $errors,
-                Response::HTTP_MISDIRECTED_REQUEST
+                $message,
+                Response::HTTP_NOT_FOUND
             )
         );
     }
