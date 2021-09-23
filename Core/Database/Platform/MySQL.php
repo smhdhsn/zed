@@ -2,7 +2,7 @@
 
 namespace Zed\Framework\Database\Platform;
 
-use Zed\Framework\Database\Database;
+use Zed\Framework\Database;
 use PDOException;
 use PDO;
 

@@ -35,22 +35,18 @@ class Str
     }
 
     /**
-     * Place value(s) in related placeholder(s).
-     * #TODO: WRONG PLACED
+     * Extract migration's classname from filename, then add namespace to it.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @param array $information
-     * @param string $content
+     * @param string $input
      * 
      * @return string
      */
-    public static function placeValue(array $information, string $content): string
+    public static function extractClassname(string $input)
     {
-        foreach ($information as $placeholder => $value) {
-            $content = str_replace($placeholder, $value, $content);
-        }
-
-        return $content;
+        return "\\Database\\Migrations\\" . self::snakeToPascal(
+            preg_replace('/[0-9]+/', '', rtrim($input, '.php'))
+        );
     }
 }

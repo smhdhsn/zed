@@ -2,20 +2,23 @@
 
 namespace App\Commands;
 
+use Zed\Framework\Maker\Strategy\{CommandMaker, ControllerMaker, MigrationMaker, ModelMaker, RepositoryMaker, ServiceMaker};
 use Zed\Framework\CommandLineInterface as CLI;
-use Zed\Framework\Maker\Maker;
+use Zed\Framework\Maker\Contract\Makeable;
+use Zed\Framework\Maker;
+use Exception;
 
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class MakeCommand extends Maker
+final class MakeCommand
 {
     /**
      * Extra arguments passed to script via command line.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array
      */
@@ -24,27 +27,92 @@ class MakeCommand extends Maker
     /**
      * Handle the command's action.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */
     public function handle(): string
     {
-        switch ($this->params[0]) {
+        $strategy = $this->getStrategy($this->params[0]);
+        $this->checkFilenameExistence();
+        return $this->execute($strategy);
+    }
+
+    /**
+     * Choose strategy based on sub-command passed via command line.
+     * 
+     * @since 1.0.1
+     * 
+     * @param string $type
+     * 
+     * @return Makeable
+     */
+    private function getStrategy(string $type): Makeable
+    {
+        switch ($type) {
             case 'repository':
-                return $this->repository($this->params);
+                $strategy = new RepositoryMaker;
+                break;
             case 'controller':
-                return $this->controller($this->params);
+                $strategy = new ControllerMaker;
+                break;
             case 'migration':
-                return $this->migration($this->params);
+                $strategy = new MigrationMaker;
+                break;
             case 'service':
-                return $this->service($this->params);
+                $strategy = new ServiceMaker;
+                break;
             case 'command':
-                return $this->command($this->params);
+                $strategy = new CommandMaker;
+                break;
             case 'model':
-                return $this->model($this->params);
+                $strategy = new ModelMaker;
+                break;
             default:
-                return CLI::out('No such sub-command is defined!', CLI::RED);
+                throw new Exception(
+                    CLI::out('No such sub-command is defined!', CLI::RED . CLI::BLINK_FAST)
+                );
         }
+
+        return $strategy;
+    }
+
+    /**
+     * Check if filename is passed to the command via command line.
+     * 
+     * @since 1.0.1
+     * 
+     * @throws Exception if filename is not being passed by command line.
+     * 
+     * @return void
+     */
+    private function checkFilenameExistence(): void
+    {
+        if (! $this->params[1])
+            throw new Exception(
+                CLI::out("Please enter a name for your {$this->params[0]}!", CLI::BLINK_FAST . CLI::RED)
+            );
+    }
+
+    /**
+     * Execute the command.
+     * 
+     * @since 1.0.1
+     * 
+     * @param Makeable $strategy
+     * 
+     * @return string
+     */
+    private function execute(Makeable $strategy): string
+    {
+        return (new Maker)
+            ->setStrategy($strategy)
+            ->setFilename($this->params[1])
+            ->getBlueprint()
+            ->getDestination()
+            ->fillPlaceholders()
+            ->createFile()
+            ->getMessage()
+        ;
     }
 }
