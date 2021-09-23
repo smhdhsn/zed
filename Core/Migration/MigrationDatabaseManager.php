@@ -10,7 +10,7 @@ use PDO;
  * 
  * @version 1.0.1
  */
-class MigrationDatabaseManager
+final class MigrationDatabaseManager
 {
     /**
      * Database connection.

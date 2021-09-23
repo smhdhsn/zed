@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class MinimumValidator implements Validator
+final class MinimumValidator implements Validator
 {
     /**
      * Validation error.

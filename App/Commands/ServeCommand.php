@@ -9,7 +9,7 @@ use Zed\Framework\CommandLineInterface as CLI;
  * 
  * @version 1.0.0
  */
-class ServeCommand
+final class ServeCommand
 {
     /**
      * Extra arguments passed to script via command line.

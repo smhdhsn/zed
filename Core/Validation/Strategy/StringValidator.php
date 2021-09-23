@@ -10,7 +10,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class StringValidator implements Validator
+final class StringValidator implements Validator
 {
     /**
      * Validation error.

@@ -25,7 +25,7 @@ trait Middleware
      * 
      * @return void
      */
-    private function callMiddleware(?array $middlewares): void
+    final private function callMiddleware(?array $middlewares): void
     {
         try {
             foreach ($middlewares as $middleware) {

@@ -11,14 +11,14 @@ use Exception;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
-class MigrateCommand
+final class MigrateCommand
 {
     /**
      * Extra arguments passed to script via command line.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array
      */
@@ -27,7 +27,7 @@ class MigrateCommand
     /**
      * Handle the command's action.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */

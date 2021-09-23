@@ -10,12 +10,12 @@ use Exception;
  * 
  * @version 1.0.1
  */
-class Command
+final class Command
 {
     /**
      * Command list.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array
      */
@@ -24,7 +24,7 @@ class Command
     /**
      * The command passed to script via command line.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array|null
      */
@@ -33,7 +33,7 @@ class Command
     /**
      * Extra arguments passed to script via command line.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var array|null
      */
@@ -54,7 +54,7 @@ class Command
     /**
      * Save command.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param string $commandName
      * @param mixed $callback
@@ -69,7 +69,7 @@ class Command
     /**
      * Execute the command.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */
@@ -95,7 +95,7 @@ class Command
     /**
      * In case command is mapped using "Command@Action" syntax.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param string $class
      * 
@@ -121,7 +121,7 @@ class Command
     /**
      * In case command's callback is a closure.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param object $callback
      * 
@@ -139,7 +139,7 @@ class Command
     /**
      * Store sub-command inside "argument" variable and any arguments after that in "params" variable.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */
@@ -156,7 +156,7 @@ class Command
     /**
      * Save command line's passed parameter(s) inside "params" variable.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return void
      */

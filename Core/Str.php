@@ -7,7 +7,7 @@ class Str
     /**
      * Convert strings of type PascalCase to snake_case.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param string $input
      * 
@@ -23,7 +23,7 @@ class Str
     /**
      * Convert strings of type snake_case to PascalCase.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param string $input
      * 

@@ -11,7 +11,7 @@ use Zed\Framework\Validation;
  * 
  * @version 1.0.1
  */
-class ValidationInitiator
+final class ValidationInitiator
 {
     /**
      * Validation error(s).

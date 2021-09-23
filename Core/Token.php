@@ -9,7 +9,7 @@ use App\Models\User;
  * 
  * @version 1.0.0
  */
-class Token
+final class Token
 {
     /**
      * Token key.
