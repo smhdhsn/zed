@@ -145,7 +145,7 @@ $request->validate([
 The field under this rule must contain more characters than given value.
 ```php
 $request->validate([
-    'name' => 'min:10',
+    'name' => 'min:5',
 ]);
 ```
 ##### Unique
