@@ -68,11 +68,7 @@ trait RouteResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new Controller)->error(
-                Response::ERROR,
-                $exception->getMessage(),
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
+            return $exception->getMessage();
         }
     }
 
@@ -95,11 +91,7 @@ trait RouteResolve
 
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new Controller)->error(
-                Response::ERROR,
-                $exception->getMessage(),
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
+            return $exception->getMessage();
         }
     }
 
@@ -117,11 +109,7 @@ trait RouteResolve
         try {
             return call_user_func_array($callback, $this->params);
         } catch (Exception $exception) {
-            return (new Controller)->error(
-                Response::ERROR,
-                $exception->getMessage(),
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
+            return $exception->getMessage();
         }
     }
 
