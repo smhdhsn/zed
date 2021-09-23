@@ -99,10 +99,9 @@ $request->projectName;
 You can validate your request and in case of any errors show a proper error message.
 ```php
 $request->validate([
-    'name' => 'required|string',
-    'age' => 'required|numeric|min:18',
-    'height' => 'required|numeric|max:190',
+    'name' => 'required|string|min:10',
     'email' => 'required|email|unique:users,email',
+    'password' => 'required|string|max:64',
 ]);
 ```
 #### Available validation rules
@@ -136,17 +135,17 @@ $request->validate([
 ]);
 ```
 ##### Maximum
-The field under this rule must be less than the given value.
+The field under this rule must contain less characters than given value.
 ```php
 $request->validate([
-    'height' => 'max:190',
+    'password' => 'max:64',
 ]);
 ```
 ##### Minimum
-The field under this rule must be more than the given value.
+The field under this rule must contain more characters than given value.
 ```php
 $request->validate([
-    'age' => 'min:18',
+    'name' => 'min:10',
 ]);
 ```
 ##### Unique
