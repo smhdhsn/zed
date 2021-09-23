@@ -68,18 +68,20 @@ class FreshMigration implements Migrateable
      */
     public function execute(): Migrateable
     {
+        $context = new Migration;
+
         try {
-            (new Migration)
+            $context
                 ->setStrategy(new ResetMigration)
-                ->setParam(new Manager)
+                ->setParam($this->manager)
                 ->preExecution()
                 ->execute()
             ;
         } catch (Exception $exception) {}
 
-        (new Migration)
+        $context
             ->setStrategy(new MigrateMigration)
-            ->setParam(new Manager)
+            ->setParam($this->manager)
             ->preExecution()
             ->execute()
         ;
