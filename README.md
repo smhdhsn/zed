@@ -1,5 +1,5 @@
 <p align="center">
-  <img title="Brainsss...!" src="https://raw.githubusercontent.com/SMhdHsn/SMhdHsn/master/Assets/Images/zed.jpeg">
+  <img title="Brainsss...!" src="https://raw.githubusercontent.com/SMhdHsn/SMhdHsn/master/Assets/Images/zed_logo.jpeg">
 </p>
 
 ## About
