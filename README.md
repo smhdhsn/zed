@@ -4,15 +4,22 @@
 
 ## About
 ZED is an API-Based Micro-Framework powered by PHP.
-
+```shell
+composer create-project smhdhsn/zed ProjectName
+```
 ### Features
 - ORM.
 - Routing.
 - Migration.
 - Command.
 - Request Validation.
-## Serving application
-You can serve the application with the following command, just head to the root of the project with the command line and type:
+
+## Getting started
+Make sure you have `composer` installed in your machine and then create a new ZED project using Composer:
+```shell
+composer create-project smhdhsn/zed ProjectName
+```
+After the application has been created, you may start ZED's local development server using command line:
 ```shell
 php command serve
 ```
