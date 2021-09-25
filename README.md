@@ -248,9 +248,7 @@ You have 2 choices, whether you can find a record with where clause or you can f
 
 ##### Where clause
 ```php
-Project::where([
-    'name' => $request->name,
-])->get();
+Project::where('name', $request->name)->get();
 ```
 ##### Find method
 ```php
