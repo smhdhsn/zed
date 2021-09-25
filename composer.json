@@ -1,5 +1,6 @@
 {
     "name": "smhdhsn/zed",
+    "type": "project",
     "description": "ZED is an API-Based Micro-Framework powered by PHP.",
     "license": "MIT",
     "require": {
