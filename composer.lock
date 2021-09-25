@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf847504a73df8dd6d6da7ea3afbd8b0",
+    "content-hash": "2664baf2d69d7d9a096a36f4caba4cde",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -135,6 +135,43 @@
                 }
             ],
             "time": "2021-08-28T21:27:29+00:00"
+        },
+        {
+            "name": "smhdhsn/zed-core",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SMhdHsn/framework.git",
+                "reference": "1fb0003c30d13554dc2a1e3c09b42172c01301db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SMhdHsn/framework/zipball/1fb0003c30d13554dc2a1e3c09b42172c01301db",
+                "reference": "1fb0003c30d13554dc2a1e3c09b42172c01301db",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zed\\Framework\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahdi Hasani",
+                    "email": "m2hdtl@gmail.com"
+                }
+            ],
+            "description": "ZED is an API-Based Micro-Framework powered by PHP.",
+            "support": {
+                "issues": "https://github.com/SMhdHsn/framework/issues",
+                "source": "https://github.com/SMhdHsn/framework/tree/v1.0.1"
+            },
+            "time": "2021-09-25T14:10:58+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
