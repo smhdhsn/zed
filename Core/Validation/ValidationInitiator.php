@@ -59,7 +59,7 @@ final class ValidationInitiator
     /**
      * Initiate validating request parameters.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @throws Exception if validation rule is not defined.
      * @throws ValidationException if validation has error(s).

@@ -9,7 +9,7 @@ use App\Models\User;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 class UserFetchingService
 {
@@ -37,7 +37,7 @@ class UserFetchingService
     /**
      * Login user.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @param Request $request
      * 
@@ -45,7 +45,7 @@ class UserFetchingService
      */
     public function login(Request $request): string
     {
-        $user = $this->repository->findUser($this->prepareInput($request));
+        $user = $this->repository->findUser('email', $request->email);
         $result = $this->verifyPassword($user, $request);
 
         return $result ? $user->login() : $this->abort();
@@ -82,21 +82,5 @@ class UserFetchingService
     private function verifyPassword(User $user, Request $request): bool
     {
         return password_verify($request->password, $user->password);
-    }
-
-    /**
-     * Preparing Input For Fetching User From Database.
-     * 
-     * @since 1.0.0
-     * 
-     * @param Request $request
-     * 
-     * @return array
-     */
-    private function prepareInput(Request $request): array
-    {
-        return [
-            'email' => $request->email
-        ];
     }
 }
