@@ -7,7 +7,8 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 error_reporting(E_ERROR | E_PARSE);
 
-use Zed\Framework\Database\DatabaseCreator;
+use Zed\Framework\Model\Contract\ObjectRelationalMapping as ORM;
+use Zed\Framework\Database\DatabaseManager;
 use Zed\Framework\Database;
 use Exception;
 
@@ -37,6 +38,15 @@ final class Application
     public Command $command;
 
     /**
+     * Database manager's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @var ORM
+     */
+    public static ORM $manager;
+
+    /**
      * Database's instance.
      * 
      * @since 1.0.1
@@ -63,11 +73,12 @@ final class Application
      */
     public function __construct(string $root)
     {
-        $this->setDatabase();
-        $this->setPath($root);
-
-        $this->router = new Router;
         $this->command = new Command;
+        $this->router = new Router;
+
+        $this->setPath($root);
+        $this->setDatabase();
+        $this->setManager();
     }
 
     /**
@@ -84,16 +95,29 @@ final class Application
         self::$path = [
             'project' => $projectRoot,
 
+            'framework' => __DIR__,
+            'blueprints' => __DIR__ . '/Maker/BluePrints',
+
             'models' => $projectRoot . '/App/Models',
             'commands' => $projectRoot . '/App/Commands',
             'services' => $projectRoot . '/App/Services',
             'controllers' => $projectRoot . '/App/Controllers',
             'repositories' => $projectRoot . '/App/Repositories',
             'migrations' => $projectRoot . '/Database/Migrations',
-
-            'framework' => __DIR__,
-            'blueprints' => __DIR__ . '/Maker/BluePrints',
         ];
+    }
+
+    /**
+     * Set database's instance.
+     * 
+     * @since 1.0.1
+     * 
+     * @return void
+     */
+    private function setManager(): void
+    {
+        self::$manager = (new DatabaseManager)
+            ->getManager();
     }
 
     /**
@@ -105,7 +129,7 @@ final class Application
      */
     private function setDatabase(): void
     {
-        self::$database = (new DatabaseCreator)
+        self::$database = (new DatabaseManager)
             ->getDatabase();
     }
 

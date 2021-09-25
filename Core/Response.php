@@ -5,27 +5,27 @@ namespace Zed\Framework;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 class Response
 {
     /**
      * Status words.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @var string
      */
-    CONST ADDED = "Added";
-    CONST REMOVED = "Removed";
-    CONST ACCESS = "You don't have access.";
     CONST WRONG = "Entried data wasn't correct.";
-    CONST ERROR = "Error";
-    CONST SUCCESS = "Success";
-    CONST UNAUTHORIZED = "Unauthorized";
-    CONST NOTFOUND = "The item you're trying for is not found.";
-    CONST PAGENOTFOUND = "Page not found.";
+    CONST ACCESS = "You don't have access.";
     CONST INVALID_ROUTE = "Invalid route.";
+    CONST PAGENOTFOUND = "Page not found.";
+    CONST UNAUTHORIZED = "Unauthorized.";
+    CONST NOTFOUND = "Item not found.";
+    CONST REMOVED = "Removed.";
+    CONST SUCCESS = "Success.";
+    CONST ERROR = "Error.";
+    CONST ADDED = "Added.";
 
     /**
      * Response codes.

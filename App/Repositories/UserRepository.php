@@ -7,7 +7,7 @@ use App\Models\User;
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 class UserRepository
 {
@@ -28,14 +28,15 @@ class UserRepository
     /**
      * Find user by attribute(s).
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @param array $input
+     * @param string $column
+     * @param string $match
      * 
      * @return object
      */
-    public function findUser(array $input): object
+    public function findUser(string $column, string $match): object
     {
-        return User::where($input)->get();
+        return User::where($column, $match)->get();
     }
 }
