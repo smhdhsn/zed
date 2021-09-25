@@ -159,9 +159,9 @@ final class Router
      * 
      * @throws NotFoundException if route is not defined.
      * 
-     * @return string
+     * @return null|string
      */
-    public function resolve(): string
+    public function resolve(): ?string
     {
         $route = $this->mapRoute();
 

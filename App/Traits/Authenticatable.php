@@ -1,20 +1,20 @@
 <?php
 
-namespace Zed\Framework\Traits\Model;
+namespace App\Traits;
 
 use Zed\Framework\Token;
 
 /**
  * @author @SMhdHsn
  * 
- * @version 1.0.0
+ * @version 1.0.1
  */
 trait Authenticatable
 {
     /**
-     * Logging User In.
+     * login user.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */

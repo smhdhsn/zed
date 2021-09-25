@@ -2,73 +2,114 @@
 
 namespace Zed\Framework;
 
-use Zed\Framework\Traits\Sequel\{Insert, Update, Delete, Find, Where, Get};
+use Zed\Framework\Model\QueryBuilder;
+use ReflectionClass;
 
 /**
  * @author @SMhdHsn
  * 
  * @version 1.0.0
  */
-class Model
+abstract class Model
 {
-    use Insert, Update, Find, Delete, Where, Get;
-
     /**
-     * Database connection.
+     * Fetch column(s) from database using a key value pairs.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
-     * @var object
+     * @param string $column
+     * @param string $match
+     * 
+     * @return QueryBuilder
      */
-    private object $connection;
-
-    /**
-     * SQL query.
-     * 
-     * @since 1.0.0
-     * 
-     * @var string
-     */
-    private string $query;
-
-    /**
-     * Query statement.
-     * 
-     * @since 1.0.0
-     * 
-     * @var object
-     */
-    private object $statement;
-
-    /**
-     * Provided inputs.
-     * 
-     * @since 1.0.0
-     * 
-     * @var array
-     */
-    protected array $inputs;
-
-    /**
-     * Creates an instance of this class.
-     * 
-     * @since 1.0.0
-     * 
-     * @return void
-     */
-    public function __construct()
+    public function where(string $column, string $match): QueryBuilder
     {
-        $this->connection = Application::$database->getConnection();
+        $model = self::instantiateClass();
+
+        return Application::$manager
+            ->setTable($model->getTableName())
+            ->setModel(get_called_class())
+            ->where($column, $match);
+    }
+
+    /**
+     * Fetch a column from database using their unique id.
+     * 
+     * @since 1.0.1
+     * 
+     * @param int $id
+     * 
+     * @return Model
+     */
+    public function find(int $id): Model
+    {
+        $model = self::instantiateClass();
+
+        return Application::$manager
+            ->setTable($model->getTableName())
+            ->setModel(get_called_class())
+            ->find($id);
+    }
+
+    /**
+     * Create a model and store it into database.
+     * 
+     * @since 1.0.1
+     * 
+     * @param array $information
+     * 
+     * @return Model
+     */
+    public function create(array $information): Model
+    {
+        $model = self::instantiateClass();
+
+        return Application::$manager
+            ->setTable($model->getTableName())
+            ->setModel(get_called_class())
+            ->create($information);
+    }
+
+    /**
+     * Update a model's information and store them into database.
+     * 
+     * @since 1.0.1
+     * 
+     * @param array $information
+     * 
+     * @return bool
+     */
+    public function update(array $information): bool
+    {
+        return Application::$manager
+            ->setTable($this->getTableName())
+            ->setId($this->id)
+            ->update($information);
+    }
+
+    /**
+     * Delete a model from database.
+     * 
+     * @since 1.0.1
+     * 
+     * @return bool
+     */
+    public function delete(): bool
+    {
+        return Application::$manager
+            ->setTable($this->getTableName())
+            ->setId($this->id)
+            ->delete();
     }
 
     /**
      * Instantiate class.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return object
      */
-    private static function instantiateClass(): object
+    private static function instantiateClass(): Model
     {
         $class = get_called_class();
 
@@ -76,110 +117,11 @@ class Model
     }
 
     /**
-     * Prepare database connection.
-     * 
-     * @since 1.0.0
-     * 
-     * @return object
-     */
-    private function prepareDatabase(): object
-    {
-        $this->statement = $this->connection->prepare($this->query);
-
-        return $this;
-    }
-
-    /**
-     * Check if model's instance or model's id are present.
-     * 
-     * @since 1.0.0
-     * 
-     * @return object
-     */
-    private function checkForModelExistance(): object
-    {
-        if (! isset($this->id))
-            die(
-                (new Controller)->error(
-                    Response::ERROR,
-                    'Model not found!',
-                    Response::HTTP_NOT_FOUND
-                )
-            );
-        else
-            $this->inputs = ['id' => $this->id];
-        
-        return $this;
-    }
-
-    /**
-     * Prepare SQL syntax for binding query parameters.
-     * 
-     * @since 1.0.0
-     * 
-     * @return string
-     */
-    private function prepareParams(array $inputs): string
-    {
-        return implode(
-            ',',
-            array_map(fn($inp) => "\n\t" . array_search($inp, $inputs) . "=:" . array_search($inp, $inputs), $inputs)
-        );
-    }
-
-    /**
-     * Prepare columns for query.
-     * 
-     * @since 1.0.0
-     * 
-     * @param string|null $prefix
-     * 
-     * @return string
-     */
-    private function prepareColumns(?string $prefix): string
-    {
-        return implode(
-            ',',
-            array_map(fn($inp) => "\n\t{$prefix}" . array_search($inp, $this->inputs), $this->inputs)
-        );
-    }
-
-    /**
-     * Set input properties as model attributes.
-     * 
-     * @since 1.0.0
-     * 
-     * @param array $inputs
-     * 
-     * @return void
-     */
-    private function setAttributes(array $inputs): void
-    {
-        foreach ($inputs as $key => $chunk) {
-            $this->$key = $chunk;
-        }
-    }
-
-    /**
-     * Get last inserted id from database and store it in model's input property.
-     * 
-     * @since 1.0.0
-     * 
-     * @return void
-     */
-    private function setLastId(): void
-    {
-        $statement = $this->connection->query("SELECT LAST_INSERT_ID()");
-
-        $this->inputs = array_merge($this->inputs, ['id' => $statement->fetchColumn()]);
-    }
-
-    /**
-     * Get model's table name from property table inside model's instance.
+     * Get model's table name from property "table" inside model's instance.
      * If it's not defined, it'll be gotten from reflection class on called
      * class's instance.
      * 
-     * @since 1.0.0
+     * @since 1.0.1
      * 
      * @return string
      */
@@ -188,6 +130,6 @@ class Model
         if ($this->table)
             return $this->table;
 
-        return strtolower((new \ReflectionClass(get_called_class()))->getShortName());
+        return strtolower((new ReflectionClass(get_called_class()))->getShortName());
     }
 }

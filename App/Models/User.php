@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Zed\Framework\Traits\Model\Authenticatable;
+use App\Traits\Authenticatable;
 use Zed\Framework\Model;
 
 /**
