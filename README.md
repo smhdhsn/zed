@@ -4,9 +4,6 @@
 
 ## About
 ZED is an API-Based Micro-Framework powered by PHP.
-```shell
-composer create-project smhdhsn/zed ProjectName
-```
 ### Features
 - ORM.
 - Routing.
