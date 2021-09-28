@@ -138,16 +138,16 @@
         },
         {
             "name": "smhdhsn/zed-core",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SMhdHsn/framework.git",
-                "reference": "4f61bcee7aca04df5f458d3d5c59537a034dcdf5"
+                "reference": "db3e21ade379bde49f01e64d4ce66694f2075fc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SMhdHsn/framework/zipball/4f61bcee7aca04df5f458d3d5c59537a034dcdf5",
-                "reference": "4f61bcee7aca04df5f458d3d5c59537a034dcdf5",
+                "url": "https://api.github.com/repos/SMhdHsn/framework/zipball/db3e21ade379bde49f01e64d4ce66694f2075fc9",
+                "reference": "db3e21ade379bde49f01e64d4ce66694f2075fc9",
                 "shasum": ""
             },
             "type": "library",
@@ -169,9 +169,9 @@
             "description": "ZED is an API-Based Micro-Framework powered by PHP.",
             "support": {
                 "issues": "https://github.com/SMhdHsn/framework/issues",
-                "source": "https://github.com/SMhdHsn/framework/tree/v1.0.2"
+                "source": "https://github.com/SMhdHsn/framework/tree/v1.0.3"
             },
-            "time": "2021-09-28T06:36:42+00:00"
+            "time": "2021-09-28T12:07:55+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
