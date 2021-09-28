@@ -251,10 +251,12 @@ Project::create([
 You have 2 choices, whether you can find a record with where clause or you can find the record by their unique id.
 
 ##### Where clause
+Returns a collection of objects, returns an empty collection if there's no matching record.
 ```php
 Project::where('name', $request->name)->get();
 ```
 ##### Find method
+Returns an object of type model, throws a `NotFoundException` if there's no matching record.
 ```php
 Project::find($id);
 ```

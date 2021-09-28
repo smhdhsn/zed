@@ -18,9 +18,9 @@ class UserRepository
      * 
      * @param array $input
      * 
-     * @return object
+     * @return User
      */
-    public function store(array $input): object
+    public function store(array $input): User
     {
         return User::create($input);
     }
@@ -33,10 +33,10 @@ class UserRepository
      * @param string $column
      * @param string $match
      * 
-     * @return object
+     * @return User
      */
-    public function findUser(string $column, string $match): object
+    public function findUser(string $column, string $match): User
     {
-        return User::where($column, $match)->get();
+        return User::where($column, $match)->get()[0];
     }
 }
