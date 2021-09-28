@@ -1,4 +1,4 @@
 /vendor
 /Core
-.composer.lock
+composer.lock
 .env
