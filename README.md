@@ -12,7 +12,7 @@ ZED is an API-Based Micro-Framework powered by PHP.
 - Request Validation.
 
 ## Getting started
-Make sure you have `composer` installed in your machine and then create a new ZED project using Composer:
+Make sure you have `composer` installed in your machine and then create a new ZED project using composer:
 ```shell
 composer create-project smhdhsn/zed ProjectName
 ```
