@@ -62,8 +62,7 @@ $router->get('/project/:projectId', 'ProjectController@show', [
     'auth'
 ]);
 ```
-The middleware auth is responsible for protecting routes from unauthenticated requests. 
-> :information_source: The auth middleware is powered by JWT.
+> :information_source: The auth middleware is powered by JWT and is responsible for protecting routes from unauthenticated requests.
 
 ### Route params
 You may wish to pass your route parameters to your application. You may do so like the following.
